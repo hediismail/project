@@ -6,7 +6,8 @@ const PrivateRoute = ({ component: Dashbord, ...rest }) => {
   if (isAuth) {
     return <Route component={Dashbord} {...rest} />
   }
-  return <Redirect path="/" />
-}
+  return <Redirect path="/Signup" />;
+};
+
 
 export default PrivateRoute
