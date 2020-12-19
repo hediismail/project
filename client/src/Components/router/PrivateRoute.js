@@ -1,11 +1,13 @@
-import React from "react";
-import { Redirect, Route } from "react-router-dom";
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  const isAuth = localStorage.getItem("token");
+import React from 'react'
+import { Redirect, Route } from 'react-router-dom'
+const PrivateRoute = ({ component: Dashbord, ...rest }) => {
+  const isAuth = localStorage.getItem('token')
+
   if (isAuth) {
-    return <Route component={Component} {...rest} />;
+    return <Route component={Dashbord} {...rest} />
   }
   return <Redirect path="/Signup" />;
 };
 
-export default PrivateRoute;
+
+export default PrivateRoute

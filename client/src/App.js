@@ -9,12 +9,14 @@ import { useDispatch } from 'react-redux'
 import { current } from './JS/actions/user'
 
 import './App.css'
+
 import Profil from './pages/profil'
 import Navbar from './Components/navbar/navbar'
 import Orchestra from './Components/orchestra/orchestra'
 import Photographe from './Components/photographe/photographe'
 import Onemanshow from './Components/Onemanshow/onemanshow'
 import Aboutus from './Components/aboutus/aboutus'
+
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
@@ -25,6 +27,7 @@ function App() {
       <Navbar/>
       
       <Switch>
+
       <Route exact path="/" component={home} />
         <Route  path="/Signup" component={Signup} />
         <Route  path="/profile" component={Profil} />
@@ -32,6 +35,7 @@ function App() {
         <Route  path="/photographe" component={Photographe} />
         <Route  path="/onemanshow" component={Onemanshow} />
         <Route  path="/aboutus" component={Aboutus} />
+
         <PrivateRoute path="/dashbord" component={Dashbord} />
 
       </Switch>
