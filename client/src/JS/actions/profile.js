@@ -1,4 +1,4 @@
-import { REGISTER_PROFILE } from '../const/profile'
+import { GET_PROFILES, REGISTER_PROFILE } from '../const/profile'
 import axios from 'axios'
 
 export const registerProfile = (profile, history) => async (dispatch) => {
@@ -13,3 +13,15 @@ export const registerProfile = (profile, history) => async (dispatch) => {
     console.log(error)
   }
 }
+//GET PROFILES
+export const getprofiles=()=>async (dispatch) =>{
+  dispatch({type:GET_PROFILES})
+  try { 
+      let result= await axios.get("/api/contact")
+      dispatch({type:GET_PROFILES_SUCCESS,payload:result.data.response})
+  
+  } catch (error) { 
+      dispatch({type:GET_PROFILES_FAIL,payload:error})
+      
+  }
+   }
