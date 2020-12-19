@@ -35,3 +35,19 @@ exports.editProfile = async (req, res) => {
     console.log(error)
   }
 }
+exports.getAllProfiles = async (req, res) => {
+  try {
+    const result = await Profile.find()
+    res.send({ profiles: result, msg: 'getting all profiles' })
+  } catch (error) {
+    res.status(400).send({ msg: 'can not get profiles' })
+  }
+}
+exports.deleteOneProfile = async (req, res) => {
+  try {
+    const result = await Profile.deleteOne({ _id: req.params.id })
+    result.n
+      ? res.send({ response: 'profile deleted' })
+      : res.send({ response: 'there is no profile with this id' })
+  } catch (error) {}
+}

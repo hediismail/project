@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { logout } from '../../JS/actions/user'
 import { registerProfile } from '../../JS/actions/profile'
-import '../Signup/Signup.css'
+// import '../Signup/Signup.css'
 const EditProfile = () => {
   const dispatch = useDispatch()
   const history = useHistory()
