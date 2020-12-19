@@ -5,4 +5,9 @@ const User = require('../models/User')
 const controllers = require('../controllers/profile')
 
 routerProfile.post(`/editprofile/:id`, controllers.editProfile)
+
+routerProfile.get('/', controllers.getAllProfiles)
+
+routerProfile.delete('/:id', controllers.deleteOneProfile)
+
 module.exports = routerProfile
