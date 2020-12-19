@@ -8,6 +8,8 @@ import { useDispatch } from 'react-redux'
 import { current } from './JS/actions/user'
 
 import './App.css'
+import EditProfile from './Components/EditProfile/EditProfile'
+
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
@@ -17,6 +19,7 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/" component={Signup} />
+        <Route path="/profile/editprofile" component={EditProfile} />
         <PrivateRoute path="/dashbord" component={Dashbord} />
       </Switch>
     </div>

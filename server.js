@@ -10,6 +10,7 @@ connectDB()
 // routes
 app.use(express.json())
 app.use('/user', require('./routes/user'))
+app.use('/profile', require('./routes/profile'))
 // server
 const PORT = process.env.PORT
 app.listen(PORT, (err) =>
