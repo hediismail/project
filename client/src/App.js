@@ -8,6 +8,7 @@ import PrivateRoute from './Components/router/PrivateRoute'
 import { useDispatch } from 'react-redux'
 import { current } from './JS/actions/user'
 
+
 import './App.css'
 
 import Profil from './pages/profil'
@@ -35,6 +36,7 @@ function App() {
         <Route  path="/photographe" component={Photographe} />
         <Route  path="/onemanshow" component={Onemanshow} />
         <Route  path="/aboutus" component={Aboutus} />
+        
 
         <PrivateRoute path="/dashbord" component={Dashbord} />
 
