@@ -53,3 +53,11 @@ exports.deleteOneProfile = async (req, res) => {
       : res.send({ response: 'there is no profile with this id' })
   } catch (error) {}
 }
+exports.getOneProfile = async (req, res) => {
+  try {
+    const result = await Profile.find({ _id: req.params.id })
+    res.send({ profiles: result, msg: 'getting the profile' })
+  } catch (error) {
+    res.status(400).send({ msg: 'can not get profile' })
+  }
+}

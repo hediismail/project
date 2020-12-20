@@ -11,4 +11,6 @@ routerProfile.get('/', controllers.getAllProfiles)
 
 routerProfile.delete('/:id', controllers.deleteOneProfile)
 
+routerProfile.get('/:id', isAuth(), controllers.getOneProfile)
+
 module.exports = routerProfile
