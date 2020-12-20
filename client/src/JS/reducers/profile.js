@@ -1,15 +1,23 @@
-import { REGISTER_PROFILE } from '../const/profile'
+import {GET_PROFILES, GET_PROFILES_FAIL, GET_PROFILES_SUCCESS, REGISTER_PROFILE} from '../const/profile';
 
 const initialState = {
-  profile: null,
-}
+  profiles: [],
+  loadprofiles:false,
 
-export const profileReducer = (state = initialState, { type, payload }) => {
+};
+
+export const profileReducer = (state = initialState, {type, payload}) => {
   switch (type) {
     case REGISTER_PROFILE:
-      return { ...state, profile: payload.profile }
+      return {...state ,profiles: payload.profiles};
+    case GET_PROFILES:
+      return {...state, loadprofiles: true};
+    case GET_PROFILES_SUCCESS:
+      return {...state, profiles:payload.profiles ,loadprofiles: false };
+    case GET_PROFILES_FAIL:
+      return {...state, loadprofiles: false, error:payload};
 
     default:
-      return state
+      return state;
   }
-}
+};

@@ -44,7 +44,7 @@ const Profil = () => {
                       </li>
                       <li className="nav-item">
                         <a className="nav-link" href="#favorite" role="tab" data-toggle="tab">
-                          <i className="material-icons">favorite</i> Favorite
+                          <i className="material-icons">favorite</i> commentaires
                         </a>
                       </li>
                     </ul>
