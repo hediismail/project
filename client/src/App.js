@@ -8,7 +8,6 @@ import PrivateRoute from './Components/router/PrivateRoute'
 import { useDispatch } from 'react-redux'
 import { current } from './JS/actions/user'
 
-
 import './App.css'
 
 import Profil from './pages/profil'
@@ -27,7 +26,8 @@ function App() {
   return (
     <div className="App">
 
-<Navbar/>
+      <Navbar />
+
       <Switch>
         <Route exact path="/" component={home} />
         <Route path="/Signup" component={Signup} />
