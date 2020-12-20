@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { logout } from '../../JS/actions/user'
 import { registerProfile } from '../../JS/actions/profile'
-// import '../Signup/Signup.css'
+import '../Signup/Signup.css'
 const EditProfile = () => {
   const dispatch = useDispatch()
   const history = useHistory()
@@ -20,9 +20,9 @@ const EditProfile = () => {
       >
         Logout
       </button>
-      <div className="sign-up-htm">
-        <div className="group">
-          <label htmlFor="user" className="label">
+      <div >
+        <div >
+          <label s>
             Profile Name
           </label>
           <input
@@ -66,5 +66,8 @@ const EditProfile = () => {
     </div>
   )
 }
+
+
+
 
 export default EditProfile
