@@ -4,15 +4,20 @@ const User = require("../models/User");
 const ProfileModel = mongoose.model("Profile");
 const isAuth = require("../middleware/passport");
 exports.editProfile = async (req, res) => {
-  const { profileName, contact, about } = req.body;
+
+  const { profileName, contact, about, catégorie, région } = req.body
+
 
   try {
     const newProfile = new Profile({
-      userId: req.params.id,
+      userId: req.user._id,
       profileName,
       contact,
       about,
-    });
+
+      catégorie,
+      région,
+    })
 
     // save the profile
     const newProfile1 = await newProfile.save();
@@ -22,15 +27,16 @@ exports.editProfile = async (req, res) => {
     //   // .populate('userId')
     //   .populate({ path: 'userId', select: 'name lastName email' })
     //   .lean()
-    const newProfileId = await newProfile1
-      .populate("userId", "name lastName")
-      .execPopulate();
+
+    // const newProfileId = await newProfile1
+    //   .populate('userId', 'name lastName')
+    //   .execPopulate()
 
     // console.log({ profile: newProfileId })
     res.status(200).send({
-      profile: newProfileId,
-      msg: "profile is saved",
-    });
+      profile: newProfile1,
+      msg: 'profile is saved',
+    })
   } catch (error) {
     console.log(error);
   }

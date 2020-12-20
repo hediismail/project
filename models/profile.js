@@ -22,6 +22,14 @@ const ProfileSchema = new schema({
     type: String,
     required: true,
   },
+  catégorie: {
+    type: String,
+    required: true,
+  },
+  région: {
+    type: String,
+    required: true,
+  },
 })
 
 module.exports = mongoose.model('Profile', ProfileSchema)
