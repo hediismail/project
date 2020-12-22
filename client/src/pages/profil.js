@@ -1,11 +1,33 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import Profileslist from '../Components/profileslist/profiles list';
+import { getprofilebyid, getprofiles } from '../JS/actions/profile';
 import './profile.css'
 
-const Profil = () => {
+
+const Profil = (props) => {
+  console.log(props.match.params.id)
+  const idprofile=props.match.params.id
+ 
+  
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getprofilebyid(idprofile));
+  }, []);
+  
+  const profile = useSelector(state => state.profileReducer)
+  
+ console.log(profile.profile.profileName)
+  
+  const pro=profile.profile
+ 
+console.log(pro)
+
     return (
-        <div>
-            
-            <div className="page-header header-filter" data-parallax="true" style={{backgroundImage: 'url("../assets/img/city-profile.jpg")'}} />
+        <div> 
+
+
+             <div className="page-header header-filter" data-parallax="true" style={{backgroundImage: 'url("../assets/img/city-profile.jpg")'}} />
         <div className="main main-raised">
           <div className="profile-content">
             <div className="container">
@@ -16,8 +38,8 @@ const Profil = () => {
                       <img src="../assets/img/faces/christian.jpg" alt="Circle Image" className="img-raised rounded-circle img-fluid" />
                     </div>
                     <div className="name">
-                      <h3 className="title">Christian Louboutin</h3>
-                      <h6>Designer</h6>
+                      <h3 className="title">{pro.profileName}</h3>
+                      <h6>{pro.contact}</h6>
                       <a href="#pablo" className="btn btn-just-icon btn-link btn-dribbble"><i className="fa fa-dribbble" /></a>
                       <a href="#pablo" className="btn btn-just-icon btn-link btn-twitter"><i className="fa fa-twitter" /></a>
                       <a href="#pablo" className="btn btn-just-icon btn-link btn-pinterest"><i className="fa fa-pinterest" /></a>
@@ -26,7 +48,7 @@ const Profil = () => {
                 </div>
               </div>
               <div className="description text-center">
-                <p>An artist of considerable range, Chet Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+                <p>{pro.about}</p>
               </div>
               <div className="row">
                 <div className="col-md-6 ml-auto mr-auto">
@@ -94,7 +116,7 @@ const Profil = () => {
             </div>
           </div>
         </div>
-            
+             
         </div>
     )
 }

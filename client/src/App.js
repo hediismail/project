@@ -16,7 +16,7 @@ import Orchestra from './Components/orchestra/orchestra'
 import Photographe from './Components/photographe/photographe'
 import Onemanshow from './Components/Onemanshow/onemanshow'
 import Aboutus from './Components/aboutus/aboutus'
-import EditProfile from './Components/EditProfile/EditProfile'
+import addprofile from './Components/addprofile/addprofile'
 
 function App() {
   const dispatch = useDispatch()
@@ -31,14 +31,14 @@ function App() {
       <Switch>
         <Route exact path="/" component={home} />
         <Route path="/Signup" component={Signup} />
-        <Route exact path="/profile" component={Profil} />
-        <Route path="/profile/editprofile/:id" component={EditProfile} />
+        <Route exact path="/profile/:id" component={Profil} />
+        {/* <Route path="/profile/addprofile/:id" component={addprofile} /> */}
         <Route path="/orchestra" component={Orchestra} />
         <Route path="/photographe" component={Photographe} />
         <Route path="/onemanshow" component={Onemanshow} />
         <Route path="/aboutus" component={Aboutus} />
-        <Route path="/editprofile" component={EditProfile} />
-        <PrivateRoute path="/dashbord" component={Dashbord} />
+        <Route path="/addprofile" component={addprofile} />
+        {/* <PrivateRoute path="/addprofile" component={addprofile} /> */}
 
       </Switch>
     </div>
