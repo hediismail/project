@@ -1,0 +1,20 @@
+.pageadd{background-color: white !important;
+margin: 2%;
+border-radius: 60px;
+PADDING: 3%;}
+.btninput{
+    display: flex;
+    justify-content: center;
+
+}
+.btncheck{    padding: 3%;
+    DISPLAY: FLEX;
+    JUSTIFY-CONTENT: space-evenly;}
+.btnselect{
+    PADDING: 2%;
+    MARGIN: 3%;
+    border-radius: 24%;
+}
+.btnadd{
+DISPLAY: FLEX;
+JUSTIFY-CONTENT: space-between;}

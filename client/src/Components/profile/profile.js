@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom'
 import "./profile.css"
 
 const Profile = ({profile}) => {
@@ -12,9 +13,9 @@ const Profile = ({profile}) => {
       
 			<ul>
         <li>
-          {/* <Link to={`/Drink/${users.idDrink}`}> */}
+          <Link to={`/profile/${profile._id}`}>
             <button className='btndetail'>detail</button>
-            {/* </Link> */}
+            </Link>
             </li>
 			</ul>
 		</div>

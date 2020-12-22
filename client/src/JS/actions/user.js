@@ -18,9 +18,9 @@ export const registerUser = (user, history) => async (dispatch) => {
     dispatch({ type: REGISTER_USER, payload: result.data })
     console.log(result.data.user.role)
     if (result.data.user.role === 'Artist') {
-      history.push(`/profile/editprofile/${result.data.user._id}`)
+      history.push(`/addprofile`)
     } else {
-      history.push('/dashbord')
+      history.push('/')
     }
   } catch (error) {
     const { errors, msg } = error.response.data

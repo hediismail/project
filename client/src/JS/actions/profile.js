@@ -1,13 +1,14 @@
-import { GET_PROFILES, GET_PROFILES_FAIL, GET_PROFILES_SUCCESS, REGISTER_PROFILE } from '../const/profile'
+import { GET_PROFILEBYID, GET_PROFILES, GET_PROFILES_FAIL, GET_PROFILES_SUCCESS, REGISTER_PROFILE, GET_PROFILEBYID_SUCCESS ,GET_PROFILEBYID_FAIL } from '../const/profile'
 import axios from 'axios';
 export const registerProfile = (profile, history) => async (dispatch) => {
   try {
-    const result = await axios.post(`/profile/editprofile/:id`, profile)
-    //{user,msg,token}
-    // localStorage.setItem("token",result.data.token)
+    const result = await axios.post(`/profile/editprofile`, profile, {
+      headers: {
+        authorization: localStorage.getItem('token'),
+      },
+    })
     dispatch({ type: REGISTER_PROFILE, payload: result.data })
-
-    history.push('/dashbord')
+    history.push('/')
   } catch (error) {
     console.log(error)
   }
@@ -24,3 +25,21 @@ export const getprofiles=()=>async (dispatch) =>{
       
   }
    }
+  
+  // GET PROFLE BY ID 
+     export const getprofilebyid=(_id)=>async (dispatch) =>{
+      // dispatch({type:GET_PROFILEBYID})
+      try { 
+          let result= await axios.get(`/profile/${_id}`,{ headers: {
+            authorization: localStorage.getItem('token'),
+          }})
+          dispatch({type:GET_PROFILEBYID,payload:result.data})
+          console.log(result)
+      
+      } catch (error) { 
+          // dispatch({type:GET_PROFILEBYID_FAIL,payload:error})
+          console.log(error)
+          
+      }
+       }
+  
