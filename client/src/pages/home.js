@@ -1,4 +1,5 @@
 import React from 'react'
+import Profileslist from '../Components/profileslist/profiles list'
 
 
 const home = () => {
@@ -62,8 +63,13 @@ const home = () => {
         </div>
       </div>
       {/*         end carousel */}
-           
-           
+    
+      
+      
+    
+       
+       <Profileslist /> 
+          
 
         </div>
     )

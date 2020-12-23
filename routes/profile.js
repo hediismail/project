@@ -16,4 +16,7 @@ routerProfile.get("/", controllers.getAllProfiles);
 
 routerProfile.delete("/:id", controllers.deleteOneProfile);
 
-module.exports = routerProfile;
+routerProfile.get('/:id', isAuth(), controllers.getOneProfile)
+
+module.exports = routerProfile
+
