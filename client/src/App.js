@@ -17,6 +17,7 @@ import Photographe from './Components/photographe/photographe'
 import Onemanshow from './Components/Onemanshow/onemanshow'
 import Aboutus from './Components/aboutus/aboutus'
 import addprofile from './Components/addprofile/addprofile'
+import myprofile from './Components/myprofile/myprofile'
 
 function App() {
   const dispatch = useDispatch()
@@ -38,6 +39,8 @@ function App() {
         <Route path="/onemanshow" component={Onemanshow} />
         <Route path="/aboutus" component={Aboutus} />
         <Route path="/addprofile" component={addprofile} />
+        <Route path="/myprofile" component={myprofile} />
+
         {/* <PrivateRoute path="/addprofile" component={addprofile} /> */}
 
       </Switch>
