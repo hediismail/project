@@ -1,12 +1,11 @@
 const Profile = require("../models/profile");
 const mongoose = require("mongoose");
 const User = require("../models/User");
-const ProfileModel = mongoose.model("Profile");
+// const ProfileModel = mongoose.model("Profile");
 const isAuth = require("../middleware/passport");
+
 exports.editProfile = async (req, res) => {
-
-  const { profileName, contact, about, catégorie, région } = req.body
-
+  const { profileName, contact, about, catégorie, région } = req.body;
 
   try {
     const newProfile = new Profile({
@@ -14,10 +13,9 @@ exports.editProfile = async (req, res) => {
       profileName,
       contact,
       about,
-
       catégorie,
       région,
-    })
+    });
 
     // save the profile
     const newProfile1 = await newProfile.save();
@@ -35,8 +33,8 @@ exports.editProfile = async (req, res) => {
     // console.log({ profile: newProfileId })
     res.status(200).send({
       profile: newProfile1,
-      msg: 'profile is saved',
-    })
+      msg: "profile is saved",
+    });
   } catch (error) {
     console.log(error);
   }

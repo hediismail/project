@@ -11,10 +11,11 @@ const PublicationSchema = new schema({
     ref: "User",
   },
   publicationPhoto: {
-    data: Buffer,
-    contentType: String,
+    type: String,
   },
-  publication: String,
+  publication: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("Publication", PublicationSchema);

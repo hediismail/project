@@ -9,10 +9,10 @@ require("dotenv").config();
 connectDB();
 
 // routes
-app.use(express.json())
-app.use('/user', require('./routes/user'))
-app.use('/profile', require('./routes/profile'))
-app.use('/comment', require('./routes/comment'))
+app.use(express.json());
+app.use("/user", require("./routes/user"));
+app.use("/profile", require("./routes/profile"));
+app.use("/comment", require("./routes/comment"));
 app.use("/publication", require("./routes/publication"));
 app.use(express.static(path.join(__dirname, "./pubPhoto")));
 
