@@ -9,11 +9,13 @@ export const registerProfile = (profile, history) => async (dispatch) => {
     })
     dispatch({ type: REGISTER_PROFILE, payload: result.data })
     history.push('/')
+
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 //GET PROFILES
+
 export const getprofiles=()=>async (dispatch) =>{
   dispatch({type:GET_PROFILES})
   try { 
@@ -43,3 +45,4 @@ export const getprofiles=()=>async (dispatch) =>{
       }
        }
   
+
