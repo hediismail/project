@@ -32,10 +32,10 @@ const Navbar = () => {
           {/* Collect the nav links, forms, and other content for toggling */}
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav ml-auto">
-              <Link to={`/orchestra`}>
+              <Link to={`/music`}>
                 <li className="nav-item">
                   <a href="javascript:;" className="nav-link">
-                    Orchestra
+                    Music
                   </a>
                 </li>
               </Link>
@@ -46,10 +46,10 @@ const Navbar = () => {
                   </a>
                 </li>
               </Link>
-              <Link to={`/onemanshow`}>
+              <Link to={`/clown`}>
                 <li className="nav-item">
                   <a href="javascript:;" className="nav-link">
-                    Onemenshow
+                    Clown
                   </a>
                 </li>
               </Link>
@@ -60,6 +60,12 @@ const Navbar = () => {
                   </a>
                 </li>
               </Link>
+              <li className="nav-item">
+                  {/* <a href="javascript:;" className="nav-link">
+                    About us
+                  </a> */}
+
+                </li>
               <li className="nav-item">
                 <a
                   href="javascript:;"

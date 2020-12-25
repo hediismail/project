@@ -1,11 +1,10 @@
-
 import {React, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getprofiles} from '../../JS/actions/profile';
 import Profile from '../profile/profile';
-import './photographe.css'
+import './music.css'
 
-const Photographe = () => {
+const Music = () => {
   const dispatch = useDispatch();
   const profiles = useSelector((state) => state.profileReducer.profiles);
   const loadprofiles = useSelector(
@@ -19,7 +18,7 @@ const Photographe = () => {
   const [région, setRégion] = useState('');
      if (région == '') {
   return (
-    <div className='pagephotographe'>
+    <div className='pagemusic'>
       <div>
         <select
           className="btnselect"
@@ -40,13 +39,14 @@ const Photographe = () => {
           </option>
         </select>
       </div>
-
+<div className='profils'>
       {profiles
-        .filter((el) => el.catégorie === 'Photographe')
+        .filter((el) => el.catégorie === 'Music')
 
         .map((el) => (
           <Profile key={el._id} profile={el} />
         ))}
+        </div>
     </div>
   );
 }
@@ -74,7 +74,7 @@ else{
         </div>
   
         {profiles
-          .filter((el) => el.catégorie === 'Photographe' && el.région===région)
+          .filter((el) => el.catégorie === 'Music' && el.région===région)
   
           .map((el) => (
             <Profile key={el._id} profile={el} />
@@ -84,4 +84,4 @@ else{
     )
 };
 }
-export default Photographe;
+export default Music;

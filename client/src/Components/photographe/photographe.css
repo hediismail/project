@@ -1,0 +1,9 @@
+.pagephotographe{
+    background-image: url(https://images.unsplash.com/photo-1528788923685-864db0cbc312?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjZ8fHBob3RvZ3JhcGhlcnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;}

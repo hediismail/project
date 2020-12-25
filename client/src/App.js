@@ -12,12 +12,13 @@ import './App.css'
 
 import Profil from './pages/profil'
 import Navbar from './Components/navbar/navbar'
-import Orchestra from './Components/orchestra/orchestra'
 import Photographe from './Components/photographe/photographe'
-import Onemanshow from './Components/Onemanshow/onemanshow'
+import Onemanshow from './Components/clown/clown'
 import Aboutus from './Components/aboutus/aboutus'
 import addprofile from './Components/addprofile/addprofile'
 import myprofile from './Components/myprofile/myprofile'
+import Music from './Components/music/music'
+import Clown from './Components/clown/clown'
 
 function App() {
   const dispatch = useDispatch()
@@ -34,9 +35,9 @@ function App() {
         <Route path="/Signup" component={Signup} />
         <Route exact path="/profile/:id" component={Profil} />
         {/* <Route path="/profile/addprofile/:id" component={addprofile} /> */}
-        <Route path="/orchestra" component={Orchestra} />
+        <Route path="/music" component={Music} />
         <Route path="/photographe" component={Photographe} />
-        <Route path="/onemanshow" component={Onemanshow} />
+        <Route path="/clown" component={Clown} />
         <Route path="/aboutus" component={Aboutus} />
         <Route path="/addprofile" component={addprofile} />
         <Route path="/myprofile" component={myprofile} />
