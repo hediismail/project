@@ -5,7 +5,8 @@ import './profileslist.css';
 import {getprofiles} from '../../JS/actions/profile';
 import Profile from '../profile/profile';
 import {Spinner} from 'react-bootstrap'
-const Profileslist = () => {
+const Profileslist = (région) => {
+  console.log(région.région)
   const dispatch = useDispatch();
   const profiles = useSelector((state) => state.profileReducer.profiles);
   const loadprofiles = useSelector(
@@ -16,19 +17,42 @@ const Profileslist = () => {
   useEffect(() => {
     dispatch(getprofiles());
   }, []);
-
-  return (
+  if (région.région === '') {
+    return (
+ 
     <div className="profilelist">
       {loadprofiles ? (
-        <Spinner type="grow" color="success" />):(
+        <Spinner type="grow" color="success" />):( 
               profiles.map((el) => (
-                <Profile key={el._id} profile={el} />
+                <Profile key={el._id} profile={el} />)))}
+                </div>)}
+                else {
+      return (
+        <div className="profilelist">
+        {profiles
+          .filter((el) =>  el.région===région.région)
+  
+          .map((el) => (
+            <Profile key={el._id} profile={el} />
+          ))}
+          </div>
+
+
+      )}}
+
+     
                
-      
-              )))}
-            </div>
-        
-  );
-};
+      //      {/* {profiles
+          // .filter((el) => el.région === {région})
+
+          // .map((el) => (
+          //   <Profile key={el._id} profile={el} />
+          // ))} */}
+              
+              
+  
+          
+           
+   
 
 export default Profileslist;

@@ -42,7 +42,7 @@ console.log(pro)
          <div className="w3-card w3-round w3-white">
            <div className="w3-container">
              <h4 className="w3-center">{pro.profileName}</h4>
-             <p className="w3-center"><img src="https://lh3.googleusercontent.com/proxy/XgPnzKo35twy7Gof21AWTr7RqLN1VXp_4VaDuHKePZWIi7CO7PRvsxgDZQ60Obd-NdR57c9hlOuFz3s-fhx5fgtyNcPJgIgLDmAw" className="w3-circle" style={{height: '106px', width: '106px'}} alt="Avatar" /></p>
+             <p className="w3-center"><img src="https://www.wepostmag.com/wp-content/uploads/2018/02/19420515_452047728504441_6177971585669425636_n.jpg" className="w3-circle" style={{height: '106px', width: '106px'}} alt="Avatar" /></p>
              <hr />
              <p><i className="fa fa-pencil fa-fw w3-margin-right w3-text-theme" /> {pro.catégorie}</p>
              <p><i className="fa fa-phone fa-fw w3-margin-right w3-text-theme" /> {pro.contact}</p>
@@ -117,13 +117,13 @@ console.log(pro)
          </div>
          <br />
          {/* Alert Box */}
-         <div className="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
+         {/* <div className="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
            <span onclick="this.parentElement.style.display='none'" className="w3-button w3-theme-l3 w3-display-topright">
              <i className="fa fa-remove" />
            </span>
            <p><strong>Hey!</strong></p>
            <p>People are looking at your profile. Find out who.</p>
-         </div>
+         </div> */}
          {/* End Left Column */}
        </div>
        {/* Middle Column */}
@@ -179,17 +179,7 @@ console.log(pro)
          {/* End Middle Column */}
        </div>
        {/* Right Column */}
-       <div className="w3-col m2">
-         <div className="w3-card w3-round w3-white w3-center">
-           <div className="w3-container">
-             <p>Upcoming Events:</p>
-             <img src="/w3images/forest.jpg" alt="Forest" style={{width: '100%'}} />
-             <p><strong>Holiday</strong></p>
-             <p>Friday 15:00</p>
-             <p><button className="w3-button w3-block w3-theme-l4">Info</button></p>
-           </div>
-         </div>
-         <br />
+        <div className="w3-col m2">
          <div className="w3-card w3-round w3-white w3-center">
            <div className="w3-container">
              <p>Friend Request</p>
@@ -206,13 +196,13 @@ console.log(pro)
            </div>
          </div>
          <br />
-         <div className="w3-card w3-round w3-white w3-padding-16 w3-center">
+         {/* <div className="w3-card w3-round w3-white w3-padding-16 w3-center">
            <p>ADS</p>
-         </div>
-         <br />
+         </div> */}
+         {/* <br />
          <div className="w3-card w3-round w3-white w3-padding-32 w3-center">
            <p><i className="fa fa-bug w3-xxlarge" /></p>
-         </div>
+         </div> */}
          {/* End Right Column */}
        </div>
        {/* End Grid */}

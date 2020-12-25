@@ -17,8 +17,7 @@ const EditProfile = () => {
 
   return (
     <div className="pageadd">
-      
-        <div>
+      <div>
         {/* <div>
           <label s>Profile Name</label>
           <input
@@ -119,9 +118,9 @@ const EditProfile = () => {
               type="radio"
               name="exampleRadios"
               id="exampleRadios1"
-              defaultValue="orchestra"
+              defaultValue="Music"
             />
-            orchestra
+            Music
             <span className="circle">
               <span className="check" />
             </span>
@@ -135,10 +134,27 @@ const EditProfile = () => {
               type="radio"
               name="exampleRadios"
               id="exampleRadios2"
-              defaultValue="photographe"
+              defaultValue="Photographe"
               defaultChecked
             />
-            photographe
+            Photographe
+            <span className="circle">
+              <span className="check" />
+            </span>
+          </label>
+        </div>
+        <div className="form-check">
+          <label className="form-check-label">
+            <input
+              onChange={(e) => setCatégorie(e.target.value)}
+              className="form-check-input"
+              type="radio"
+              name="exampleRadios"
+              id="exampleRadios2"
+              defaultValue="Clown"
+              
+            />
+            Clown
             <span className="circle">
               <span className="check" />
             </span>
@@ -150,15 +166,21 @@ const EditProfile = () => {
         <label htmlFor="pass" className="label">
           Choose Your Région
         </label>
-        <select className="btnselect" onChange={(e) => setRégion(e.target.value)}>
-          <option id="pass" value="Gabes">
-            Gabes
-          </option>
+        <select
+          className="btnselect"
+          onChange={(e) => setRégion(e.target.value)}
+        >
           <option id="pass" value="Tunis">
             Tunis
           </option>
-          <option id="pass" value="Sfax">
-            Sfax
+          <option id="pass" value="Ariana">
+            Ariana
+          </option>
+          <option id="pass" value="Ben Arous">
+            Ben Arous
+          </option>
+          <option id="pass" value="Mannouba">
+            Mannouba
           </option>
         </select>
       </div>
@@ -177,8 +199,6 @@ const EditProfile = () => {
         }
       /> */}
       <div className="btnadd">
-      
-      
         {/* <button
         onClick={() => {
           dispatch(logout());
@@ -197,21 +217,28 @@ const EditProfile = () => {
           Logout
         </button>
         <button
-        class="btn btn-primary btn-round"
-        onClick={() =>
-          dispatch(
-            registerProfile(
-              {profileName, contact, about, catégorie, région},
-              history
+          class="btn btn-primary btn-round"
+          onClick={() =>
+            dispatch(
+              registerProfile(
+                {profileName, contact, about, catégorie, région},
+                history
+              )
             )
-          )
-        }
-      >
-        <i class="material-icons">favorite</i> Create Profile
-      </button>
-        </div>
+          }
+        >
+          <i class="material-icons">favorite</i> Create Profile
+        </button>
+      </div>
+      
+     
+    
+      
+
+      <img src="" alt="Circle Image" class="rounded-circle img-fluid"></img>
+        <input type='file'/>
       {/* </Link> */}
-    </div>
+      </div>
   );
 };
 
