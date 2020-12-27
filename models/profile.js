@@ -10,10 +10,12 @@ const ProfileSchema = new schema({
     type: String,
     required: true,
   },
-  // profilePicture: {
-  //   type: String,
-  //   required: true,
-  // },
+  filePath: {
+    type: String,
+  },
+  fileName: {
+    type: String,
+  },
   contact: {
     type: String,
     required: true,
