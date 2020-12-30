@@ -6,54 +6,91 @@ const Publication = require("../models/Publication");
 const multer = require("multer");
 const isAuth = require("../middleware/passport");
 const isArtist = require("../middleware/isArtist");
-let photoName = "";
+const path = require("path");
+// let photoName = "";
 // uploading of photo
 // storage configuration
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, `${__dirname}/../pubPhoto`);
+    cb(null, `${__dirname}/../client/public/photos`);
   },
   filename: (req, file, cb) => {
     console.log(file.originalname);
-    let lastIndex = file.originalname.lastIndexOf(".");
-    // Get Original File Extension
-    let extension = file.originalname.substring(lastIndex);
+    // let lastIndex = file.originalname.lastIndexOf(".");
+    // // Get Original File Extension
+    // let extension = file.originalname.substring(lastIndex);
     // Create the file on the server
-    photoName = "img" + "-" + Date.now() + extension;
-    cb(null, photoName);
+    // photoName = "img" + "-" + Date.now() + extension;
+    cb(null, Date.now() + path.extname(file.originalname));
   },
 });
 
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype == "image/jpg" ||
+    file.mimetype == "image/jpeg" ||
+    file.mimetype == "image/png" ||
+    file.mimetype == "image/gif"
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
 // Image Upload function
 
-const pubPhoto = multer({ storage: storage });
+const upload = multer({
+  storage: storage,
+  fileFilter: fileFilter,
+  limits: { fileSize: 10000000 },
+});
 
 routerPublication.post(
   "/pub/:id",
   isAuth(),
   isArtist,
-  pubPhoto.single("avatar"),
+  upload.single("file"),
   async (req, res) => {
     const { publication } = req.body;
+    // console.log(req.file);
     try {
       // console.log(req.file.buffer);
-      const Publication1 = new Publication({
-        profileId: req.params.id,
-        userId: req.user._id,
-        publicationPhoto: photoName,
-        publication,
-      });
+      if (req.file) {
+        const Publication1 = new Publication({
+          profileId: req.params.id,
+          userId: req.user._id,
+          publicationPhoto: `/photos/${req.file.filename}`,
+          publication,
+        });
 
-      const newPublication = await Publication1.save();
+        const newPublication = await Publication1.save();
+        res.status(200).send({
+          publication: newPublication,
+          msg: "publication is saved",
+        });
+      } else {
+        const Publication1 = new Publication({
+          profileId: req.params.id,
+          userId: req.user._id,
+          publicationPhoto: "",
+          publication,
+        });
+
+        const newPublication = await Publication1.save();
+        res.status(200).send({
+          publication: newPublication,
+          msg: "publication is saved",
+        });
+      }
       // populate
       // const publication2 = await newPublication.populate(
       //   "profileId",
       //   "contact"
       // );
-      res.status(200).send({
-        publication: newPublication,
-        msg: "publication is saved",
-      });
+      // res.status(200).send({
+      //   publication: newPublication,
+      //   msg: "publication is saved",
+      // });
     } catch (error) {
       console.log(error);
       res.status(400).send({ msg: "publication can not be saved" });
