@@ -7,6 +7,7 @@ import { registerProfile } from '../../JS/actions/profile'
 import './addprofile.css'
 
 const EditProfile = () => {
+
   const dispatch = useDispatch()
   const history = useHistory()
   const [profileName, setProfileName] = useState('')
@@ -22,6 +23,7 @@ const EditProfile = () => {
   formData.append('about', about)
   formData.append('région', région)
   formData.append('catégorie', catégorie)
+
 
   return (
     <div className="pageadd">

@@ -4,3 +4,4 @@ module.exports = isArtist = function (req, res, next) {
   }
   return res.status(400).send({ msg: "you are not an artist..." });
 };
+ 
