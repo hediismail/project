@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react'
 // import { CgMail } from "react-icons/fa";
-import { FaTwitterSquare } from "react-icons/fa";
-import { FaInstagramSquare } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
-import { FaGoogleDrive } from "react-icons/fa";
-import "./Footer.css";
+import { FaTwitterSquare } from 'react-icons/fa'
+import { FaInstagramSquare } from 'react-icons/fa'
+import { FaFacebook } from 'react-icons/fa'
+import { FaGoogleDrive } from 'react-icons/fa'
+import './Footer.css'
 
 const Footer = () => {
   return (
@@ -27,7 +27,7 @@ const Footer = () => {
         <p>Copyright 2020 7aflha</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

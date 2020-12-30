@@ -1,24 +1,22 @@
-import {React, useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {getprofiles} from '../../JS/actions/profile';
-import Profile from '../profile/profile';
+import { React, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getprofiles } from '../../JS/actions/profile'
+import Profile from '../profile/profile'
 import './clown.css'
 
 const Clown = () => {
-  const dispatch = useDispatch();
-  const profiles = useSelector((state) => state.profileReducer.profiles);
-  const loadprofiles = useSelector(
-    (state) => state.profileReducer.loadprofiles
-  );
-  console.log(profiles.catégorie);
+  const dispatch = useDispatch()
+  const profiles = useSelector((state) => state.profileReducer.profiles)
+
+  console.log(profiles.catégorie)
 
   useEffect(() => {
-    dispatch(getprofiles());
-  }, []);
-  const [région, setRégion] = useState('');
-  if (région == '') {
+    dispatch(getprofiles())
+  }, [])
+  const [région, setRégion] = useState('')
+  if (région === '') {
     return (
-      <div className='pageclown'>
+      <div className="pageclown">
         <div>
           <select
             className="btnselect"
@@ -47,7 +45,7 @@ const Clown = () => {
             <Profile key={el._id} profile={el} />
           ))}
       </div>
-    );
+    )
   } else {
     return (
       <div>
@@ -79,7 +77,7 @@ const Clown = () => {
             <Profile key={el._id} profile={el} />
           ))}
       </div>
-    );
+    )
   }
-};
-export default Clown;
+}
+export default Clown

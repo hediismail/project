@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   addPublication,
   getPublicationById,
-} from "../../JS/actions/Publication";
+} from '../../JS/actions/Publication'
 
-import "./Publication.css";
+import './Publication.css'
 const Publication = ({ idprofile }) => {
-  const [publication, setPublication] = useState("");
-  const [file, setFile] = useState("");
-  const data = new FormData();
-  data.append("publication", publication);
-  data.append("file", file);
-  console.log(file);
-  const dispatch = useDispatch();
-  //   const publications = useSelector(
-  //     (state) => state.publicationReducer.publications
-  //   );
+  const [publication, setPublication] = useState('')
+  const [file, setFile] = useState('')
+  const data = new FormData()
+  data.append('publication', publication)
+  data.append('file', file)
+  console.log(file)
+  const dispatch = useDispatch()
+  const publications = useSelector(
+    (state) => state.publicationReducer.publication.publication,
+  )
   useEffect(() => {
-    dispatch(getPublicationById(idprofile));
-  }, []);
+    dispatch(getPublicationById(idprofile))
+  }, [publications])
 
   return (
     <div>
@@ -30,7 +30,7 @@ const Publication = ({ idprofile }) => {
           value={publication}
           placeholder="write your status"
           onChange={(e) => {
-            setPublication(e.target.value);
+            setPublication(e.target.value)
           }}
         />
       </div>
@@ -38,20 +38,21 @@ const Publication = ({ idprofile }) => {
         type="file"
         id="myFile"
         onChange={(e) => {
-          setFile(e.target.files[0]);
+          setFile(e.target.files[0])
         }}
       />
       <button
         onClick={(e) => {
-          e.preventDefault();
-          dispatch(addPublication(data, idprofile));
-          setPublication("");
+          e.preventDefault()
+          dispatch(addPublication(data, idprofile))
+          setPublication('')
+          setFile('')
         }}
       >
         add
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default Publication;
+export default Publication

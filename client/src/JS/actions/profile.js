@@ -4,8 +4,6 @@ import {
   GET_PROFILES_FAIL,
   GET_PROFILES_SUCCESS,
   REGISTER_PROFILE,
-  GET_PROFILEBYID_SUCCESS,
-  GET_PROFILEBYID_FAIL,
 } from '../const/profile'
 import axios from 'axios'
 export const registerProfile = (profile, history) => async (dispatch) => {
