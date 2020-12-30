@@ -1,31 +1,34 @@
-import {GET_PROFILEBYID, GET_PROFILES, GET_PROFILES_FAIL, GET_PROFILES_SUCCESS, REGISTER_PROFILE} from '../const/profile';
+import {
+  GET_PROFILEBYID,
+  GET_PROFILES,
+  GET_PROFILES_FAIL,
+  GET_PROFILES_SUCCESS,
+  REGISTER_PROFILE,
+} from '../const/profile'
 
 const initialState = {
-  profile:[],
+  profile: [],
   profiles: [],
-  loadprofiles:false,
+  loadprofiles: false,
+}
 
-};
-
-export const profileReducer = (state = initialState, {type, payload}) => {
+export const profileReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case REGISTER_PROFILE:
-      localStorage.getItem("token", payload.token);
+      localStorage.getItem('token', payload.token)
 
-      return {...state ,profile: payload.profile};
+      return { ...state, profile: payload }
     case GET_PROFILES:
-      return {...state, loadprofiles: true};
+      return { ...state, loadprofiles: true }
     case GET_PROFILES_SUCCESS:
-      return {...state, profiles:payload.profiles ,loadprofiles: false };
+      return { ...state, profiles: payload.profiles, loadprofiles: false }
     case GET_PROFILES_FAIL:
-      return {...state, loadprofiles: false, error:payload};
-      case GET_PROFILEBYID:
-         
-        localStorage.getItem("token", payload.token);
-        return {...state, profile: payload.profile[0]};
-      
+      return { ...state, loadprofiles: false, error: payload }
+    case GET_PROFILEBYID:
+      localStorage.getItem('token', payload.token)
+      return { ...state, profile: payload.profile[0] }
 
     default:
-      return state;
+      return state
   }
-};
+}

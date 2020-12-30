@@ -10,13 +10,14 @@ require('dotenv').config()
 connectDB()
 
 // routes
-app.use(fileUpload())
+// app.use(fileUpload())
 app.use(express.json())
 app.use('/user', require('./routes/user'))
 app.use('/profile', require('./routes/profile'))
 app.use('/comment', require('./routes/comment'))
 app.use('/publication', require('./routes/publication'))
-app.use(express.static(path.join(__dirname, './pubPhoto')))
+app.use(express.urlencoded({ extended: true }))
+// app.use(express.static(path.join(__dirname, './pubPhoto')))
 
 // server
 const PORT = process.env.PORT
