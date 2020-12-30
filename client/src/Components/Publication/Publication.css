@@ -1,0 +1,14 @@
+form {
+    background-color: #2E86C1;
+    width: 50%;
+    margin: auto;
+}
+input[type="text"] {
+    margin-top: 15px;
+    width: 70%;
+    height: 30px;
+}
+input#myFile {
+    margin-top: 26px;
+    margin-bottom: 20px;
+}
