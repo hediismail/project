@@ -12,8 +12,8 @@ const EditProfile = () => {
   const [profileName, setProfileName] = useState('');
   const [contact, setContact] = useState('');
   const [about, setAbout] = useState('');
-  const [région, setRégion] = useState('');
-  const [catégorie, setCatégorie] = useState('');
+  const [région, setRégion] = useState('Tunis');
+  const [catégorie, setCatégorie] = useState('Photographe');
 
   return (
     <div className="pageadd">
