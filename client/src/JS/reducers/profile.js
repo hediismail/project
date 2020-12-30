@@ -16,7 +16,6 @@ export const profileReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case REGISTER_PROFILE:
       localStorage.getItem('token', payload.token)
-
       return { ...state, profile: payload }
     case GET_PROFILES:
       return { ...state, loadprofiles: true }

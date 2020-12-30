@@ -1,62 +1,41 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Profileslist from "../Components/profileslist/profiles list";
-import { getprofilebyid, getprofiles } from "../JS/actions/profile";
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getprofilebyid } from '../JS/actions/profile'
 // import { addPublication, getPublicationById } from "../JS/actions/Publication";
-import { publicationReducer } from "../JS/reducers/Publication";
-import Publication from "../Components/Publication/Publication";
-import "./profile.css";
+import Publication from '../Components/Publication/Publication'
+import './profile.css'
 
 const Profil = (props) => {
-  console.log(props.match.params.id);
-  const idprofile = props.match.params.id;
-  const profile = useSelector((state) => state.profileReducer);
+  console.log(props.match.params.id)
+  const idprofile = props.match.params.id
+  const profile = useSelector((state) => state.profileReducer)
 
   const publications = useSelector(
-    (state) => state.publicationReducer.publications
-  );
+    (state) => state.publicationReducer.publications,
+  )
   const loading = useSelector(
-    (state) => state.publicationReducer.loadPublications
-  );
+    (state) => state.publicationReducer.loadPublications,
+  )
   // const [publication, setPublication] = useState("");
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getprofilebyid(idprofile));
+    dispatch(getprofilebyid(idprofile))
     // dispatch(getPublicationById(idprofile));
-  }, []);
+  }, [])
 
   // const [publicationPhoto, setPublicationPhoto] = useState("");
 
   // console.log({ publications });
 
-  console.log(profile.profile.profileName);
+  console.log(profile.profile.profileName)
 
-  const pro = profile.profile;
+  const pro = profile.profile
 
-  console.log(pro);
+  console.log(pro)
 
   return (
     <div>
-      {/* Navbar on small screens */}
-      <div
-        id="navDemo"
-        className="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large"
-      >
-        <a href="#" className="w3-bar-item w3-button w3-padding-large">
-          Link 1
-        </a>
-        <a href="#" className="w3-bar-item w3-button w3-padding-large">
-          Link 2
-        </a>
-        <a href="#" className="w3-bar-item w3-button w3-padding-large">
-          Link 3
-        </a>
-        <a href="#" className="w3-bar-item w3-button w3-padding-large">
-          My Profile
-        </a>
-      </div>
       {/* Page Container */}
       <div
         className="w3-container w3-content"
@@ -87,10 +66,6 @@ const Profil = (props) => {
                   <i className="fa fa-phone fa-fw w3-margin-right w3-text-theme" />{' '}
                   {pro.contact}
                 </p>
-                <p>
-                  <i className="fa fa-envelope-open fa-fw w3-margin-right w3-text-theme" />{' '}
-                  April 1, 1988
-                </p>
               </div>
             </div>
             <br />
@@ -109,6 +84,7 @@ const Profil = (props) => {
                     <div className="w3-half">
                       <img
                         src="/w3images/lights.jpg"
+                        alt=""
                         style={{ width: '100%' }}
                         className="w3-margin-bottom"
                       />
@@ -116,6 +92,7 @@ const Profil = (props) => {
                     <div className="w3-half">
                       <img
                         src="/w3images/nature.jpg"
+                        alt=""
                         style={{ width: '100%' }}
                         className="w3-margin-bottom"
                       />
@@ -123,6 +100,7 @@ const Profil = (props) => {
                     <div className="w3-half">
                       <img
                         src="/w3images/mountains.jpg"
+                        alt=""
                         style={{ width: '100%' }}
                         className="w3-margin-bottom"
                       />
@@ -130,6 +108,7 @@ const Profil = (props) => {
                     <div className="w3-half">
                       <img
                         src="/w3images/forest.jpg"
+                        alt=""
                         style={{ width: '100%' }}
                         className="w3-margin-bottom"
                       />
@@ -137,6 +116,7 @@ const Profil = (props) => {
                     <div className="w3-half">
                       <img
                         src="/w3images/nature.jpg"
+                        alt=""
                         style={{ width: '100%' }}
                         className="w3-margin-bottom"
                       />
@@ -144,7 +124,8 @@ const Profil = (props) => {
                     <div className="w3-half">
                       <img
                         src="/w3images/snow.jpg"
-                        style={{ width: "100%" }}
+                        alt=""
+                        style={{ width: '100%' }}
                         className="w3-margin-bottom"
                       />
                     </div>
@@ -162,42 +143,48 @@ const Profil = (props) => {
                     <div className="w3-half">
                       <img
                         src="/w3images/lights.jpg"
-                        style={{ width: "100%" }}
+                        alt=""
+                        style={{ width: '100%' }}
                         className="w3-margin-bottom"
                       />
                     </div>
                     <div className="w3-half">
                       <img
                         src="/w3images/nature.jpg"
-                        style={{ width: "100%" }}
+                        alt=""
+                        style={{ width: '100%' }}
                         className="w3-margin-bottom"
                       />
                     </div>
                     <div className="w3-half">
                       <img
                         src="/w3images/mountains.jpg"
-                        style={{ width: "100%" }}
+                        alt=""
+                        style={{ width: '100%' }}
                         className="w3-margin-bottom"
                       />
                     </div>
                     <div className="w3-half">
                       <img
                         src="/w3images/forest.jpg"
-                        style={{ width: "100%" }}
+                        alt=""
+                        style={{ width: '100%' }}
                         className="w3-margin-bottom"
                       />
                     </div>
                     <div className="w3-half">
                       <img
                         src="/w3images/nature.jpg"
-                        style={{ width: "100%" }}
+                        alt=""
+                        style={{ width: '100%' }}
                         className="w3-margin-bottom"
                       />
                     </div>
                     <div className="w3-half">
                       <img
                         src="/w3images/snow.jpg"
-                        style={{ width: "100%" }}
+                        alt=""
+                        style={{ width: '100%' }}
                         className="w3-margin-bottom"
                       />
                     </div>
@@ -280,23 +267,20 @@ const Profil = (props) => {
                     src=""
                     alt="Avatar"
                     className="w3-left w3-circle w3-margin-right"
-                    style={{ width: "60px" }}
+                    style={{ width: '60px' }}
                   />
                   <span className="w3-right w3-opacity">1 min</span>
                   {el.publication && el.publicationPhoto ? (
                     <div>
                       <h3>{el.publication}</h3>
-                      <img src={el.publicationPhoto} />
+                      <img src={el.publicationPhoto} alt="" />
                     </div>
                   ) : el.publicationPhoto ? (
-                    <img src={el.publicationPhoto} />
+                    <img src={el.publicationPhoto} alt="" />
                   ) : (
                     <h3>{el.publication}</h3>
                   )}
-                  {/* <h4>{el.publication}</h4> */}
-
                   <hr className="w3-clear" />
-
                   <button
                     type="button"
                     className="w3-button w3-theme-d1 w3-margin-bottom"
@@ -318,7 +302,7 @@ const Profil = (props) => {
                 src=""
                 alt="Avatar"
                 className="w3-left w3-circle w3-margin-right"
-                style={{ width: "60px" }}
+                style={{ width: '60px' }}
               />
               <span className="w3-right w3-opacity">1 min</span>
               <h4>John Doe</h4>
@@ -492,7 +476,7 @@ const Profil = (props) => {
         </p>
       </footer> */}
     </div>
-  );
-};
+  )
+}
 
-export default Profil;
+export default Profil

@@ -1,25 +1,25 @@
-import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
-import {logout} from '../../JS/actions/user';
-import {registerProfile} from '../../JS/actions/profile';
-import './addprofile.css';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { logout } from '../../JS/actions/user'
+import { registerProfile } from '../../JS/actions/profile'
+import './addprofile.css'
 const EditProfile = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const [profileName, setProfileName] = useState('');
-  const [contact, setContact] = useState('');
-  const [about, setAbout] = useState('');
-  const [région, setRégion] = useState('');
-  const [catégorie, setCatégorie] = useState('');
-  const [file, setFile] = useState('');
-  var formData = new FormData();
-  formData.append('file', file);
-  formData.append('profileName', profileName);
-  formData.append('contact', contact);
-  formData.append('about', about);
-  formData.append('région', région);
-  formData.append('catégorie', catégorie);
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const [profileName, setProfileName] = useState('')
+  const [contact, setContact] = useState('')
+  const [about, setAbout] = useState('')
+  const [région, setRégion] = useState('')
+  const [catégorie, setCatégorie] = useState('')
+  const [file, setFile] = useState('')
+  var formData = new FormData()
+  formData.append('file', file)
+  formData.append('profileName', profileName)
+  formData.append('contact', contact)
+  formData.append('about', about)
+  formData.append('région', région)
+  formData.append('catégorie', catégorie)
   return (
     <div className="pageadd">
       <div>
@@ -27,13 +27,14 @@ const EditProfile = () => {
           {file ? (
             <img
               src={URL.createObjectURL(file)}
-              style={{width: '15%'}}
+              style={{ width: '15%' }}
               className="rounded-circle img-fluid"
               alt="profile"
             />
           ) : (
             <span>
               <img
+                alt=""
                 className="rounded-circle img-fluid"
                 src="data:image/jpeg;base64,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"
               />
@@ -47,7 +48,7 @@ const EditProfile = () => {
             type="file"
             class="btn btn-primary btn-round"
             onChange={(e) => {
-              setFile(e.target.files[0]);
+              setFile(e.target.files[0])
             }}
           />
         </div>
@@ -181,8 +182,8 @@ const EditProfile = () => {
         <button
           class="btn btn-primary btn-round"
           onClick={() => {
-            dispatch(logout());
-            history.push('/');
+            dispatch(logout())
+            history.push('/')
           }}
         >
           Logout
@@ -195,7 +196,7 @@ const EditProfile = () => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default EditProfile;
+export default EditProfile

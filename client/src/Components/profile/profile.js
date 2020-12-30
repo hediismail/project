@@ -8,7 +8,7 @@ const Profile = ({ profile }) => {
       <div className="img-wrapper">
         <img src={profile.filePath} alt={profile.fileName} />
         <h2> {profile.profileName} </h2>
-                      
+
         <ul>
           <li>
             <Link to={`/profile/${profile._id}`}>
