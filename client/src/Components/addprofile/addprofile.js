@@ -1,19 +1,29 @@
-import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {Link, useHistory} from 'react-router-dom';
-import {logout} from '../../JS/actions/user';
-import {registerProfile} from '../../JS/actions/profile';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { logout } from '../../JS/actions/user'
+import { registerProfile } from '../../JS/actions/profile'
 // import '../Signup/Signup.css';
-import './addprofile.css';
+import './addprofile.css'
 
 const EditProfile = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const [profileName, setProfileName] = useState('');
-  const [contact, setContact] = useState('');
-  const [about, setAbout] = useState('');
-  const [région, setRégion] = useState('');
-  const [catégorie, setCatégorie] = useState('');
+
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const [profileName, setProfileName] = useState('')
+  const [contact, setContact] = useState('')
+  const [about, setAbout] = useState('')
+  const [région, setRégion] = useState('')
+  const [catégorie, setCatégorie] = useState('')
+  const [file, setFile] = useState('')
+  var formData = new FormData()
+  formData.append('file', file)
+  formData.append('profileName', profileName)
+  formData.append('contact', contact)
+  formData.append('about', about)
+  formData.append('région', région)
+  formData.append('catégorie', catégorie)
+
 
   return (
     <div className="pageadd">
@@ -152,7 +162,6 @@ const EditProfile = () => {
               name="exampleRadios"
               id="exampleRadios2"
               defaultValue="Clown"
-              
             />
             Clown
             <span className="circle">
@@ -210,36 +219,25 @@ const EditProfile = () => {
         <button
           class="btn btn-primary btn-round"
           onClick={() => {
-            dispatch(logout());
-            history.push('/');
+            dispatch(logout())
+            history.push('/')
           }}
         >
           Logout
         </button>
         <button
           class="btn btn-primary btn-round"
-          onClick={() =>
-            dispatch(
-              registerProfile(
-                {profileName, contact, about, catégorie, région},
-                history
-              )
-            )
-          }
+          onClick={() => dispatch(registerProfile(formData, history))}
         >
           <i class="material-icons">favorite</i> Create Profile
         </button>
       </div>
-      
-     
-    
-      
 
-      <img src="" alt="Circle Image" class="rounded-circle img-fluid"></img>
-        <input type='file'/>
+      {/* <img src="" alt="Circle pic" class="rounded-circle img-fluid"></img> */}
+      <input type="file" onChange={(e) => setFile(e.target.files[0])} />
       {/* </Link> */}
-      </div>
-  );
-};
+    </div>
+  )
+}
 
-export default EditProfile;
+export default EditProfile

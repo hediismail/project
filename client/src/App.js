@@ -33,8 +33,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={home} />
         <Route path="/Signup" component={Signup} />
-        <Route exact path="/profile/:id" component={Profil} />
-        {/* <Route path="/profile/addprofile/:id" component={addprofile} /> */}
+        {/* <Route exact path="/profile/:id" component={Profil} /> */}
+        <PrivateRoute path="/profile/:id" component={Profil} />
         <Route path="/music" component={Music} />
         <Route path="/photographe" component={Photographe} />
         <Route path="/clown" component={Clown} />

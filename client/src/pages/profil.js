@@ -60,7 +60,7 @@ const Profil = (props) => {
       {/* Page Container */}
       <div
         className="w3-container w3-content"
-        style={{ maxWidth: "1400px", marginTop: "80px" }}
+        style={{ maxWidth: '1400px', marginTop: '80px' }}
       >
         {/* The Grid */}
         <div className="w3-row">
@@ -72,23 +72,23 @@ const Profil = (props) => {
                 <h4 className="w3-center">{pro.profileName}</h4>
                 <p className="w3-center">
                   <img
-                    src="https://www.wepostmag.com/wp-content/uploads/2018/02/19420515_452047728504441_6177971585669425636_n.jpg"
+                    src={pro.filePath}
                     className="w3-circle"
-                    style={{ height: "106px", width: "106px" }}
+                    style={{ height: '106px', width: '106px' }}
                     alt="Avatar"
                   />
                 </p>
                 <hr />
                 <p>
-                  <i className="fa fa-pencil fa-fw w3-margin-right w3-text-theme" />{" "}
+                  <i className="fa fa-pencil fa-fw w3-margin-right w3-text-theme" />{' '}
                   {pro.catégorie}
                 </p>
                 <p>
-                  <i className="fa fa-phone fa-fw w3-margin-right w3-text-theme" />{" "}
+                  <i className="fa fa-phone fa-fw w3-margin-right w3-text-theme" />{' '}
                   {pro.contact}
                 </p>
                 <p>
-                  <i className="fa fa-envelope-open fa-fw w3-margin-right w3-text-theme" />{" "}
+                  <i className="fa fa-envelope-open fa-fw w3-margin-right w3-text-theme" />{' '}
                   April 1, 1988
                 </p>
               </div>
@@ -109,35 +109,35 @@ const Profil = (props) => {
                     <div className="w3-half">
                       <img
                         src="/w3images/lights.jpg"
-                        style={{ width: "100%" }}
+                        style={{ width: '100%' }}
                         className="w3-margin-bottom"
                       />
                     </div>
                     <div className="w3-half">
                       <img
                         src="/w3images/nature.jpg"
-                        style={{ width: "100%" }}
+                        style={{ width: '100%' }}
                         className="w3-margin-bottom"
                       />
                     </div>
                     <div className="w3-half">
                       <img
                         src="/w3images/mountains.jpg"
-                        style={{ width: "100%" }}
+                        style={{ width: '100%' }}
                         className="w3-margin-bottom"
                       />
                     </div>
                     <div className="w3-half">
                       <img
                         src="/w3images/forest.jpg"
-                        style={{ width: "100%" }}
+                        style={{ width: '100%' }}
                         className="w3-margin-bottom"
                       />
                     </div>
                     <div className="w3-half">
                       <img
                         src="/w3images/nature.jpg"
-                        style={{ width: "100%" }}
+                        style={{ width: '100%' }}
                         className="w3-margin-bottom"
                       />
                     </div>
@@ -428,6 +428,7 @@ const Profil = (props) => {
               >
                 <i className="fa fa-comment" /> &nbsp;Comment
               </button>
+
             </div> */}
             {/* End Middle Column */}
           </div>

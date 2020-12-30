@@ -1,7 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 
+
 const Navbar = () => {
+   const isAuth = useSelector((state) => state.userReducer.isAuth);
+  console.log(isAuth)
   return (
     <div>
       <nav
@@ -100,11 +104,17 @@ const Navbar = () => {
                   <a href="javascript:;" className="dropdown-item">
                     Settings and other stuff
                   </a>
+                  {isAuth ? ( 
+                  <Link to={`/Signup`}> 
+                    <a href="javascript:;" className="dropdown-item">
+                     LOGOUT
+                    </a>
+                  </Link>):(
                   <Link to={`/Signup`}>
                     <a href="javascript:;" className="dropdown-item">
-                      Sign in
+                      SIGNE IN
                     </a>
-                  </Link>
+                  </Link>)}
                 </div>
               </li>
             </ul>
