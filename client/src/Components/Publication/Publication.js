@@ -14,15 +14,15 @@ const Publication = ({ idprofile }) => {
   data.append('file', file)
   console.log(file)
   const dispatch = useDispatch()
-  const publications = useSelector(
+  const publicationsAdded = useSelector(
     (state) => state.publicationReducer.publication.publication,
   )
   useEffect(() => {
     dispatch(getPublicationById(idprofile))
-  }, [publications])
+  }, [publicationsAdded])
 
   return (
-    <div>
+    <div className=" w3-container w3-card w3-white w3-round w3-margin">
       <div className="text">
         <input
           type="text"

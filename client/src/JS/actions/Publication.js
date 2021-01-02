@@ -5,6 +5,7 @@ import {
   ADD_PUBLICATION_SUCCESS,
   DELETE_PUBLICATION,
   UPDATE_PUBLICATION,
+  LOAD_PUBLICATION,
 } from '../const/Publication'
 import axios from 'axios'
 // ${_id}
@@ -38,6 +39,7 @@ export const addPublication = (publication, id) => async (dispatch) => {
 
 // get all publications of an artist
 export const getPublicationById = (_id) => async (dispatch) => {
+  dispatch({ type: LOAD_PUBLICATION })
   try {
     const result = await axios.get(`/publication/${_id}`)
     dispatch({ type: GET_PUBLICATION_SUCCESS, payload: result.data })
