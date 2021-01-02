@@ -19,7 +19,7 @@ const Profileslist = (région) => {
     return (
       <div className="profilelist">
         {loadprofiles ? (
-          <Spinner type="grow" color="success" />
+          <Spinner animation="border" variant="primary" />
         ) : (
           profiles.map((el) => <Profile key={el._id} profile={el} />)
         )}
