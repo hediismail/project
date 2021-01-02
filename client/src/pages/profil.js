@@ -1,38 +1,25 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getprofilebyid } from '../JS/actions/profile'
-// import { addPublication, getPublicationById } from "../JS/actions/Publication";
 import Publication from '../Components/Publication/Publication'
 import './profile.css'
+import { Spinner } from 'react-bootstrap'
 
 const Profil = (props) => {
-  console.log(props.match.params.id)
   const idprofile = props.match.params.id
   const profile = useSelector((state) => state.profileReducer)
-
-  const publications = useSelector(
-    (state) => state.publicationReducer.publications,
-  )
+  const user = useSelector((state) => state.userReducer.user)
   const loading = useSelector(
     (state) => state.publicationReducer.loadPublications,
   )
-  // const [publication, setPublication] = useState("");
-
+  const publications = useSelector(
+    (state) => state.publicationReducer.publications,
+  )
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getprofilebyid(idprofile))
-    // dispatch(getPublicationById(idprofile));
   }, [])
-
-  // const [publicationPhoto, setPublicationPhoto] = useState("");
-
-  // console.log({ publications });
-
-  console.log(profile.profile.profileName)
-
   const pro = profile.profile
-
-  console.log(pro)
 
   return (
     <div>
@@ -224,7 +211,10 @@ const Profil = (props) => {
              </div>
            </div>
          </div> */}
-            <Publication idprofile={idprofile} />
+            {user._id === profile.profile.userId ? (
+              <Publication idprofile={idprofile} />
+            ) : null}
+
             {/* ==============>add publication */}
             {/* <div>
               <div className="text">
@@ -258,93 +248,49 @@ const Profil = (props) => {
               </button>
             </div> */}
             {loading ? (
-              <h1>Loading</h1>
+              <Spinner animation="border" variant="primary" />
             ) : (
-              publications.map((el) => (
-                <div className="w3-container w3-card w3-white w3-round w3-margin">
-                  <br />
-                  <img
-                    src=""
-                    alt="Avatar"
-                    className="w3-left w3-circle w3-margin-right"
-                    style={{ width: '60px' }}
-                  />
-                  <span className="w3-right w3-opacity">1 min</span>
-                  {el.publication && el.publicationPhoto ? (
-                    <div>
-                      <h3>{el.publication}</h3>
+              publications
+                .slice(0)
+                .reverse()
+                .map((el) => (
+                  <div className="w3-container w3-card w3-white w3-round w3-margin">
+                    <br />
+                    <img
+                      src=""
+                      alt="Avatar"
+                      className="w3-left w3-circle w3-margin-right"
+                      style={{ width: '60px' }}
+                    />
+                    <span className="w3-right w3-opacity">{el.date}</span>
+                    {el.publication && el.publicationPhoto ? (
+                      <div>
+                        <h3 style={{ fontFamily: 'serif' }}>
+                          {el.publication}
+                        </h3>
+                        <img src={el.publicationPhoto} alt="" />
+                      </div>
+                    ) : el.publicationPhoto ? (
                       <img src={el.publicationPhoto} alt="" />
-                    </div>
-                  ) : el.publicationPhoto ? (
-                    <img src={el.publicationPhoto} alt="" />
-                  ) : (
-                    <h3>{el.publication}</h3>
-                  )}
-                  <hr className="w3-clear" />
-                  <button
-                    type="button"
-                    className="w3-button w3-theme-d1 w3-margin-bottom"
-                  >
-                    <i className="fa fa-thumbs-up" /> &nbsp;Like
-                  </button>
-                  <button
-                    type="button"
-                    className="w3-button w3-theme-d2 w3-margin-bottom"
-                  >
-                    <i className="fa fa-comment" /> &nbsp;Comment
-                  </button>
-                </div>
-              ))
+                    ) : (
+                      <h3>{el.publication}</h3>
+                    )}
+                    <hr className="w3-clear" />
+                    <button
+                      type="button"
+                      className="w3-button w3-theme-d1 w3-margin-bottom"
+                    >
+                      <i className="fa fa-thumbs-up" /> &nbsp;Like
+                    </button>
+                    <button
+                      type="button"
+                      className="w3-button w3-theme-d2 w3-margin-bottom"
+                    >
+                      <i className="fa fa-comment" /> &nbsp;Comment
+                    </button>
+                  </div>
+                ))
             )}
-            <div className="w3-container w3-card w3-white w3-round w3-margin">
-              <br />
-              <img
-                src=""
-                alt="Avatar"
-                className="w3-left w3-circle w3-margin-right"
-                style={{ width: '60px' }}
-              />
-              <span className="w3-right w3-opacity">1 min</span>
-              <h4>John Doe</h4>
-              {/* <br /> */}
-              <hr className="w3-clear" />
-              {/* <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </p> */}
-              {/* <div className="w3-row-padding" style={{ margin: "0 -16px" }}> */}
-              {/* <div className="w3-half">
-                  <img
-                    src="/w3images/lights.jpg"
-                    style={{ width: "100%" }}
-                    alt="Northern Lights"
-                    className="w3-margin-bottom"
-                  />
-                </div> */}
-              {/* <div className="w3-half">
-                  <img
-                    src="/w3images/nature.jpg"
-                    style={{ width: "100%" }}
-                    alt="Nature"
-                    className="w3-margin-bottom"
-                  />
-                </div> */}
-              {/* </div> */}
-              <button
-                type="button"
-                className="w3-button w3-theme-d1 w3-margin-bottom"
-              >
-                <i className="fa fa-thumbs-up" /> &nbsp;Like
-              </button>
-              <button
-                type="button"
-                className="w3-button w3-theme-d2 w3-margin-bottom"
-              >
-                <i className="fa fa-comment" /> &nbsp;Comment
-              </button>
-            </div>
             {/* <div className="w3-container w3-card w3-white w3-round w3-margin">
               <br />
               <img
