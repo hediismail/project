@@ -129,7 +129,7 @@ routerPublication.get('/:id', async (req, res) => {
   }
 })
 
-routerPublication.delete('/:id', [isAuth(), isArtist], async (req, res) => {
+routerPublication.delete('/:id', isAuth(), async (req, res) => {
   try {
     const result = await Publication.deleteOne({ _id: req.params.id })
     result.n

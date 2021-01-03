@@ -41,13 +41,13 @@ export const publicationReducer = (state = initialState, { type, payload }) => {
     //   // localStorage.getItem("token", payload.token);
     //   return { ...state, publications: payload.publications };
 
-    case DELETE_PUBLICATION:
-      localStorage.getItem('token', payload.token)
-      return { ...state }
+    // case DELETE_PUBLICATION:
+    //   localStorage.getItem('token', payload.token)
+    //   return { ...state }
 
-    case UPDATE_PUBLICATION:
-      localStorage.getItem('token', payload.token)
-      return { ...state }
+    // case UPDATE_PUBLICATION:
+    //   localStorage.getItem('token', payload.token)
+    //   return { ...state }
 
     default:
       return state

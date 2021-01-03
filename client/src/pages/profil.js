@@ -4,6 +4,7 @@ import { getprofilebyid } from '../JS/actions/profile'
 import Publication from '../Components/Publication/Publication'
 import './profile.css'
 import { Spinner } from 'react-bootstrap'
+import { deletePublication } from '../JS/actions/Publication'
 
 const Profil = (props) => {
   const idprofile = props.match.params.id
@@ -19,6 +20,7 @@ const Profil = (props) => {
   useEffect(() => {
     dispatch(getprofilebyid(idprofile))
   }, [])
+
   const pro = profile.profile
 
   return (
@@ -68,57 +70,23 @@ const Profil = (props) => {
                 <div id="Demo3" className="w3-hide w3-container w3-show">
                   <div className="w3-row-padding">
                     <br />
-                    <div className="w3-half">
-                      <img
-                        src="/w3images/lights.jpg"
-                        alt=""
-                        style={{ width: '100%' }}
-                        className="w3-margin-bottom"
-                      />
-                    </div>
-                    <div className="w3-half">
-                      <img
-                        src="/w3images/nature.jpg"
-                        alt=""
-                        style={{ width: '100%' }}
-                        className="w3-margin-bottom"
-                      />
-                    </div>
-                    <div className="w3-half">
-                      <img
-                        src="/w3images/mountains.jpg"
-                        alt=""
-                        style={{ width: '100%' }}
-                        className="w3-margin-bottom"
-                      />
-                    </div>
-                    <div className="w3-half">
-                      <img
-                        src="/w3images/forest.jpg"
-                        alt=""
-                        style={{ width: '100%' }}
-                        className="w3-margin-bottom"
-                      />
-                    </div>
-                    <div className="w3-half">
-                      <img
-                        src="/w3images/nature.jpg"
-                        alt=""
-                        style={{ width: '100%' }}
-                        className="w3-margin-bottom"
-                      />
-                    </div>
-                    <div className="w3-half">
-                      <img
-                        src="/w3images/snow.jpg"
-                        alt=""
-                        style={{ width: '100%' }}
-                        className="w3-margin-bottom"
-                      />
-                    </div>
+                    {publications
+                      ? publications.map((el) =>
+                          el.publicationPhoto ? (
+                            <div className="w3-half">
+                              <img
+                                src={el.publicationPhoto}
+                                alt=""
+                                style={{ width: '100%' }}
+                                className="w3-margin-bottom"
+                              />
+                            </div>
+                          ) : null,
+                        )
+                      : null}
                   </div>
                 </div>
-                <button
+                {/* <button
                   onclick="myFunction('Demo3')"
                   className="w3-button w3-block w3-theme-l1 w3-left-align"
                 >
@@ -176,7 +144,7 @@ const Profil = (props) => {
                       />
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             <br />
@@ -257,7 +225,7 @@ const Profil = (props) => {
                   <div className="w3-container w3-card w3-white w3-round w3-margin">
                     <br />
                     <img
-                      src=""
+                      src={pro.filePath}
                       alt="Avatar"
                       className="w3-left w3-circle w3-margin-right"
                       style={{ width: '60px' }}
@@ -268,10 +236,18 @@ const Profil = (props) => {
                         <h3 style={{ fontFamily: 'serif' }}>
                           {el.publication}
                         </h3>
-                        <img src={el.publicationPhoto} alt="" />
+                        <img
+                          src={el.publicationPhoto}
+                          alt=""
+                          style={{ width: '100%' }}
+                        />
                       </div>
                     ) : el.publicationPhoto ? (
-                      <img src={el.publicationPhoto} alt="" />
+                      <img
+                        src={el.publicationPhoto}
+                        alt=""
+                        style={{ width: '100%' }}
+                      />
                     ) : (
                       <h3>{el.publication}</h3>
                     )}
@@ -283,10 +259,14 @@ const Profil = (props) => {
                       <i className="fa fa-thumbs-up" /> &nbsp;Like
                     </button>
                     <button
+                      onClick={() =>
+                        dispatch(deletePublication(el._id, idprofile))
+                      }
                       type="button"
                       className="w3-button w3-theme-d2 w3-margin-bottom"
                     >
-                      <i className="fa fa-comment" /> &nbsp;Comment
+                      {/* <i className="fa fa-delete" />  */}
+                      Delete
                     </button>
                   </div>
                 ))
