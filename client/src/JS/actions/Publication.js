@@ -49,14 +49,14 @@ export const getPublicationById = (_id) => async (dispatch) => {
 }
 
 // delete publication
-export const deletePublication = (_id) => async (dispatch) => {
+export const deletePublication = (_id, idProfile) => async (dispatch) => {
   try {
-    const result = await axios.get(`/${_id}`, {
+    const result = await axios.delete(`/publication/${_id}`, {
       headers: {
         authorization: localStorage.getItem('token'),
       },
     })
-    dispatch({ type: DELETE_PUBLICATION, payload: result.data })
+    dispatch(getPublicationById(idProfile))
   } catch (error) {
     dispatch({ type: GET_PUBLICATION_FAILED, payload: error })
   }
