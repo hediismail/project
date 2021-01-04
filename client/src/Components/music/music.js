@@ -12,8 +12,8 @@ const Music = () => {
   useEffect(() => {
     dispatch(getprofiles())
   }, [])
-  const [région, setRégion] = useState('')
-  if (région === '') {
+  const [région, setRégion] = useState('All The Régions')
+  if (région === 'All The Régions') {
     return (
       <div className="pagemusic">
         <div>
@@ -21,7 +21,9 @@ const Music = () => {
             className="btnselect"
             onChange={(e) => setRégion(e.target.value)}
           >
-            <option id="pass" value=""></option>
+            <option id="pass" value="All The Régions">
+              All The Régions
+            </option>
             <option id="pass" value="Tunis">
               Tunis
             </option>
@@ -48,13 +50,15 @@ const Music = () => {
     )
   } else {
     return (
-      <div>
+      <div className="pagemusic">
         <div>
           <select
             className="btnselect"
             onChange={(e) => setRégion(e.target.value)}
           >
-            <option id="pass" value=""></option>
+            <option id="pass" value="All The Régions">
+              All The Régions
+            </option>
             <option id="pass" value="Tunis">
               Tunis
             </option>
@@ -69,13 +73,14 @@ const Music = () => {
             </option>
           </select>
         </div>
+        <div className="profilelist">
+          {profiles
+            .filter((el) => el.catégorie === 'Music' && el.région === région)
 
-        {profiles
-          .filter((el) => el.catégorie === 'Music' && el.région === région)
-
-          .map((el) => (
-            <Profile key={el._id} profile={el} />
-          ))}
+            .map((el) => (
+              <Profile key={el._id} profile={el} />
+            ))}
+        </div>
       </div>
     )
   }

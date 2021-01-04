@@ -3,7 +3,6 @@ import {
   ADD_PUBLICATION_FAILED,
   GET_PUBLICATION_FAILED,
   ADD_PUBLICATION_SUCCESS,
-  DELETE_PUBLICATION,
   UPDATE_PUBLICATION,
   LOAD_PUBLICATION,
 } from '../const/Publication'
@@ -51,7 +50,7 @@ export const getPublicationById = (_id) => async (dispatch) => {
 // delete publication
 export const deletePublication = (_id, idProfile) => async (dispatch) => {
   try {
-    const result = await axios.delete(`/publication/${_id}`, {
+    await axios.delete(`/publication/${_id}`, {
       headers: {
         authorization: localStorage.getItem('token'),
       },

@@ -15,7 +15,7 @@ const Profileslist = (région) => {
   useEffect(() => {
     dispatch(getprofiles())
   }, [])
-  if (région.région === '') {
+  if (région.région === 'All The Régions') {
     return (
       <div className="profilelist">
         {loadprofiles ? (
