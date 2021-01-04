@@ -14,7 +14,9 @@ const Navbar = () => {
           {/* Brand and toggle get grouped for better mobile display */}
           <div className="navbar-translate">
             <Link to={`/`}>
+
               <h2 className="navbar-brand">حفلها</h2>
+
             </Link>
             <button
               className="navbar-toggler"
