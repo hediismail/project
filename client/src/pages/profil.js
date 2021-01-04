@@ -4,6 +4,9 @@ import { getprofilebyid } from '../JS/actions/profile'
 import Publication from '../Components/Publication/Publication'
 import './profile.css'
 import { Spinner } from 'react-bootstrap'
+import { getPublicationById } from '../JS/actions/Publication'
+import { Link } from 'react-router-dom'
+import {ToggleTrue} from '../JS/actions/profile'
 
 const Profil = (props) => {
   const idprofile = props.match.params.id
@@ -17,7 +20,7 @@ const Profil = (props) => {
   )
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getprofilebyid(idprofile))
+    {dispatch(getprofilebyid(idprofile));dispatch(getPublicationById(idprofile))}
   }, [])
   const pro = profile.profile
 
@@ -53,6 +56,13 @@ const Profil = (props) => {
                   <i className="fa fa-phone fa-fw w3-margin-right w3-text-theme" />{' '}
                   {pro.contact}
                 </p>
+                {user._id === profile.profile.userId ? (
+                  <Link to={`/addprofile`}>
+              <button onClick={() => {
+            dispatch(ToggleTrue(),getprofilebyid(idprofile))}}>Setting</button>
+            
+              </Link>
+            ) : null}
               </div>
             </div>
             <br />
@@ -214,6 +224,7 @@ const Profil = (props) => {
             {user._id === profile.profile.userId ? (
               <Publication idprofile={idprofile} />
             ) : null}
+            {/* <Publication idprofile={idprofile} /> */}
 
             {/* ==============>add publication */}
             {/* <div>
@@ -257,7 +268,7 @@ const Profil = (props) => {
                   <div className="w3-container w3-card w3-white w3-round w3-margin">
                     <br />
                     <img
-                      src=""
+                      src={pro.filePath}
                       alt="Avatar"
                       className="w3-left w3-circle w3-margin-right"
                       style={{ width: '60px' }}
@@ -268,10 +279,10 @@ const Profil = (props) => {
                         <h3 style={{ fontFamily: 'serif' }}>
                           {el.publication}
                         </h3>
-                        <img src={el.publicationPhoto} alt="" />
+                        <img src={el.publicationPhoto} alt="" style={{ width: '100%' }}/>
                       </div>
                     ) : el.publicationPhoto ? (
-                      <img src={el.publicationPhoto} alt="" />
+                      <img src={el.publicationPhoto} alt="" style={{ width: '100%' }}/>
                     ) : (
                       <h3>{el.publication}</h3>
                     )}

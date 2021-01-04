@@ -55,9 +55,7 @@ const Navbar = () => {
                 </li>
               </Link>
               <li className="nav-item">
-                {/* <a href="javascript:;" className="nav-link">
-                    About us
-                  </a> */}
+                
               </li>
               <li className="nav-item">
                 <h4
@@ -85,8 +83,13 @@ const Navbar = () => {
                   <Link to={`/profile`}>
                     <h4 className="dropdown-item">Me</h4>
                   </Link>
-
+              
+             <Link to={`/addprofile`}>
+               <h4 className="dropdown-item">Settings and other stuff</h4>
+               </Link>
+                  <Link to={`/addprofile`}>
                   <h4 className="dropdown-item">Settings and other stuff</h4>
+                  </Link>
                   {isAuth ? (
                     <Link to={`/Signup`}>
                       <h4
