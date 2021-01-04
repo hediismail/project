@@ -72,7 +72,7 @@ const Navbar = () => {
                 >
                   <div className="profile-photo-small ">
                     <img
-                      src="./assets/img/faces/avatar.jpg"
+                      src="./assets/img/faces/parametre.png"
                       alt="Circle pic"
                       className="rounded-circle img-fluid"
                     />
