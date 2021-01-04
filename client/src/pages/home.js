@@ -3,7 +3,7 @@ import Profileslist from '../Components/profileslist/profiles list'
 import './home.css'
 
 const Home = () => {
-  const [région, setRégion] = useState('')
+  const [région, setRégion] = useState('All The Régions')
   return (
     <div>
       <div class="cardanime">
@@ -16,7 +16,9 @@ const Home = () => {
 </div>
       </div>
       <select className="btnselect" onChange={(e) => setRégion(e.target.value)}>
-        <option id="pass" value=""></option>
+        <option id="pass" value="All The Régions">
+          All The Régions
+        </option>
         <option id="pass" value="Tunis">
           Tunis
         </option>

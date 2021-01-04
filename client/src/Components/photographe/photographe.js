@@ -12,8 +12,8 @@ const Photographe = () => {
   useEffect(() => {
     dispatch(getprofiles())
   }, [])
-  const [région, setRégion] = useState('')
-  if (région === '') {
+  const [région, setRégion] = useState('All The Régions')
+  if (région === 'All The Régions') {
     return (
       <div className="pagephotographe">
         <div>
@@ -21,7 +21,9 @@ const Photographe = () => {
             className="btnselect"
             onChange={(e) => setRégion(e.target.value)}
           >
-            <option id="pass" value=""></option>
+            <option id="pass" value="All The Régions">
+              All The Régions
+            </option>
             <option id="pass" value="Tunis">
               Tunis
             </option>
@@ -53,7 +55,9 @@ const Photographe = () => {
             className="btnselect"
             onChange={(e) => setRégion(e.target.value)}
           >
-            <option id="pass" value=""></option>
+            <option id="pass" value="All The Régions">
+              All The Régions
+            </option>
             <option id="pass" value="Tunis">
               Tunis
             </option>
@@ -68,15 +72,16 @@ const Photographe = () => {
             </option>
           </select>
         </div>
+        <div className="profilelist">
+          {profiles
+            .filter(
+              (el) => el.catégorie === 'Photographe' && el.région === région,
+            )
 
-        {profiles
-          .filter(
-            (el) => el.catégorie === 'Photographe' && el.région === région,
-          )
-
-          .map((el) => (
-            <Profile key={el._id} profile={el} />
-          ))}
+            .map((el) => (
+              <Profile key={el._id} profile={el} />
+            ))}
+        </div>
       </div>
     )
   }

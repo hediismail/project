@@ -2,8 +2,6 @@ import {
   LOAD_PUBLICATION,
   GET_PUBLICATION_SUCCESS,
   ADD_PUBLICATION_SUCCESS,
-  DELETE_PUBLICATION,
-  UPDATE_PUBLICATION,
 } from '../const/Publication'
 const initialState = {
   publication: {},
@@ -41,13 +39,13 @@ export const publicationReducer = (state = initialState, { type, payload }) => {
     //   // localStorage.getItem("token", payload.token);
     //   return { ...state, publications: payload.publications };
 
-    case DELETE_PUBLICATION:
-      localStorage.getItem('token', payload.token)
-      return { ...state }
+    // case DELETE_PUBLICATION:
+    //   localStorage.getItem('token', payload.token)
+    //   return { ...state }
 
-    case UPDATE_PUBLICATION:
-      localStorage.getItem('token', payload.token)
-      return { ...state }
+    // case UPDATE_PUBLICATION:
+    //   localStorage.getItem('token', payload.token)
+    //   return { ...state }
 
     default:
       return state
