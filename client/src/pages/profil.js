@@ -1,10 +1,15 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getprofilebyid } from '../JS/actions/profile';
-import Publication from '../Components/Publication/Publication';
-import './profile.css';
-import { Spinner } from 'react-bootstrap';
-import { deletePublication, getPublicationById, updateLike } from '../JS/actions/Publication';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getprofilebyid } from '../JS/actions/profile'
+import Publication from '../Components/Publication/Publication'
+import './profile.css'
+import { Spinner } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import {ToggleTrue} from '../JS/actions/profile'
+import {
+  deletePublication,
+  getPublicationById,
+} from '../JS/actions/Publication'
 
 const Profil = (props) => {
 	const idprofile = props.match.params.id;
@@ -50,6 +55,13 @@ const Profil = (props) => {
 								<p>
 									<i className="fa fa-phone fa-fw w3-margin-right w3-text-theme" /> {pro.contact}
 								</p>
+           {user._id === profile.profile.userId ? (
+                  <Link to={`/addprofile`}>
+              <button onClick={() => {
+            dispatch(ToggleTrue(),getprofilebyid(idprofile))}}>Setting</button>
+            
+              </Link>
+            ) : null}
 							</div>
 						</div>
 						<br />
