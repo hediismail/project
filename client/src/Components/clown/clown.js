@@ -13,8 +13,8 @@ const Clown = () => {
   useEffect(() => {
     dispatch(getprofiles())
   }, [])
-  const [région, setRégion] = useState('')
-  if (région === '') {
+  const [région, setRégion] = useState('All The Régions')
+  if (région === 'All The Régions') {
     return (
       <div className="pageclown">
         <div>
@@ -22,7 +22,9 @@ const Clown = () => {
             className="btnselect"
             onChange={(e) => setRégion(e.target.value)}
           >
-            <option id="pass" value=""></option>
+            <option id="pass" value="All The Régions">
+              All The Régions
+            </option>
             <option id="pass" value="Tunis">
               Tunis
             </option>
@@ -54,7 +56,9 @@ const Clown = () => {
             className="btnselect"
             onChange={(e) => setRégion(e.target.value)}
           >
-            <option id="pass" value=""></option>
+            <option id="pass" value="All The Régions">
+              All The Régions
+            </option>
             <option id="pass" value="Tunis">
               Tunis
             </option>
@@ -69,13 +73,14 @@ const Clown = () => {
             </option>
           </select>
         </div>
+        <div className="profilelist">
+          {profiles
+            .filter((el) => el.catégorie === 'Clown' && el.région === région)
 
-        {profiles
-          .filter((el) => el.catégorie === 'Clown' && el.région === région)
-
-          .map((el) => (
-            <Profile key={el._id} profile={el} />
-          ))}
+            .map((el) => (
+              <Profile key={el._id} profile={el} />
+            ))}
+        </div>
       </div>
     )
   }

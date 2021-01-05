@@ -2,8 +2,6 @@ import {
   LOAD_PUBLICATION,
   GET_PUBLICATION_SUCCESS,
   ADD_PUBLICATION_SUCCESS,
-  DELETE_PUBLICATION,
-  UPDATE_PUBLICATION,
 } from '../const/Publication'
 const initialState = {
   publication: {},

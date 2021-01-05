@@ -1,25 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addPublication,
-  getPublicationById,
-} from "../../JS/actions/Publication";
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addPublication } from '../../JS/actions/Publication'
 
 import "./Publication.css";
 const Publication = ({ idprofile }) => {
-  const [publication, setPublication] = useState("");
-  const [file, setFile] = useState("");
-  const data = new FormData();
-  data.append("publication", publication);
-  data.append("file", file);
-  // console.log(file);
-  const dispatch = useDispatch();
-  const publicationsAdded = useSelector(
-    (state) => state.publicationReducer.publication.publication
-  );
-  useEffect(() => {
-    dispatch(getPublicationById(idprofile));
-  }, [publicationsAdded]);
+  const [publication, setPublication] = useState('')
+  const [file, setFile] = useState('')
+  const data = new FormData()
+  data.append('publication', publication)
+  data.append('file', file)
+  console.log(file)
+  const dispatch = useDispatch()
+  // const publicationsAdded = useSelector(
+  //   (state) => state.publicationReducer.publication.publication,
+  // )
+  // useEffect(() => {
+  //   dispatch(getPublicationById(idprofile))
+  // }, [publicationsAdded])
 
   return (
     <div className=" w3-container w3-card w3-white w3-round w3-margin">
