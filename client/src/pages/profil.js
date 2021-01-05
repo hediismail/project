@@ -169,6 +169,42 @@ const Profil = (props) => {
 					</div>
 					{/* Right Column */}
 					<div className="w3-col m2">
+            {user._id === profile.profile.userId ? (
+              <div className="w3-card w3-round w3-white w3-center">
+                <div className="w3-container">
+                  <p>Friend Request</p>
+                  {/* <img
+                  src="/w3images/avatar6.png"
+                  alt="Avatar"
+                  style={{ width: "50%" }}
+                /> */}
+                  <br />
+                  {/* <span>Jane Doe</span> */}
+                  <div className="w3-row w3-opacity">
+                    <div className="w3-half">
+                      <button
+                        className="w3-button w3-block w3-green w3-section"
+                        title="Accept"
+                      >
+                        <i className="fa fa-check" />
+                      </button>
+                    </div>
+                    <div className="w3-half">
+                      <button
+                        className="w3-button w3-block w3-red w3-section"
+                        title="Decline"
+                      >
+                        <i className="fa fa-remove" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link to="/requestForum">
+                <button>Send Request</button>
+              </Link>
+            )}
 						{/* <div className="w3-card w3-round w3-white w3-center">
               <div className="w3-container">
                 <p>Friend Request</p>
@@ -176,25 +212,26 @@ const Profil = (props) => {
                   src="/w3images/avatar6.png"
                   alt="Avatar"
                   style={{ width: "50%" }}
-                />
-                <br />
-                <span>Jane Doe</span>
-                <div className="w3-row w3-opacity">
-                  <div className="w3-half">
-                    <button
-                      className="w3-button w3-block w3-green w3-section"
-                      title="Accept"
-                    >
-                      <i className="fa fa-check" />
-                    </button>
-                  </div>
-                  <div className="w3-half">
-                    <button
-                      className="w3-button w3-block w3-red w3-section"
-                      title="Decline"
-                    >
-                      <i className="fa fa-remove" />
-                    </button>
+                /> */}
+                  <br />
+                  {/* <span>Jane Doe</span> */}
+                  <div className="w3-row w3-opacity">
+                    <div className="w3-half">
+                      <button
+                        className="w3-button w3-block w3-green w3-section"
+                        title="Accept"
+                      >
+                        <i className="fa fa-check" />
+                      </button>
+                    </div>
+                    <div className="w3-half">
+                      <button
+                        className="w3-button w3-block w3-red w3-section"
+                        title="Decline"
+                      >
+                        <i className="fa fa-remove" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

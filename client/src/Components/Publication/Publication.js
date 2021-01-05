@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addPublication } from '../../JS/actions/Publication'
 
-import './Publication.css'
+import "./Publication.css";
 const Publication = ({ idprofile }) => {
   const [publication, setPublication] = useState('')
   const [file, setFile] = useState('')
@@ -27,29 +27,31 @@ const Publication = ({ idprofile }) => {
           value={publication}
           placeholder="write your status"
           onChange={(e) => {
-            setPublication(e.target.value)
+            setPublication(e.target.value);
           }}
         />
       </div>
       <input
         type="file"
         id="myFile"
+        // name="file"
+        // value={file}
         onChange={(e) => {
-          setFile(e.target.files[0])
+          setFile(e.target.files[0]);
         }}
       />
       <button
         onClick={(e) => {
-          e.preventDefault()
-          dispatch(addPublication(data, idprofile))
-          setPublication('')
-          setFile('')
+          e.preventDefault();
+          dispatch(addPublication(data, idprofile));
+          setPublication("");
+          setFile("");
         }}
       >
         add
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default Publication
+export default Publication;
