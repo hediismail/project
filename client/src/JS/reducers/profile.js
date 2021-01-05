@@ -48,7 +48,7 @@ export const profileReducer = (state = initialState, { type, payload }) => {
       case EDIT_PROFILE_FAIL:
         return { ...state,  errors: payload };
 
-    default:
-      return state
-  }
-}
+		default:
+			return state;
+	}
+};
