@@ -1,34 +1,36 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getprofilebyid } from '../JS/actions/profile'
-import Publication from '../Components/Publication/Publication'
-import './profile.css'
-import { Spinner } from 'react-bootstrap'
-import { deletePublication } from '../JS/actions/Publication'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getprofilebyid } from "../JS/actions/profile";
+import Publication from "../Components/Publication/Publication";
+import "./profile.css";
+import { Spinner } from "react-bootstrap";
+import { deletePublication } from "../JS/actions/Publication";
+import { Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 const Profil = (props) => {
-  const idprofile = props.match.params.id
-  const profile = useSelector((state) => state.profileReducer)
-  const user = useSelector((state) => state.userReducer.user)
+  const idprofile = props.match.params.id;
+  const profile = useSelector((state) => state.profileReducer);
+  const user = useSelector((state) => state.userReducer.user);
   const loading = useSelector(
-    (state) => state.publicationReducer.loadPublications,
-  )
+    (state) => state.publicationReducer.loadPublications
+  );
   const publications = useSelector(
-    (state) => state.publicationReducer.publications,
-  )
-  const dispatch = useDispatch()
+    (state) => state.publicationReducer.publications
+  );
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getprofilebyid(idprofile))
-  }, [])
+    dispatch(getprofilebyid(idprofile));
+  }, []);
 
-  const pro = profile.profile
+  const pro = profile.profile;
 
   return (
     <div>
       {/* Page Container */}
       <div
         className="w3-container w3-content"
-        style={{ maxWidth: '1400px', marginTop: '80px' }}
+        style={{ maxWidth: "1400px", marginTop: "80px" }}
       >
         {/* The Grid */}
         <div className="w3-row">
@@ -42,17 +44,17 @@ const Profil = (props) => {
                   <img
                     src={pro.filePath}
                     className="w3-circle"
-                    style={{ height: '106px', width: '106px' }}
+                    style={{ height: "106px", width: "106px" }}
                     alt="Avatar"
                   />
                 </p>
                 <hr />
                 <p>
-                  <i className="fa fa-pencil fa-fw w3-margin-right w3-text-theme" />{' '}
+                  <i className="fa fa-pencil fa-fw w3-margin-right w3-text-theme" />{" "}
                   {pro.catégorie}
                 </p>
                 <p>
-                  <i className="fa fa-phone fa-fw w3-margin-right w3-text-theme" />{' '}
+                  <i className="fa fa-phone fa-fw w3-margin-right w3-text-theme" />{" "}
                   {pro.contact}
                 </p>
               </div>
@@ -77,11 +79,11 @@ const Profil = (props) => {
                               <img
                                 src={el.publicationPhoto}
                                 alt=""
-                                style={{ width: '100%' }}
+                                style={{ width: "100%" }}
                                 className="w3-margin-bottom"
                               />
                             </div>
-                          ) : null,
+                          ) : null
                         )
                       : null}
                   </div>
@@ -228,25 +230,25 @@ const Profil = (props) => {
                       src={pro.filePath}
                       alt="Avatar"
                       className="w3-left w3-circle w3-margin-right"
-                      style={{ width: '60px' }}
+                      style={{ width: "60px" }}
                     />
                     <span className="w3-right w3-opacity">{el.date}</span>
                     {el.publication && el.publicationPhoto ? (
                       <div>
-                        <h3 style={{ fontFamily: 'serif' }}>
+                        <h3 style={{ fontFamily: "serif" }}>
                           {el.publication}
                         </h3>
                         <img
                           src={el.publicationPhoto}
                           alt=""
-                          style={{ width: '100%' }}
+                          style={{ width: "100%" }}
                         />
                       </div>
                     ) : el.publicationPhoto ? (
                       <img
                         src={el.publicationPhoto}
                         alt=""
-                        style={{ width: '100%' }}
+                        style={{ width: "100%" }}
                       />
                     ) : (
                       <h3>{el.publication}</h3>
@@ -338,46 +340,55 @@ const Profil = (props) => {
               >
                 <i className="fa fa-comment" /> &nbsp;Comment
               </button>
-
+ {user._id === profile.profile.userId ? (
+              <Publication idprofile={idprofile} />
+            ) : null}
             </div> */}
             {/* End Middle Column */}
           </div>
           {/* Right Column */}
           <div className="w3-col m2">
-            {/* <div className="w3-card w3-round w3-white w3-center">
-              <div className="w3-container">
-                <p>Friend Request</p>
-                <img
+            {user._id === profile.profile.userId ? (
+              <div className="w3-card w3-round w3-white w3-center">
+                <div className="w3-container">
+                  <p>Friend Request</p>
+                  {/* <img
                   src="/w3images/avatar6.png"
                   alt="Avatar"
                   style={{ width: "50%" }}
-                />
-                <br />
-                <span>Jane Doe</span>
-                <div className="w3-row w3-opacity">
-                  <div className="w3-half">
-                    <button
-                      className="w3-button w3-block w3-green w3-section"
-                      title="Accept"
-                    >
-                      <i className="fa fa-check" />
-                    </button>
-                  </div>
-                  <div className="w3-half">
-                    <button
-                      className="w3-button w3-block w3-red w3-section"
-                      title="Decline"
-                    >
-                      <i className="fa fa-remove" />
-                    </button>
+                /> */}
+                  <br />
+                  {/* <span>Jane Doe</span> */}
+                  <div className="w3-row w3-opacity">
+                    <div className="w3-half">
+                      <button
+                        className="w3-button w3-block w3-green w3-section"
+                        title="Accept"
+                      >
+                        <i className="fa fa-check" />
+                      </button>
+                    </div>
+                    <div className="w3-half">
+                      <button
+                        className="w3-button w3-block w3-red w3-section"
+                        title="Decline"
+                      >
+                        <i className="fa fa-remove" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div> */}
+            ) : (
+              <Link to="/requestForum">
+                <button>Send Request</button>
+              </Link>
+            )}
             {/* <br /> */}
             {/* <div className="w3-card w3-round w3-white w3-padding-16 w3-center">
            <p>ADS</p>
          </div> */}
+
             {/* <br />
          <div className="w3-card w3-round w3-white w3-padding-32 w3-center">
            <p><i className="fa fa-bug w3-xxlarge" /></p>
@@ -402,7 +413,7 @@ const Profil = (props) => {
         </p>
       </footer> */}
     </div>
-  )
-}
+  );
+};
 
-export default Profil
+export default Profil;

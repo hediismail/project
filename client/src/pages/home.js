@@ -1,19 +1,20 @@
-import { React, useState } from 'react'
-import Profileslist from '../Components/profileslist/profiles list'
-import './home.css'
+import { React, useState } from "react";
+import Profileslist from "../Components/profileslist/profiles list";
+import RequestForum from "../Components/RequestForum/RequestForum";
+import "./home.css";
 
 const Home = () => {
-  const [région, setRégion] = useState('')
+  const [région, setRégion] = useState("");
   return (
     <div>
       <div class="cardanime">
-      <div class="wrapper">
-  <div class="card">
-    <h1>
-      <span class="enclosed">7AF</span>FALHA
-    </h1>
-  </div>
-</div>
+        <div class="wrapper">
+          <div class="card">
+            <h1>
+              <span class="enclosed">7AF</span>FALHA
+            </h1>
+          </div>
+        </div>
       </div>
       <select className="btnselect" onChange={(e) => setRégion(e.target.value)}>
         <option id="pass" value=""></option>
@@ -30,10 +31,9 @@ const Home = () => {
           Mannouba
         </option>
       </select>
-
       <Profileslist région={région} />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
