@@ -1,46 +1,46 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getprofilebyid } from '../JS/actions/profile'
-import Publication from '../Components/Publication/Publication'
-import './profile.css'
-import { Spinner } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import {ToggleTrue} from '../JS/actions/profile'
-import {
-  deletePublication,
-  getPublicationById,
-} from '../JS/actions/Publication'
-
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {getprofilebyid} from '../JS/actions/profile';
+import Publication from '../Components/Publication/Publication';
+import './profile.css';
+import {Spinner} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
+import {ToggleTrue} from '../JS/actions/profile';
+import {deletePublication, getPublicationById} from '../JS/actions/Publication';
+import Calendrie from '../Components/calendrie/calendrie';
 
 const Profil = (props) => {
-  const idprofile = props.match.params.id
-  const profile = useSelector((state) => state.profileReducer)
-  const user = useSelector((state) => state.userReducer.user)
+  const idprofile = props.match.params.id;
+  const profile = useSelector((state) => state.profileReducer);
+  const user = useSelector((state) => state.userReducer.user);
   const loading = useSelector(
-    (state) => state.publicationReducer.loadPublications,
-  )
+    (state) => state.publicationReducer.loadPublications
+  );
   const publications = useSelector(
-    (state) => state.publicationReducer.publications,
-  )
+    (state) => state.publicationReducer.publications
+  );
   const publicationsAdded = useSelector(
-    (state) => state.publicationReducer.publication.publication,
-  )
+    (state) => state.publicationReducer.publication.publication
+  );
   useEffect(() => {
-    dispatch(getPublicationById(idprofile))
-  }, [publicationsAdded])
-  const dispatch = useDispatch()
+    dispatch(getPublicationById(idprofile));
+  }, [publicationsAdded]);
+  const dispatch = useDispatch();
   useEffect(() => {
-    {dispatch(getprofilebyid(idprofile));dispatch(getPublicationById(idprofile))}
-  }, [])
+    {
+      dispatch(getprofilebyid(idprofile));
+      dispatch(getPublicationById(idprofile));
+    }
+  }, []);
 
-  const pro = profile.profile
+  const pro = profile.profile;
 
   return (
     <div>
       {/* Page Container */}
       <div
         className="w3-container w3-content"
-        style={{ maxWidth: '1400px', marginTop: '80px' }}
+        style={{maxWidth: '1400px', marginTop: '80px'}}
       >
         {/* The Grid */}
         <div className="w3-row">
@@ -54,7 +54,7 @@ const Profil = (props) => {
                   <img
                     src={pro.filePath}
                     className="w3-circle"
-                    style={{ height: '106px', width: '106px' }}
+                    style={{height: '106px', width: '106px'}}
                     alt="Avatar"
                   />
                 </p>
@@ -69,11 +69,15 @@ const Profil = (props) => {
                 </p>
                 {user._id === profile.profile.userId ? (
                   <Link to={`/addprofile`}>
-              <button onClick={() => {
-            dispatch(ToggleTrue(),getprofilebyid(idprofile))}}>Setting</button>
-            
-              </Link>
-            ) : null}
+                    <button
+                      onClick={() => {
+                        dispatch(ToggleTrue(), getprofilebyid(idprofile));
+                      }}
+                    >
+                      Setting
+                    </button>
+                  </Link>
+                ) : null}
               </div>
             </div>
             <br />
@@ -96,11 +100,11 @@ const Profil = (props) => {
                               <img
                                 src={el.publicationPhoto}
                                 alt=""
-                                style={{ width: '100%' }}
+                                style={{width: '100%'}}
                                 className="w3-margin-bottom"
                               />
                             </div>
-                          ) : null,
+                          ) : null
                         )
                       : null}
                   </div>
@@ -139,25 +143,23 @@ const Profil = (props) => {
                       src={pro.filePath}
                       alt="Avatar"
                       className="w3-left w3-circle w3-margin-right"
-                      style={{ width: '60px' }}
+                      style={{width: '60px'}}
                     />
                     <span className="w3-right w3-opacity">{el.date}</span>
                     {el.publication && el.publicationPhoto ? (
                       <div>
-                        <h3 style={{ fontFamily: 'serif' }}>
-                          {el.publication}
-                        </h3>
+                        <h3 style={{fontFamily: 'serif'}}>{el.publication}</h3>
                         <img
                           src={el.publicationPhoto}
                           alt=""
-                          style={{ width: '100%' }}
+                          style={{width: '100%'}}
                         />
                       </div>
                     ) : el.publicationPhoto ? (
                       <img
                         src={el.publicationPhoto}
                         alt=""
-                        style={{ width: '100%' }}
+                        style={{width: '100%'}}
                       />
                     ) : (
                       <h3>{el.publication}</h3>
@@ -244,8 +246,9 @@ const Profil = (props) => {
           </a>
         </p>
       </footer> */}
+      <Calendrie />
     </div>
-  )
-}
+  );
+};
 
-export default Profil
+export default Profil;
