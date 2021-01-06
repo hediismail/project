@@ -5,7 +5,7 @@ const User = require('./User');
 const ProfileSchema = new schema({
   userId: {
     type: schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
   },
   profileName: {
     type: String,
@@ -48,3 +48,4 @@ const ProfileSchema = new schema({
 });
 
 module.exports = mongoose.model('Profile', ProfileSchema);
+

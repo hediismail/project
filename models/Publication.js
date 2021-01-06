@@ -1,24 +1,25 @@
-const mongoose = require('mongoose')
-const schema = mongoose.Schema
-const Profile = require('./profile')
+const mongoose = require('mongoose');
+const schema = mongoose.Schema;
+const Profile = require('./profile');
 const PublicationSchema = new schema({
-  profileId: {
-    type: schema.Types.ObjectId,
-    ref: 'Profile',
-  },
-  userId: {
-    type: schema.Types.ObjectId,
-    ref: 'User',
-  },
-  publicationPhoto: {
-    type: String,
-  },
-  publication: {
-    type: String,
-  },
-  date: {
-    type: String,
-  },
-})
+	profileId: {
+		type: schema.Types.ObjectId,
+		ref: 'Profile',
+	},
+	userId: {
+		type: schema.Types.ObjectId,
+		ref: 'User',
+	},
+	publicationPhoto: {
+		type: String,
+	},
+	publication: {
+		type: String,
+	},
+	date: {
+		type: String,
+	},
+	usersLiked: [{ idUser: { type: String } }],
+});
 
-module.exports = mongoose.model('Publication', PublicationSchema)
+module.exports = mongoose.model('Publication', PublicationSchema);
