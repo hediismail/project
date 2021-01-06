@@ -67,7 +67,7 @@ routerPublication.post('/pub/:id', isAuth(), isArtist, upload.single('file'), as
 					(ladate.getMonth() + 1) +
 					'/' +
 					ladate.getFullYear(),
-				like: 0,
+				usersLiked: [],
 			});
 
 			const newPublication = await Publication1.save();
@@ -91,7 +91,7 @@ routerPublication.post('/pub/:id', isAuth(), isArtist, upload.single('file'), as
 					(ladate.getMonth() + 1) +
 					'/' +
 					ladate.getFullYear(),
-				like: 0,
+				usersLiked: [],
 			});
 
 			const newPublication = await Publication1.save();
@@ -138,7 +138,24 @@ routerPublication.delete('/:id', isAuth(), async (req, res) => {
 
 routerPublication.put('/:id', isAuth(), async (req, res) => {
 	try {
-		const result = await Publication.updateOne({ _id: req.params.id }, { $set: { ...req.body } });
+		const result = await Publication.updateOne(
+			{ _id: req.params.id },
+			// { $set: { ... req.body } },
+			{ $push: { usersLiked: req.body } }
+		);
+		res.send({ msg: 'the publication is updated' });
+	} catch (error) {
+		res.status(400).send({ msg: 'there is no publication with this id' });
+	}
+});
+routerPublication.put('/dislike/:id', isAuth(), async (req, res) => {
+	try {
+		console.log(req.body);
+		const result = await Publication.updateOne(
+			{ _id: req.params.id },
+			// { $set: { ... req.body } },
+			{ $pull: { usersLiked: { idUser: req.body.idUser } } }
+		);
 		res.send({ msg: 'the publication is updated' });
 	} catch (error) {
 		res.status(400).send({ msg: 'there is no publication with this id' });
