@@ -62,9 +62,22 @@ export const deletePublication = (_id, idProfile) => async (dispatch) => {
 };
 
 // update publication
-export const updateLike = (_id, like, idProfile) => async (dispatch) => {
+export const updateLike = (_id, idUser, idProfile) => async (dispatch) => {
 	try {
-		const result = await axios.put(`/publication/${_id}`, like, {
+		const result = await axios.put(`/publication/${_id}`, idUser, {
+			headers: {
+				authorization: localStorage.getItem('token'),
+			},
+		});
+		dispatch({ type: UPDATE_PUBLICATION, payload: result.data });
+		dispatch(getPublicationById(idProfile));
+	} catch (error) {
+		dispatch({ type: GET_PUBLICATION_FAILED, payload: error });
+	}
+};
+export const updateDisike = (_id, idUser, idProfile) => async (dispatch) => {
+	try {
+		const result = await axios.put(`/publication/dislike/${_id}`, idUser, {
 			headers: {
 				authorization: localStorage.getItem('token'),
 			},

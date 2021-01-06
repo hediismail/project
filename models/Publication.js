@@ -19,9 +19,7 @@ const PublicationSchema = new schema({
 	date: {
 		type: String,
 	},
-	like: {
-		type: Number,
-	},
+	usersLiked: [{ idUser: { type: String } }],
 });
 
 module.exports = mongoose.model('Publication', PublicationSchema);
