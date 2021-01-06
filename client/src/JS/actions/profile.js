@@ -94,3 +94,18 @@ export const editProfile = (_id, profile, history) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const editCalendrier = (_id, calendrie) => async (dispatch) => {
+  try {
+    const result = await axios.put(`/profile/calendrier/${_id}`, calendrie, {
+      headers: {
+        authorization: localStorage.getItem('token'),
+        // 'Content-Type': 'multipart/form-data',
+      },
+    });
+    dispatch(getprofilebyid(_id));
+    // history.push(`/profile/${_id}`);
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -11,7 +11,7 @@ exports.editProfile = async (req, res) => {
   const file = req.file;
   console.log(file);
   console.log(req.body);
-  const {profileName, contact, about, catégorie, région} = req.body;
+  const {profileName, contact, about, catégorie, région, calendrie} = req.body;
   const newProfile = new Profile({
     userId: req.user._id,
     profileName,
@@ -19,6 +19,8 @@ exports.editProfile = async (req, res) => {
     about,
     catégorie,
     région,
+    calendrie: [],
+
     // fileName: file.name,
     // filePath: `/images/${file.name}`,
     filePath: `/images/${file.filename}`,
@@ -59,12 +61,57 @@ exports.getOneProfile = async (req, res) => {
   }
 };
 
+// exports.updateProfile = async (req, res) => {
+//   try {
+//     const result = await Profile.updateOne({_id: req.params.id}, [
+//       {$set: {filePath: `/images/${req.file.filename}`}},
+//       {$set: {...req.body}},
+//     ]);
+//     console.log(result);
+//     result.nModified
+//       ? res.send({message: 'updated'})
+//       : res.send({message: 'profile already updated'});
+//   } catch (error) {
+//     res.status(400).send({
+//       message: 'there is no profile to delete with this id',
+//       erreur: error,
+//     });
+//   }
+// };
 exports.updateProfile = async (req, res) => {
   try {
-    const result = await Profile.updateOne({_id: req.params.id}, [
-      {$set: {filePath: `/images/${req.file.filename}`}},
-      {$set: {...req.body}},
-    ]);
+    if (req.file) {
+      const result = await Profile.updateOne({_id: req.params.id}, [
+        {$set: {filePath: `/images/${req.file.filename}`}},
+        {$set: {...req.body}},
+      ]);
+      console.log(result);
+      result.nModified
+        ? res.send({message: 'updated'})
+        : res.send({message: 'profile already updated'});
+    } else {
+      const result = await Profile.updateOne(
+        {_id: req.params.id},
+        {$set: {...req.body}}
+      );
+      console.log(result);
+      result.nModified
+        ? res.send({message: 'updated'})
+        : res.send({message: 'profile already updated'});
+    }
+  } catch (error) {
+    res.status(400).send({
+      message: 'there is no profile to delete with this id',
+      erreur: error,
+    });
+  }
+};
+exports.updateCalendrier = async (req, res) => {
+  try {
+    const result = await Profile.updateOne(
+      {_id: req.params.id},
+      {$set: {calendrie: req.body}}
+    );
     console.log(result);
     result.nModified
       ? res.send({message: 'updated'})

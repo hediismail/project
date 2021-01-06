@@ -21,5 +21,6 @@ routerProfile.delete('/:id', controllers.deleteOneProfile);
 routerProfile.get('/:id', isAuth(), controllers.getOneProfile);
 
 routerProfile.put('/:id', isAuth(), uploadImage, controllers.updateProfile);
+routerProfile.put('/calendrier/:id', isAuth(), controllers.updateCalendrier);
 
 module.exports = routerProfile;

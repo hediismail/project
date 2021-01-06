@@ -7,6 +7,7 @@ import { Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { ToggleTrue } from '../JS/actions/profile';
 import { deletePublication, getPublicationById, updateDisike, updateLike } from '../JS/actions/Publication';
+import Calendrie from '../Components/calendrie/calendrie';
 
 const Profil = (props) => {
 	const idprofile = props.match.params.id;
@@ -251,8 +252,9 @@ const Profil = (props) => {
           </a>
         </p>
       </footer> */}
-		</div>
-	);
+      <Calendrie />
+    </div>
+  );
 };
 
 export default Profil;

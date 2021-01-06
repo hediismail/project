@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const schema = mongoose.Schema;
-const User = require("./User");
+const User = require('./User');
+
 const ProfileSchema = new schema({
   userId: {
     type: schema.Types.ObjectId,
@@ -32,12 +33,19 @@ const ProfileSchema = new schema({
     type: String,
     required: true,
   },
-  // Request: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "User",
-  //   },
-  // ],
+  calendrie: [
+    {
+      // type: Array,
+      // required: false,
+      // day: Number,
+      // month: Number,
+      // year: Number,
+      day: {type: Number},
+      month: {type: Number},
+      year: {type: Number},
+    },
+  ],
 });
 
-module.exports = mongoose.model("Profile", ProfileSchema);
+module.exports = mongoose.model('Profile', ProfileSchema);
+
