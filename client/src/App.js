@@ -18,6 +18,8 @@ import Music from "./Components/music/music";
 import Clown from "./Components/clown/clown";
 import Footer from "./Components/footer/Footer";
 import RequestForum from "./Components/RequestForum/RequestForum";
+import Reservation from "./Components/ReservationList/ReservationList";
+import AcceptedReservationList from "./Components/AcceptedReservationList/AcceptedReservationList";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,7 +41,11 @@ function App() {
         <Route path="/aboutus" component={Aboutus} />
         <Route path="/addprofile" component={addprofile} />
         <Route path="/requestForum" component={RequestForum} />
-
+        <Route path="/requests/:id" component={Reservation} />
+        <Route
+          path="/acceptedRequests/:id"
+          component={AcceptedReservationList}
+        />
         {/* <PrivateRoute path="/addprofile" component={addprofile} /> */}
       </Switch>
       <Footer />

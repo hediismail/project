@@ -13,6 +13,8 @@ import {
   updateLike,
 } from '../JS/actions/Publication';
 import Calendrie from '../Components/calendrie/calendrie';
+import { getAllRequestReservation } from "../JS/actions/reservation";
+
 
 const Profil = (props) => {
   const idprofile = props.match.params.id;
@@ -33,11 +35,14 @@ const Profil = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getprofilebyid(idprofile));
+    dispatch(getAllRequestReservation(idprofile));
   }, []);
+  const nbrReservation = useSelector(
+    (state) => state.reservationReducer.reservations
+  );
 
   const pro = profile.profile;
   const calendrier = pro.calendrie;
-  console.log(pro.calendrie);
   return (
     <div>
       {/* Page Container */}
@@ -226,7 +231,19 @@ const Profil = (props) => {
             {user._id === profile.profile.userId ? (
               <div className="w3-card w3-round w3-white w3-center">
                 <div className="w3-container">
-                  <p>Friend Request</p>
+                  <p>
+                    {nbrReservation.length}
+                    Notifications
+                  </p>
+                  <Link to={`/requests/${idprofile}`}>
+                    <button className="Notifications">
+                      see all Notifications
+                    </button>
+                  </Link>
+                  <br />
+                  <Link to={`/acceptedRequests/${idprofile}`}>
+                    <button className="Notifications">Accepted Requests</button>
+                  </Link>
                   {/* <img
                   src="/w3images/avatar6.png"
                   alt="Avatar"
@@ -234,7 +251,7 @@ const Profil = (props) => {
                 /> */}
                   <br />
                   {/* <span>Jane Doe</span> */}
-                  <div className="w3-row w3-opacity">
+                  {/* <div className="w3-row w3-opacity">
                     <div className="w3-half">
                       <button
                         className="w3-button w3-block w3-green w3-section"
@@ -251,7 +268,7 @@ const Profil = (props) => {
                         <i className="fa fa-remove" />
                       </button>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ) : (
@@ -295,7 +312,6 @@ const Profil = (props) => {
           </a>
         </p>
       </footer> */}
-      {console.log(calendrier)}
       <Calendrie calendrier={calendrier} />
     </div>
   );
