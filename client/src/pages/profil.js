@@ -1,17 +1,20 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getprofilebyid } from "../JS/actions/profile";
-import Publication from "../Components/Publication/Publication";
-import "./profile.css";
-import { Spinner } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { ToggleTrue } from "../JS/actions/profile";
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {getprofilebyid} from '../JS/actions/profile';
+import Publication from '../Components/Publication/Publication';
+import './profile.css';
+import {Spinner} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
+import {ToggleTrue} from '../JS/actions/profile';
 import {
   deletePublication,
   getPublicationById,
+  updateDisike,
   updateLike,
-} from "../JS/actions/Publication";
+} from '../JS/actions/Publication';
+import Calendrie from '../Components/calendrie/calendrie';
 import { getAllRequestReservation } from "../JS/actions/reservation";
+
 
 const Profil = (props) => {
   const idprofile = props.match.params.id;
@@ -37,14 +40,15 @@ const Profil = (props) => {
   const nbrReservation = useSelector(
     (state) => state.reservationReducer.reservations
   );
-  const pro = profile.profile;
 
+  const pro = profile.profile;
+  const calendrier = pro.calendrie;
   return (
     <div>
       {/* Page Container */}
       <div
         className="w3-container w3-content"
-        style={{ maxWidth: "1400px", marginTop: "80px" }}
+        style={{maxWidth: '1400px', marginTop: '80px'}}
       >
         {/* The Grid */}
         <div className="w3-row">
@@ -58,17 +62,17 @@ const Profil = (props) => {
                   <img
                     src={pro.filePath}
                     className="w3-circle"
-                    style={{ height: "106px", width: "106px" }}
+                    style={{height: '106px', width: '106px'}}
                     alt="Avatar"
                   />
                 </p>
                 <hr />
                 <p>
-                  <i className="fa fa-pencil fa-fw w3-margin-right w3-text-theme" />{" "}
+                  <i className="fa fa-pencil fa-fw w3-margin-right w3-text-theme" />{' '}
                   {pro.catégorie}
                 </p>
                 <p>
-                  <i className="fa fa-phone fa-fw w3-margin-right w3-text-theme" />{" "}
+                  <i className="fa fa-phone fa-fw w3-margin-right w3-text-theme" />{' '}
                   {pro.contact}
                 </p>
                 {user._id === profile.profile.userId ? (
@@ -104,7 +108,7 @@ const Profil = (props) => {
                               <img
                                 src={el.publicationPhoto}
                                 alt=""
-                                style={{ width: "100%" }}
+                                style={{width: '100%'}}
                                 className="w3-margin-bottom"
                               />
                             </div>
@@ -145,46 +149,67 @@ const Profil = (props) => {
                       src={pro.filePath}
                       alt="Avatar"
                       className="w3-left w3-circle w3-margin-right"
-                      style={{ width: "60px" }}
+                      style={{width: '60px'}}
                     />
                     <span className="w3-right w3-opacity">{el.date}</span>
                     {el.publication && el.publicationPhoto ? (
                       <div>
-                        <h3 style={{ fontFamily: "serif" }}>
-                          {el.publication}
-                        </h3>
+                        <h3 style={{fontFamily: 'serif'}}>{el.publication}</h3>
                         <img
                           src={el.publicationPhoto}
                           alt=""
-                          style={{ width: "100%" }}
+                          style={{width: '100%'}}
                         />
                       </div>
                     ) : el.publicationPhoto ? (
                       <img
                         src={el.publicationPhoto}
                         alt=""
-                        style={{ width: "100%" }}
+                        style={{width: '100%'}}
                       />
                     ) : (
                       <h3>{el.publication}</h3>
                     )}
                     <hr className="w3-clear" />
                     <span className="w3-left">
-                      <i className="fas fa-heart" style={{ color: "red" }}></i>{" "}
-                      {el.like}{" "}
-                      {el.like === 0 || el.like === 1 ? "like" : "likes"}
+                      <i className="fas fa-heart" style={{color: 'red'}}></i>{' '}
+                      {el.usersLiked.length}{' '}
+                      {el.usersLiked.length === 0 || el.usersLiked.length === 1
+                        ? 'like'
+                        : 'likes'}
                     </span>
                     <button
-                      onClick={() =>
-                        dispatch(
-                          updateLike(el._id, { like: el.like + 1 }, idprofile)
-                        )
-                      }
+                      onClick={() => {
+                        el.usersLiked.find((el) => el.idUser === user._id)
+                          ? dispatch(
+                              updateDisike(
+                                el._id,
+                                {idUser: user._id},
+                                idprofile
+                              )
+                            )
+                          : dispatch(
+                              updateLike(
+                                el._id,
+                                // { like: el.like + 1 },
+                                {idUser: user._id},
+                                idprofile
+                              )
+                            );
+                      }}
                       type="button"
                       className="w3-button w3-theme-d1 w3-margin-bottom"
                     >
-                      <i className="fa fa-thumbs-up" /> &nbsp;Like
+                      <i className="fa fa-thumbs-up" /> &nbsp;
+                      {el.usersLiked.find((el) => el.idUser === user._id)
+                        ? 'Dislike'
+                        : 'Like'}
                     </button>
+                    {console.log({
+                      filtre: el.usersLiked.find(
+                        (el) => el.idUser === user._id
+                      ),
+                    })}
                     {!user ? null : user._id === el.userId ? (
                       <button
                         onClick={() =>
@@ -287,6 +312,7 @@ const Profil = (props) => {
           </a>
         </p>
       </footer> */}
+      <Calendrie calendrier={calendrier} />
     </div>
   );
 };

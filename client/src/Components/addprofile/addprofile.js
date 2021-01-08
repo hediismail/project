@@ -4,6 +4,7 @@ import {useHistory} from 'react-router-dom';
 import {logout} from '../../JS/actions/user';
 import {editProfile, registerProfile} from '../../JS/actions/profile';
 import './addprofile.css';
+import Calendrie from '../calendrie/calendrie';
 const EditProfile = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -39,7 +40,6 @@ const EditProfile = () => {
       setAbout(profile.about);
       setCatégorie(profile.catégorie);
       setRégion(profile.région);
-      setFile(file);
     } else {
       setContact('');
       setProfileName('');
@@ -70,7 +70,7 @@ const EditProfile = () => {
             />
           ) : (
             <span>
-              {profile.filePath ? (
+              {editprofile ? (
                 <img
                   alt=""
                   className="rounded-circle img-fluid"
@@ -226,6 +226,7 @@ const EditProfile = () => {
             </option>
           </select>
         </div>
+        {/* <Calendrie /> */}
       </div>
 
       <div className="btnadd">
