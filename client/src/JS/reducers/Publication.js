@@ -1,53 +1,44 @@
-import {
-  LOAD_PUBLICATION,
-  GET_PUBLICATION_SUCCESS,
-  ADD_PUBLICATION_SUCCESS,
-} from '../const/Publication'
+import { LOAD_PUBLICATION, GET_PUBLICATION_SUCCESS, ADD_PUBLICATION_SUCCESS } from '../const/Publication';
 const initialState = {
-  publication: {},
-  publications: [],
-  loadPublications: false,
-  errors: null,
-}
-//   GET_PUBLICATION_SUCCESS,
-//   GET_PUBLICATION_FAILED,
-//   GET_PUBLICATION_BY_ID,
-//   ADD_PUBLICATION_SUCCESS,
+	publication: {},
+	publications: [],
+	loadPublications: false,
+	errors: null,
+};
 
 export const publicationReducer = (state = initialState, { type, payload }) => {
-  switch (type) {
-    case ADD_PUBLICATION_SUCCESS:
-      // localStorage.getItem("token", payload.token);
-      return {
-        ...state,
-        publication: payload,
-      }
-    case LOAD_PUBLICATION:
-      return { ...state, loadPublications: true }
+	switch (type) {
+		case ADD_PUBLICATION_SUCCESS:
+			return {
+				...state,
+				publication: payload,
+			};
+		case LOAD_PUBLICATION:
+			return { ...state, loadPublications: true };
 
-    case GET_PUBLICATION_SUCCESS:
-      return {
-        ...state,
-        loadPublications: false,
-        publications: payload.publications,
-      }
+		case GET_PUBLICATION_SUCCESS:
+			return {
+				...state,
+				loadPublications: false,
+				publications: payload.publications,
+			};
 
-    // case ADD_PUBLICATION_FAILED:
-    //   return { ...state, loadPublications: false, errors: payload };
+		// case ADD_PUBLICATION_FAILED:
+		//   return { ...state, loadPublications: false, errors: payload };
 
-    // case GET_PUBLICATION_BY_ID:
-    //   // localStorage.getItem("token", payload.token);
-    //   return { ...state, publications: payload.publications };
+		// case GET_PUBLICATION_BY_ID:
+		//   // localStorage.getItem("token", payload.token);
+		//   return { ...state, publications: payload.publications };
 
-    // case DELETE_PUBLICATION:
-    //   localStorage.getItem('token', payload.token)
-    //   return { ...state }
+		// case DELETE_PUBLICATION:
+		//   localStorage.getItem('token', payload.token)
+		//   return { ...state }
 
-    // case UPDATE_PUBLICATION:
-    //   localStorage.getItem('token', payload.token)
-    //   return { ...state }
+		// case UPDATE_PUBLICATION:
+		//   localStorage.getItem('token', payload.token)
+		//   return { ...state }
 
-    default:
-      return state
-  }
-}
+		default:
+			return state;
+	}
+};

@@ -1,13 +1,13 @@
-import { useEffect } from "react";
-import home from "./pages/home";
+import { useEffect } from 'react';
+import home from './pages/home';
 
-import Signup from "./Components/Signup/Signup";
-import { Switch, Route } from "react-router-dom";
-import PrivateRoute from "./Components/router/PrivateRoute";
-import { useDispatch } from "react-redux";
-import { current } from "./JS/actions/user";
+import Signup from './Components/Signup/Signup';
+import { Switch, Route } from 'react-router-dom';
+import PrivateRoute from './Components/router/PrivateRoute';
+import { useDispatch } from 'react-redux';
+import { current } from './JS/actions/user';
 
-import "./App.css";
+import './App.css';
 
 import Profil from "./pages/profil";
 import Navbar from "./Components/navbar/navbar";
@@ -22,13 +22,13 @@ import Reservation from "./Components/ReservationList/ReservationList";
 import AcceptedReservationList from "./Components/AcceptedReservationList/AcceptedReservationList";
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(current());
-  });
-  return (
-    <div className="App">
-      <Navbar />
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(current());
+	});
+	return (
+		<div className="App">
+			<Navbar />
 
       <Switch>
         <Route exact path="/" component={home} />

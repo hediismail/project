@@ -20,6 +20,25 @@ const PublicationSchema = new schema({
 		type: String,
 	},
 	usersLiked: [{ idUser: { type: String } }],
+	comments: [
+		{
+			userIdCommented: {
+				type: String,
+			},
+			userName: {
+				type: String,
+			},
+			userLastName: {
+				type: String,
+			},
+			commentId: {
+				type: String,
+			},
+			comment: {
+				type: String,
+			},
+		},
+	],
 });
 
 module.exports = mongoose.model('Publication', PublicationSchema);

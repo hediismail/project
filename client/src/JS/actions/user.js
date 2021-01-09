@@ -6,8 +6,6 @@ export const registerUser = (user, history) => async (dispatch) => {
 	dispatch({ type: LOAD_USER });
 	try {
 		const result = await axios.post('/user/register', user);
-		//{user,msg,token}
-		// localStorage.setItem("token",result.data.token)
 		dispatch({ type: REGISTER_USER, payload: result.data });
 		console.log(result.data.user.role);
 		if (result.data.user.role === 'Artist') {
@@ -23,7 +21,6 @@ export const registerUser = (user, history) => async (dispatch) => {
 		if (msg) {
 			alert(msg);
 		}
-		// dispatch({ type: FAIL_USER, payload: error.response.data });
 	}
 };
 
