@@ -11,11 +11,9 @@ import axios from 'axios';
 //Add Publication
 export const addPublication = (publication, id) => async (dispatch) => {
 	try {
-		// console.log({ publication });
 		const result = await axios.post(`/publication/pub/${id}`, publication, {
 			headers: {
 				authorization: localStorage.getItem('token'),
-				// contentType: "multipart/form-data",
 			},
 		});
 		dispatch({ type: ADD_PUBLICATION_SUCCESS, payload: result.data });
@@ -24,17 +22,6 @@ export const addPublication = (publication, id) => async (dispatch) => {
 		dispatch({ type: ADD_PUBLICATION_FAILED, payload: error });
 	}
 };
-
-// Get all publication
-// export const getPublication = () => async (dispatch) => {
-//   dispatch({ type: GET_PUBLICATION_SUCCESS });
-//   try {
-//     let result = await axios.get("/");
-//     dispatch({ type: GET_PUBLICATION_SUCCESS, payload: result.data });
-//   } catch (error) {
-//     dispatch({ type: GET_PUBLICATION_FAILED, payload: error });
-//   }
-// };
 
 // get all publications of an artist
 export const getPublicationById = (_id) => async (dispatch) => {
@@ -78,6 +65,34 @@ export const updateLike = (_id, idUser, idProfile) => async (dispatch) => {
 export const updateDisike = (_id, idUser, idProfile) => async (dispatch) => {
 	try {
 		const result = await axios.put(`/publication/dislike/${_id}`, idUser, {
+			headers: {
+				authorization: localStorage.getItem('token'),
+			},
+		});
+		dispatch({ type: UPDATE_PUBLICATION, payload: result.data });
+		dispatch(getPublicationById(idProfile));
+	} catch (error) {
+		dispatch({ type: GET_PUBLICATION_FAILED, payload: error });
+	}
+};
+
+export const updateComment = (_id, comments, idProfile) => async (dispatch) => {
+	try {
+		const result = await axios.put(`/publication/comments/${_id}`, comments, {
+			headers: {
+				authorization: localStorage.getItem('token'),
+			},
+		});
+		dispatch({ type: UPDATE_PUBLICATION, payload: result.data });
+		dispatch(getPublicationById(idProfile));
+	} catch (error) {
+		dispatch({ type: GET_PUBLICATION_FAILED, payload: error });
+	}
+};
+
+export const deleteComment = (_id, idComment, idProfile) => async (dispatch) => {
+	try {
+		const result = await axios.put(`/publication/comment/${_id}`, idComment, {
 			headers: {
 				authorization: localStorage.getItem('token'),
 			},
