@@ -3,7 +3,7 @@
     flex-direction: row;
 } */
 .modal-content {
-    width: 150%;
+    width: 150% !important;
     background: #73aab5
 }
 .ModalScript{
