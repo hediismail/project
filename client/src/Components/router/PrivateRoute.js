@@ -1,16 +1,13 @@
-import React from 'react'
-import { Redirect, Route } from 'react-router-dom'
-// import { useSelector } from 'react-redux'
+import React from 'react';
+import { Redirect, Route } from 'react-router-dom';
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  // const isAuth = useSelector((state) => state.userReducer.isAuth)
-  const isAuth = localStorage.getItem('token')
-  console.log(isAuth)
+	// const isAuth = useSelector((state) => state.userReducer.isAuth)
+	const isAuth = localStorage.getItem('token');
 
-  if (isAuth) {
-    return <Route exact component={Component} {...rest} />
-  }
-  return <Redirect to="/Signup" />
-}
+	if (isAuth) {
+		return <Route exact component={Component} {...rest} />;
+	}
+	return <Redirect to="/Signup" />;
+};
 
-export default PrivateRoute
-// const isAuth = localStorage.getItem("token");
+export default PrivateRoute;

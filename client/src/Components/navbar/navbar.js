@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {logout} from '../../JS/actions/user';
@@ -123,6 +124,7 @@ const Navbar = () => {
       </nav>
     </div>
   );
+
 };
 
 export default Navbar;

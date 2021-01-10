@@ -1,10 +1,14 @@
-import {React, useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {getprofiles} from '../../JS/actions/profile';
+
+
+import { React, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getprofiles } from '../../JS/actions/profile';
+
 import Profile from '../profile/profile';
 import './music.css';
 
 const Music = () => {
+
   const dispatch = useDispatch();
   const profiles = useSelector((state) => state.profileReducer.profiles);
   console.log(profiles.catégorie);
@@ -88,5 +92,6 @@ const Music = () => {
       </div>
     );
   }
+
 };
 export default Music;

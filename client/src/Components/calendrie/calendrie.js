@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
-import {Calendar} from 'react-modern-calendar-datepicker';
-import {editCalendrier, getprofilebyid} from '../../JS/actions/profile';
-import {useDispatch, useSelector} from 'react-redux';
+import { Calendar } from 'react-modern-calendar-datepicker';
+import { editCalendrier } from '../../JS/actions/profile';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const Calendrie = ({calendrier}) => {
   const profile = useSelector((state) => state.profileReducer);
@@ -34,6 +35,7 @@ const Calendrie = ({calendrier}) => {
       ) : null}
     </div>
   );
+
 };
 
 export default Calendrie;

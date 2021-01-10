@@ -7,20 +7,13 @@ const multer = require('multer');
 const isAuth = require('../middleware/passport');
 const isArtist = require('../middleware/isArtist');
 const path = require('path');
-// let photoName = "";
-// uploading of photo
-// storage configuration
+
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		cb(null, `${__dirname}/../client/public/photos`);
 	},
 	filename: (req, file, cb) => {
 		console.log(file.originalname);
-		// let lastIndex = file.originalname.lastIndexOf(".");
-		// // Get Original File Extension
-		// let extension = file.originalname.substring(lastIndex);
-		// Create the file on the server
-		// photoName = "img" + "-" + Date.now() + extension;
 		cb(null, Date.now() + path.extname(file.originalname));
 	},
 });
@@ -48,9 +41,7 @@ const upload = multer({
 routerPublication.post('/pub/:id', isAuth(), isArtist, upload.single('file'), async (req, res) => {
 	const { publication } = req.body;
 	var ladate = new Date();
-	// console.log(req.file);
 	try {
-		// console.log(req.file.buffer);
 		if (req.file) {
 			const Publication1 = new Publication({
 				profileId: req.params.id,
@@ -69,7 +60,6 @@ routerPublication.post('/pub/:id', isAuth(), isArtist, upload.single('file'), as
 					ladate.getFullYear(),
 				usersLiked: [],
 			});
-
 			const newPublication = await Publication1.save();
 			res.status(200).send({
 				publication: newPublication,
@@ -93,24 +83,13 @@ routerPublication.post('/pub/:id', isAuth(), isArtist, upload.single('file'), as
 					ladate.getFullYear(),
 				usersLiked: [],
 			});
-
 			const newPublication = await Publication1.save();
 			res.status(200).send({
 				publication: newPublication,
 				msg: 'publication is saved',
 			});
 		}
-		// populate
-		// const publication2 = await newPublication.populate(
-		//   "profileId",
-		//   "contact"
-		// );
-		// res.status(200).send({
-		//   publication: newPublication,
-		//   msg: "publication is saved",
-		// });
 	} catch (error) {
-		console.log(error);
 		res.status(400).send({ msg: 'publication can not be saved' });
 	}
 });
@@ -118,7 +97,6 @@ routerPublication.post('/pub/:id', isAuth(), isArtist, upload.single('file'), as
 routerPublication.get('/:id', async (req, res) => {
 	try {
 		const result = await Publication.find({ profileId: req.params.id });
-		// console.log(result);
 		res.send({ publications: result, msg: 'getting all the publication' });
 	} catch (error) {
 		res.status(400).send({ msg: 'can not get publication' });
@@ -138,11 +116,7 @@ routerPublication.delete('/:id', isAuth(), async (req, res) => {
 
 routerPublication.put('/:id', isAuth(), async (req, res) => {
 	try {
-		const result = await Publication.updateOne(
-			{ _id: req.params.id },
-			// { $set: { ... req.body } },
-			{ $push: { usersLiked: req.body } }
-		);
+		const result = await Publication.updateOne({ _id: req.params.id }, { $push: { usersLiked: req.body } });
 		res.send({ msg: 'the publication is updated' });
 	} catch (error) {
 		res.status(400).send({ msg: 'there is no publication with this id' });
@@ -150,11 +124,43 @@ routerPublication.put('/:id', isAuth(), async (req, res) => {
 });
 routerPublication.put('/dislike/:id', isAuth(), async (req, res) => {
 	try {
-		console.log(req.body);
 		const result = await Publication.updateOne(
 			{ _id: req.params.id },
-			// { $set: { ... req.body } },
 			{ $pull: { usersLiked: { idUser: req.body.idUser } } }
+		);
+		res.send({ msg: 'the publication is updated' });
+	} catch (error) {
+		res.status(400).send({ msg: 'there is no publication with this id' });
+	}
+});
+
+routerPublication.put('/comments/:id', isAuth(), async (req, res) => {
+	try {
+		const result = await Publication.updateOne(
+			{ _id: req.params.id },
+			{
+				$push: {
+					comments: {
+						comment: req.body.comments,
+						userIdCommented: req.user._id,
+						userName: req.user.name,
+						userLastName: req.user.lastName,
+						commentId: req.params.id,
+					},
+				},
+			}
+		);
+		res.send({ publication: result, msg: 'the publication is updated' });
+	} catch (error) {
+		res.status(400).send({ msg: 'there is no publication with this id', err: error });
+	}
+});
+
+routerPublication.put('/comment/:id', isAuth(), async (req, res) => {
+	try {
+		const result = await Publication.updateOne(
+			{ _id: req.params.id },
+			{ $pull: { comments: { _id: req.body.commentId } } }
 		);
 		res.send({ msg: 'the publication is updated' });
 	} catch (error) {

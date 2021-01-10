@@ -1,18 +1,22 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {getprofilebyid} from '../JS/actions/profile';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getprofilebyid } from '../JS/actions/profile';
 import Publication from '../Components/Publication/Publication';
 import './profile.css';
-import {Spinner} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
-import {ToggleTrue} from '../JS/actions/profile';
+import { Spinner } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { ToggleTrue } from '../JS/actions/profile';
 import {
-  deletePublication,
-  getPublicationById,
-  updateDisike,
-  updateLike,
+	deletePublication,
+	getPublicationById,
+	updateDisike,
+	updateLike,
+	updateComment,
 } from '../JS/actions/Publication';
 import Calendrie from '../Components/calendrie/calendrie';
+import { getAllRequestReservation } from "../JS/actions/reservation";
+import { useState } from 'react';
+import Comment from '../Components/comment/Comment';
 
 const Profil = (props) => {
   const idprofile = props.match.params.id;
@@ -33,17 +37,20 @@ const Profil = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getprofilebyid(idprofile));
+    dispatch(getAllRequestReservation(idprofile));
   }, []);
-
+  const nbrReservation = useSelector(
+    (state) => state.reservationReducer.reservations
+  );
+  const [commentAdded, setCommentAdded] = useState('');
   const pro = profile.profile;
   const calendrier = pro.calendrie;
-  console.log(pro.calendrie);
   return (
     <div>
       {/* Page Container */}
       <div
         className="w3-container w3-content"
-        style={{maxWidth: '1400px', marginTop: '80px'}}
+        style={{ maxWidth: "1400px", marginTop: "80px" }}
       >
         {/* The Grid */}
         <div className="w3-row">
@@ -57,17 +64,17 @@ const Profil = (props) => {
                   <img
                     src={pro.filePath}
                     className="w3-circle"
-                    style={{height: '106px', width: '106px'}}
+                    style={{ height: "106px", width: "106px" }}
                     alt="Avatar"
                   />
                 </p>
                 <hr />
                 <p>
-                  <i className="fa fa-pencil fa-fw w3-margin-right w3-text-theme" />{' '}
+                  <i className="fa fa-pencil fa-fw w3-margin-right w3-text-theme" />{" "}
                   {pro.catégorie}
                 </p>
                 <p>
-                  <i className="fa fa-phone fa-fw w3-margin-right w3-text-theme" />{' '}
+                  <i className="fa fa-phone fa-fw w3-margin-right w3-text-theme" />{" "}
                   {pro.contact}
                 </p>
                 {user._id === profile.profile.userId ? (
@@ -104,7 +111,7 @@ const Profil = (props) => {
                               <img
                                 src={el.publicationPhoto}
                                 alt=""
-                                style={{width: '100%'}}
+                                style={{ width: "100%" }}
                                 className="w3-margin-bottom"
                               />
                             </div>
@@ -148,34 +155,36 @@ const Profil = (props) => {
                       src={pro.filePath}
                       alt="Avatar"
                       className="w3-left w3-circle w3-margin-right"
-                      style={{width: '60px'}}
+                      style={{ width: "60px" }}
                     />
                     <span className="w3-right w3-opacity">{el.date}</span>
                     {el.publication && el.publicationPhoto ? (
                       <div>
-                        <h3 style={{fontFamily: 'serif'}}>{el.publication}</h3>
+                        <h3 style={{ fontFamily: "serif" }}>
+                          {el.publication}
+                        </h3>
                         <img
                           src={el.publicationPhoto}
                           alt=""
-                          style={{width: '100%'}}
+                          style={{ width: "100%" }}
                         />
                       </div>
                     ) : el.publicationPhoto ? (
                       <img
                         src={el.publicationPhoto}
                         alt=""
-                        style={{width: '100%'}}
+                        style={{ width: "100%" }}
                       />
                     ) : (
                       <h3>{el.publication}</h3>
                     )}
                     <hr className="w3-clear" />
                     <span className="w3-left">
-                      <i className="fas fa-heart" style={{color: 'red'}}></i>{' '}
-                      {el.usersLiked.length}{' '}
+                      <i className="fas fa-heart" style={{ color: "red" }}></i>{" "}
+                      {el.usersLiked.length}{" "}
                       {el.usersLiked.length === 0 || el.usersLiked.length === 1
-                        ? 'like'
-                        : 'likes'}
+                        ? "like"
+                        : "likes"}
                     </span>
                     <button
                       onClick={() => {
@@ -183,7 +192,7 @@ const Profil = (props) => {
                           ? dispatch(
                               updateDisike(
                                 el._id,
-                                {idUser: user._id},
+                                { idUser: user._id },
                                 idprofile
                               )
                             )
@@ -191,7 +200,7 @@ const Profil = (props) => {
                               updateLike(
                                 el._id,
                                 // { like: el.like + 1 },
-                                {idUser: user._id},
+                                { idUser: user._id },
                                 idprofile
                               )
                             );
@@ -201,14 +210,36 @@ const Profil = (props) => {
                     >
                       <i className="fa fa-thumbs-up" /> &nbsp;
                       {el.usersLiked.find((el) => el.idUser === user._id)
-                        ? 'Dislike'
-                        : 'Like'}
+                        ? "Dislike"
+                        : "Like"}
                     </button>
-                    {console.log({
-                      filtre: el.usersLiked.find(
-                        (el) => el.idUser === user._id
-                      ),
-                    })}
+                    <button
+											data-toggle="dropdown"
+											type="button"
+											className="w3-button w3-theme-d2 w3-margin-bottom"
+										>
+											<i className="fa fa-comment" /> &nbsp;Comment
+										</button>
+										<div className="dropdown-menu">
+											<input
+												placeholder="Add a comment..."
+												style={{ width: '90%' }}
+												value={commentAdded}
+												onChange={(e) => {
+													setCommentAdded(e.target.value);
+												}}
+											/>
+											<input
+												type="submit"
+												onClick={() => {
+													dispatch(
+														updateComment(el._id, { comments: commentAdded }, idprofile)
+													);
+													setCommentAdded('');
+												}}
+											/>
+											{/* </div> */}
+										</div>
                     {!user ? null : user._id === el.userId ? (
                       <button
                         onClick={() =>
@@ -220,6 +251,10 @@ const Profil = (props) => {
                         <i className="far fa-trash-alt"></i> Delete
                       </button>
                     ) : null}
+                    <br />
+										<div className="w3-left">
+											<Comment comment={el} idprofile={idprofile} user={user} />
+										</div>
                   </div>
                 ))
             )}
@@ -230,7 +265,20 @@ const Profil = (props) => {
             {user._id === profile.profile.userId ? (
               <div className="w3-card w3-round w3-white w3-center">
                 <div className="w3-container">
-                  <p>Friend Request</p>
+                  {/* <p>
+                    {nbrReservation.length}
+                    Notifications
+                  </p> */}
+                  <Link to={`/requests/${idprofile}`}>
+                    <div className="nbrNotification">
+                      {/* <span className="numberNot">{nbrReservation.length}</span> */}
+                      <button className="Notifications">Notifications</button>
+                    </div>
+                  </Link>
+                  <br />
+                  <Link to={`/acceptedRequests/${idprofile}`}>
+                    <button className="Notifications">Accepted Requests</button>
+                  </Link>
                   {/* <img
                   src="/w3images/avatar6.png"
                   alt="Avatar"
@@ -238,7 +286,7 @@ const Profil = (props) => {
                 /> */}
                   <br />
                   {/* <span>Jane Doe</span> */}
-                  <div className="w3-row w3-opacity">
+                  {/* <div className="w3-row w3-opacity">
                     <div className="w3-half">
                       <button
                         className="w3-button w3-block w3-green w3-section"
@@ -255,12 +303,12 @@ const Profil = (props) => {
                         <i className="fa fa-remove" />
                       </button>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ) : (
               <Link to="/requestForum">
-                <button>Send Request</button>
+                <button className="ReqButton">Send Request</button>
               </Link>
             )}
             {/* <div className="w3-card w3-round w3-white w3-center">
@@ -299,7 +347,7 @@ const Profil = (props) => {
           </a>
         </p>
       </footer> */}
-      {console.log(calendrier)}
+
     </div>
   );
 };

@@ -1,0 +1,140 @@
+/* li.reservations {
+    display: flex;
+    flex-direction: row;
+} */
+.modal-content {
+    width: 150% !important;
+    background: #73aab5
+}
+.ModalScript{
+    display: flex;
+    flex-direction: row;
+}
+
+modal-content {
+    background-color: darkgrey;
+}
+.ModalBtn{
+   transform: translate(-50%, -50% ); 
+}
+.ModalBtn{
+    background: none;
+    color: #545252;
+    width: 220px;
+    height: 40px;
+    border: 1px solid #038cd0;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: .6s;
+    overflow: hidden;
+}
+.ModalBtn:focus{
+    outline: none;   
+}
+.ModalBtn:before{
+    content: '';
+    display: block;
+    position:absolute;
+    background: rgba(255,255,255,-5);
+    width: 60px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: .5s;
+    filter: blur(30px);
+    transform: translateX(-130px) skewX(-15deg);
+}
+.ModalBtn:after{
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(255,255,255, .2);
+    width: 30px;
+    height: 100%;
+    left: 30px;
+    top:0;
+    opacity: 0;
+    filter: blur(30px);
+    transform: translate(-100px) scaleX(-15deg);
+}
+.ModalBtn:hover{
+    background: #038cd0;
+    cursor: pointer;
+    color: seashell;
+}
+.ModalBtn:hover::before{
+    transform: translateX(300px) skewX(-15ged);
+    opacity: .6;
+    transition: .7s;
+}
+.ModalBtn:hover::after{
+    transform: translateX(300px) skewX(-15ged);
+    opacity: 1;
+    transition: .7s;
+}
+/* button detail */
+.Detail{
+    transform: translate(-50%, -50% ); 
+ }
+ .Detail{
+     background: none;
+     color: #545252;
+     width: 220px;
+     height: 40px;
+     border: 1px solid #038cd0;
+     font-size: 14px;
+     border-radius: 4px;
+     transition: .6s;
+     overflow: hidden;
+ }
+ .Detail:focus{
+     outline: none;   
+ }
+ .Detail:before{
+     content: '';
+     display: block;
+     position:absolute;
+     background: rgba(255,255,255,-5);
+     width: 60px;
+     height: 100%;
+     left: 0;
+     top: 0;
+     opacity: .5s;
+     filter: blur(30px);
+     transform: translateX(-130px) skewX(-15deg);
+ }
+ .Detail:after{
+     content: '';
+     display: block;
+     position: absolute;
+     background: rgba(255,255,255, .2);
+     width: 30px;
+     height: 100%;
+     left: 30px;
+     top:0;
+     opacity: 0;
+     filter: blur(30px);
+     transform: translate(-100px) scaleX(-15deg);
+ }
+ .Detail:hover{
+     background: #038cd0;
+     cursor: pointer;
+ }
+ .Detail:hover::before{
+     transform: translateX(300px) skewX(-15ged);
+     opacity: .6;
+     transition: .7s;
+ }
+ .Detail:hover::after{
+     transform: translateX(300px) skewX(-15ged);
+     opacity: 1;
+     transition: .7s;
+ }
+ p.ModalFont {
+    color: black;
+}
+p.ModalAns {
+    margin-left: 17px;
+    color: antiquewhite;
+}
+ 

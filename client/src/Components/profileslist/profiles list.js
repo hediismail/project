@@ -1,3 +1,4 @@
+
 import {React, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 // import { Dimmer, Loader } from 'semantic-ui-react'
@@ -52,5 +53,6 @@ const Profileslist = (région) => {
 // .map((el) => (
 //   <Profile key={el._id} profile={el} />
 // ))} */}
+
 
 export default Profileslist;

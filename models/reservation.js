@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const schema = mongoose.Schema;
-const Profile = require("./profile");
-const User = require("./User");
+const Profile = require('./profile');
+const User = require('./User');
 const ReservationSchema = new schema({
   profileId: {
     type: schema.Types.ObjectId,
@@ -11,10 +11,10 @@ const ReservationSchema = new schema({
     type: schema.Types.ObjectId,
     ref: "User",
   },
-  FirstName: {
+  firstName: {
     type: String,
   },
-  LastName: {
+  lastName: {
     type: String,
   },
   reservationType: {
@@ -23,6 +23,10 @@ const ReservationSchema = new schema({
   date: {
     type: String,
   },
+  confirmed: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-module.exports = mongoose.model("Reservation", ReservationSchema);
+module.exports = mongoose.model('Reservation', ReservationSchema);

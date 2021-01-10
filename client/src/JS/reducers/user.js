@@ -1,3 +1,4 @@
+
 import {
   LOAD_USER,
   REGISTER_USER,
@@ -46,4 +47,5 @@ export const userReducer = (state = initialState, {type, payload}) => {
     default:
       return state;
   }
+
 };

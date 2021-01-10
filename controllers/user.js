@@ -2,6 +2,7 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 exports.register = async (req, res) => {
+
   const {name, lastName, email, password, role} = req.body;
   try {
     const newUser = new User({name, lastName, email, password, role});
@@ -92,4 +93,5 @@ exports.deleteOneUser = async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+
 };
