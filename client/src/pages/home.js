@@ -1,13 +1,13 @@
-import { React, useState } from "react";
-import Profileslist from "../Components/profileslist/profiles list";
-import RequestForum from "../Components/RequestForum/RequestForum";
-import "./home.css";
+import {React, useState} from 'react';
+import Profileslist from '../Components/profileslist/profiles list';
+import RequestForum from '../Components/RequestForum/RequestForum';
+import './home.css';
 
 const Home = () => {
-  const [région, setRégion] = useState('All The Régions')
+  const [région, setRégion] = useState('All The Régions');
 
   return (
-    <div>
+    <div class="background">
       <div class="cardanime">
         <div class="wrapper">
           <div class="card">
@@ -34,6 +34,7 @@ const Home = () => {
           Mannouba
         </option>
       </select>
+
       <Profileslist région={région} />
     </div>
   );

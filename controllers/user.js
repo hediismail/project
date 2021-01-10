@@ -1,16 +1,16 @@
-const User = require("../models/User");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+const User = require('../models/User');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 exports.register = async (req, res) => {
-  const { name, lastName, email, password, role } = req.body;
+  const {name, lastName, email, password, role} = req.body;
   try {
-    const newUser = new User({ name, lastName, email, password, role });
+    const newUser = new User({name, lastName, email, password, role});
 
     //   check if the email exist
-    const searchedUser = await User.findOne({ email });
+    const searchedUser = await User.findOne({email});
 
     if (searchedUser) {
-      return res.status(400).send({ msg: "email already exist" });
+      return res.status(400).send({msg: 'email already exist'});
     }
     // hash password
     const salt = 10;
@@ -27,32 +27,32 @@ exports.register = async (req, res) => {
     };
     const token = await jwt.sign(payload, process.env.SecretOrKey, {
       expiresIn: 360000,
-    })
+    });
     res.status(200).send({
       user: newUserToken,
-      msg: "user is saved",
+      msg: 'user is saved',
       token: ` Bearer ${token}`,
     });
   } catch (error) {
     console.log(error);
-    res.status(500).send({ msg: "can not save the user" });
+    res.status(500).send({msg: 'can not save the user'});
   }
 };
 
 exports.login = async (req, res) => {
-  const { email, password } = req.body;
+  const {email, password} = req.body;
   try {
     //   find if the user exist
-    const searchedUser = await User.findOne({ email });
+    const searchedUser = await User.findOne({email});
     // if thhe email not exist
     if (!searchedUser) {
-      return res.status(400).send({ msg: "bad Credential" });
+      return res.status(400).send({msg: 'bad Credential'});
     }
     // password are equals
     const match = await bcrypt.compare(password, searchedUser.password);
 
     if (!match) {
-      return res.status(400).send({ msg: "bad Credential" });
+      return res.status(400).send({msg: 'bad Credential'});
     }
     // generate a token
     const payload = {
@@ -61,17 +61,35 @@ exports.login = async (req, res) => {
     };
     const token = await jwt.sign(payload, process.env.SecretOrKey, {
       expiresIn: 360000,
-    })
+    });
     // send the user
     res
       .status(200)
-      .send({ user: searchedUser, msg: "success", token: ` Bearer ${token}` });
+      .send({user: searchedUser, msg: 'success', token: ` Bearer ${token}`});
   } catch (error) {
     console.log(error);
-    res.status(500).send({ msg: "can not get the user" });
+    res.status(500).send({msg: 'can not get the user'});
   }
 };
 
 exports.current = (req, res) => {
-  res.status(200).send({ user: req.user });
+  res.status(200).send({user: req.user});
+};
+exports.getAllUsers = async (req, res) => {
+  try {
+    const result = await User.find();
+    res.send({users: result, msg: 'getting all users'});
+  } catch (error) {
+    res.status(400).send({msg: 'can not get users'});
+  }
+};
+exports.deleteOneUser = async (req, res) => {
+  try {
+    const result = await User.deleteOne({_id: req.params.id});
+    result.n
+      ? res.send({response: 'user deleted'})
+      : res.send({response: 'there is no user with this id'});
+  } catch (error) {
+    console.log(error);
+  }
 };

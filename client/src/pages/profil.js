@@ -73,6 +73,7 @@ const Profil = (props) => {
                 {user._id === profile.profile.userId ? (
                   <Link to={`/addprofile`}>
                     <button
+                      className="w3-button w3-theme-d2 w3-margin-bottom"
                       onClick={() => {
                         dispatch(ToggleTrue(), getprofilebyid(idprofile));
                       }}
@@ -122,8 +123,11 @@ const Profil = (props) => {
                 <p>{pro.about}</p>
               </div>
             </div>
+
             <br />
+            <Calendrie calendrier={calendrier} />
           </div>
+
           {/* Middle Column */}
           <div className="w3-col m7">
             {/* add Publication */}
@@ -296,7 +300,6 @@ const Profil = (props) => {
         </p>
       </footer> */}
       {console.log(calendrier)}
-      <Calendrie calendrier={calendrier} />
     </div>
   );
 };

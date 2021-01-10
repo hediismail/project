@@ -22,7 +22,9 @@ const Calendrie = ({calendrier}) => {
         shouldHighlightWeekends
       />
       {user._id === profile.profile.userId ? (
+        //  className="btn btn-primary btn-round btn-primary"
         <button
+          className="w3-button w3-theme-d2 w3-margin-bottom"
           onClick={() => {
             dispatch(editCalendrier(profile.profile._id, selectedDays));
           }}

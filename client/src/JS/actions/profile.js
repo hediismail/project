@@ -9,6 +9,7 @@ import {
   EDIT_PROFILE_FAIL,
   TOGGLE_TRUE,
   TOGGLE_FALSE,
+  DELETE_PROFILEBYID_FAIL,
 } from '../const/profile';
 import axios from 'axios';
 export const registerProfile = (profile, history) => async (dispatch) => {
@@ -52,6 +53,21 @@ export const getprofilebyid = (_id) => async (dispatch) => {
     console.log(error);
   }
 };
+// delete profile
+export const deleteprofilebyid = (_id) => async (dispatch) => {
+  // dispatch({type:GET_PROFILEBYID})
+  try {
+    let result = await axios.delete(`/profile/${_id}`, {
+      headers: {
+        authorization: localStorage.getItem('token'),
+      },
+    });
+    dispatch(getprofiles());
+  } catch (error) {
+    dispatch({type: DELETE_PROFILEBYID_FAIL, payload: error});
+  }
+};
+
 // Toggle
 export const ToggleTrue = () => {
   return {

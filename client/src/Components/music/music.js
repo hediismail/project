@@ -1,22 +1,26 @@
-import { React, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getprofiles } from '../../JS/actions/profile'
-import Profile from '../profile/profile'
-import './music.css'
+import {React, useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {getprofiles} from '../../JS/actions/profile';
+import Profile from '../profile/profile';
+import './music.css';
 
 const Music = () => {
-  const dispatch = useDispatch()
-  const profiles = useSelector((state) => state.profileReducer.profiles)
-  console.log(profiles.catégorie)
+  const dispatch = useDispatch();
+  const profiles = useSelector((state) => state.profileReducer.profiles);
+  console.log(profiles.catégorie);
 
   useEffect(() => {
-    dispatch(getprofiles())
-  }, [])
-  const [région, setRégion] = useState('All The Régions')
+    dispatch(getprofiles());
+  }, []);
+  const [région, setRégion] = useState('All The Régions');
   if (région === 'All The Régions') {
     return (
-      <div className="pagemusic">
+      <div className="pagemusic" className="backimg">
         <div>
+          {/* <img
+            src=""
+            alt="Second slide"
+          /> */}
           <select
             className="btnselect"
             onChange={(e) => setRégion(e.target.value)}
@@ -47,7 +51,7 @@ const Music = () => {
             ))}
         </div>
       </div>
-    )
+    );
   } else {
     return (
       <div className="pagemusic">
@@ -82,7 +86,7 @@ const Music = () => {
             ))}
         </div>
       </div>
-    )
+    );
   }
-}
-export default Music
+};
+export default Music;

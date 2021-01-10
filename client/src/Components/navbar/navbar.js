@@ -1,12 +1,14 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { logout } from '../../JS/actions/user'
+import React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {logout} from '../../JS/actions/user';
+import './navbar.css';
 
 const Navbar = () => {
-  const isAuth = useSelector((state) => state.userReducer.isAuth)
-  const dispatch = useDispatch()
-  console.log(isAuth)
+  const isAuth = useSelector((state) => state.userReducer.isAuth);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.userReducer.user);
+  console.log(isAuth);
   return (
     <div>
       <nav className="navbar navbar-inverse navbar-expand-lg bg-dark">
@@ -14,9 +16,7 @@ const Navbar = () => {
           {/* Brand and toggle get grouped for better mobile display */}
           <div className="navbar-translate">
             <Link to={`/`}>
-
-              <h2 className="navbar-brand">حفلها</h2>
-
+              <h2 className="navbar-brand">Home</h2>
             </Link>
             <button
               className="navbar-toggler"
@@ -54,9 +54,14 @@ const Navbar = () => {
                   <h4 className="nav-link">About us</h4>
                 </li>
               </Link>
-              <li className="nav-item">
-                
-              </li>
+              {!user ? null : user.role == 'Admin' ? (
+                <Link to={`/users`}>
+                  <li className="nav-item">
+                    <h4 className="nav-link">List of Users</h4>
+                  </li>
+                </Link>
+              ) : null}
+              <li className="nav-item"></li>
               <li className="nav-item">
                 <h4
                   className="btn btn-rose btn-raised btn-fab btn-round"
@@ -79,22 +84,24 @@ const Navbar = () => {
                   </div>
                 </h4>
                 <div className="dropdown-menu dropdown-menu-right">
-                  <h6 className="dropdown-header">Dropdown header</h6>
-                  <Link to={`/profile`}>
-                    <h4 className="dropdown-item">Me</h4>
+                  {/* <h6 className="dropdown-header">Dropdown header</h6> */}
+                  {!user ? null : user.role == 'Artist' ? (
+                    <Link to={`/profile`}>
+                      <h4 className="dropdown-item">Mon Profile</h4>
+                    </Link>
+                  ) : null}
+
+                  {/* <Link to={`/addprofile`}>
+                    <h4 className="dropdown-item">Settings and other stuff</h4>
                   </Link>
-              
-             <Link to={`/addprofile`}>
-               <h4 className="dropdown-item">Settings and other stuff</h4>
-               </Link>
                   <Link to={`/addprofile`}>
-                  <h4 className="dropdown-item">Settings and other stuff</h4>
-                  </Link>
+                    <h4 className="dropdown-item">Settings and other stuff</h4>
+                  </Link> */}
                   {isAuth ? (
                     <Link to={`/Signup`}>
                       <h4
                         onClick={() => {
-                          dispatch(logout())
+                          dispatch(logout());
                         }}
                         className="dropdown-item"
                       >
@@ -115,7 +122,7 @@ const Navbar = () => {
         {/* /.container*/}
       </nav>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

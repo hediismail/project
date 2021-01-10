@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { loginUser, registerUser } from '../../JS/actions/user'
-import './Signup.css'
+import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {useHistory} from 'react-router-dom';
+import {loginUser, registerUser} from '../../JS/actions/user';
+import './Signup.css';
 const Signup = () => {
-  const [name, setName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [role, setRole] = useState('searcher')
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [role, setRole] = useState('searcher');
+  const dispatch = useDispatch();
+  const history = useHistory();
   return (
     <div>
       <div className="login-wrap">
@@ -72,7 +72,7 @@ const Signup = () => {
                   className="button"
                   defaultValue="Sign In"
                   onClick={() =>
-                    dispatch(loginUser({ email, password }, history))
+                    dispatch(loginUser({email, password}, history))
                   }
                 />
               </div>
@@ -132,7 +132,10 @@ const Signup = () => {
                 <label htmlFor="pass" className="label">
                   Choose Your Role
                 </label>
-                <select onChange={(e) => setRole(e.target.value)}>
+                <select
+                  className="btnselect"
+                  onChange={(e) => setRole(e.target.value)}
+                >
                   <option id="pass" value="Searcher">
                     Searcher
                   </option>
@@ -149,9 +152,9 @@ const Signup = () => {
                   onClick={() =>
                     dispatch(
                       registerUser(
-                        { name, lastName, email, password, role },
-                        history,
-                      ),
+                        {name, lastName, email, password, role},
+                        history
+                      )
                     )
                   }
                 />
@@ -165,7 +168,7 @@ const Signup = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;
