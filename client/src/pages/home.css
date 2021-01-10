@@ -1,10 +1,17 @@
 /* test */
+.btnselect{
+  
+}
+
+
 .wrapper {
     position: relative;
     perspective: 40em;
     display: grid;
     transform-style: preserve-3d;
   }
+  
+
   
   .card {
     grid-area: 1 / 1;
@@ -72,11 +79,12 @@
     display: grid;
     place-items: center;
     background:
-      linear-gradient(to bottom right, #3C4BBD 15%, transparent),
+      /* linear-gradient(to bottom right, #3C4BBD 15%, transparent), */
       radial-gradient(circle at 100% 0%, rgba(255,255,255,.2) 10%, transparent 20%) center center / 15px 15px,
-      linear-gradient(to bottom right, #3C4BBD, #57ADD8);
+      /* linear-gradient(to bottom right, #3C4BBD, #57ADD8); */
       
   }
+
   .loader {
     border: 16px solid #f3f3f3;
     border-radius: 50%;
@@ -106,3 +114,4 @@
   body {
     
   } */
+

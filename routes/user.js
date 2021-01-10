@@ -4,7 +4,9 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const controllers = require('../controllers/user');
+
 const { loginRules, registerRules, validation } = require('../middleware/validator');
+
 
 const isAuth = require('../middleware/passport');
 
@@ -33,5 +35,11 @@ router.post('/login', loginRules(), validation, controllers.login);
 // @Params  Body
 // get current user
 router.get('/current', isAuth(), controllers.current);
+
+
+router.get('/users', isAuth(), controllers.getAllUsers);
+
+router.delete('/:id', isAuth(), controllers.deleteOneUser);
+
 
 module.exports = router;

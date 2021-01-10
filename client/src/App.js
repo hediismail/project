@@ -1,3 +1,5 @@
+
+
 import { useEffect } from 'react';
 import home from './pages/home';
 
@@ -20,6 +22,8 @@ import Footer from "./Components/footer/Footer";
 import RequestForum from "./Components/RequestForum/RequestForum";
 import Reservation from "./Components/ReservationList/ReservationList";
 import AcceptedReservationList from "./Components/AcceptedReservationList/AcceptedReservationList";
+import Listofusers from './Components/listofusers/listofusers';
+
 
 function App() {
 	const dispatch = useDispatch();
@@ -35,10 +39,12 @@ function App() {
         <Route path="/Signup" component={Signup} />
         {/* <Route exact path="/profile/:id" component={Profil} /> */}
         <PrivateRoute path="/profile/:id" component={Profil} />
+        <PrivateRoute path="/users" component={Listofusers} />
         <Route path="/music" component={Music} />
         <Route path="/photographe" component={Photographe} />
         <Route path="/clown" component={Clown} />
         <Route path="/aboutus" component={Aboutus} />
+
         <Route path="/addprofile" component={addprofile} />
         <Route path="/requestForum" component={RequestForum} />
         <Route path="/requests/:id" component={Reservation} />

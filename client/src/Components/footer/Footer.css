@@ -11,7 +11,8 @@
     font-size: 15px;
 }
 .list p:hover{
-    color: #FBFCFC ;
+    color: rgba(249, 198, 26, 1) ;
+    cursor: pointer;
 }
 .icons{
     display:flex;
@@ -26,7 +27,8 @@
     margin-left: inherit;
 }
 .icons svg:hover{
-    color:blanchedalmond
+    color:rgba(249, 198, 26, 1);
+    cursor: pointer;
 }
 .copyright p{
 font-size: 8px;

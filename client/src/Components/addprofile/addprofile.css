@@ -1,7 +1,16 @@
-.pageadd{background-color: white !important;
+.pageadd{
+    background:whitesmoke !important;
 margin: 2%;
 border-radius: 60px;
-PADDING: 3%;}
+PADDING: 3%;
+
+/* background: url(https://www.csgo.ca/wp-content/uploads/2016/09/party-1110x694.jpg); */
+background-repeat: no-repeat;
+/* background-attachment: fixed;  */
+background-size: 100% 100%;
+
+}
+
 .btninput{
     display: flex;
     justify-content: center;
@@ -11,10 +20,15 @@ PADDING: 3%;}
     DISPLAY: FLEX;
     JUSTIFY-CONTENT: space-evenly;}
 .btnselect{
-    PADDING: 2%;
-    MARGIN: 3%;
+    PADDING: 1%;
     border-radius: 24%;
+    background: blanchedalmond;
+    MARGIN: 8% 0% 0%;
 }
 .btnadd{
 DISPLAY: FLEX;
 JUSTIFY-CONTENT: space-between;}
+.btn-primary{
+    background-color: yellow !important;
+    color: black !important;
+}

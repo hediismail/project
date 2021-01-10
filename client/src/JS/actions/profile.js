@@ -1,12 +1,17 @@
 import {
-	GET_PROFILEBYID,
-	GET_PROFILES,
-	GET_PROFILES_FAIL,
-	GET_PROFILES_SUCCESS,
-	REGISTER_PROFILE,
-	EDIT_PROFILE,
-	TOGGLE_TRUE,
-	TOGGLE_FALSE,
+
+  GET_PROFILEBYID,
+  GET_PROFILES,
+  GET_PROFILES_FAIL,
+  GET_PROFILES_SUCCESS,
+  REGISTER_PROFILE,
+  EDIT_PROFILE,
+  EDIT_PROFILE_SUCCESS,
+  EDIT_PROFILE_FAIL,
+  TOGGLE_TRUE,
+  TOGGLE_FALSE,
+  DELETE_PROFILEBYID_FAIL,
+
 } from '../const/profile';
 import axios from 'axios';
 export const registerProfile = (profile, history) => async (dispatch) => {
@@ -48,6 +53,21 @@ export const getprofilebyid = (_id) => async (dispatch) => {
 		console.log(error);
 	}
 };
+// delete profile
+export const deleteprofilebyid = (_id) => async (dispatch) => {
+  // dispatch({type:GET_PROFILEBYID})
+  try {
+    let result = await axios.delete(`/profile/${_id}`, {
+      headers: {
+        authorization: localStorage.getItem('token'),
+      },
+    });
+    dispatch(getprofiles());
+  } catch (error) {
+    dispatch({type: DELETE_PROFILEBYID_FAIL, payload: error});
+  }
+};
+
 // Toggle
 export const ToggleTrue = () => {
 	return {
