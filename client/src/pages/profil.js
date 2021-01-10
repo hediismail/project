@@ -50,7 +50,7 @@ const Profil = (props) => {
       {/* Page Container */}
       <div
         className="w3-container w3-content"
-        style={{maxWidth: '1400px', marginTop: '80px'}}
+        style={{ maxWidth: "1400px", marginTop: "80px" }}
       >
         {/* The Grid */}
         <div className="w3-row">
@@ -64,17 +64,17 @@ const Profil = (props) => {
                   <img
                     src={pro.filePath}
                     className="w3-circle"
-                    style={{height: '106px', width: '106px'}}
+                    style={{ height: "106px", width: "106px" }}
                     alt="Avatar"
                   />
                 </p>
                 <hr />
                 <p>
-                  <i className="fa fa-pencil fa-fw w3-margin-right w3-text-theme" />{' '}
+                  <i className="fa fa-pencil fa-fw w3-margin-right w3-text-theme" />{" "}
                   {pro.catégorie}
                 </p>
                 <p>
-                  <i className="fa fa-phone fa-fw w3-margin-right w3-text-theme" />{' '}
+                  <i className="fa fa-phone fa-fw w3-margin-right w3-text-theme" />{" "}
                   {pro.contact}
                 </p>
                 {user._id === profile.profile.userId ? (
@@ -110,7 +110,7 @@ const Profil = (props) => {
                               <img
                                 src={el.publicationPhoto}
                                 alt=""
-                                style={{width: '100%'}}
+                                style={{ width: "100%" }}
                                 className="w3-margin-bottom"
                               />
                             </div>
@@ -151,34 +151,36 @@ const Profil = (props) => {
                       src={pro.filePath}
                       alt="Avatar"
                       className="w3-left w3-circle w3-margin-right"
-                      style={{width: '60px'}}
+                      style={{ width: "60px" }}
                     />
                     <span className="w3-right w3-opacity">{el.date}</span>
                     {el.publication && el.publicationPhoto ? (
                       <div>
-                        <h3 style={{fontFamily: 'serif'}}>{el.publication}</h3>
+                        <h3 style={{ fontFamily: "serif" }}>
+                          {el.publication}
+                        </h3>
                         <img
                           src={el.publicationPhoto}
                           alt=""
-                          style={{width: '100%'}}
+                          style={{ width: "100%" }}
                         />
                       </div>
                     ) : el.publicationPhoto ? (
                       <img
                         src={el.publicationPhoto}
                         alt=""
-                        style={{width: '100%'}}
+                        style={{ width: "100%" }}
                       />
                     ) : (
                       <h3>{el.publication}</h3>
                     )}
                     <hr className="w3-clear" />
                     <span className="w3-left">
-                      <i className="fas fa-heart" style={{color: 'red'}}></i>{' '}
-                      {el.usersLiked.length}{' '}
+                      <i className="fas fa-heart" style={{ color: "red" }}></i>{" "}
+                      {el.usersLiked.length}{" "}
                       {el.usersLiked.length === 0 || el.usersLiked.length === 1
-                        ? 'like'
-                        : 'likes'}
+                        ? "like"
+                        : "likes"}
                     </span>
                     <button
                       onClick={() => {
@@ -186,7 +188,7 @@ const Profil = (props) => {
                           ? dispatch(
                               updateDisike(
                                 el._id,
-                                {idUser: user._id},
+                                { idUser: user._id },
                                 idprofile
                               )
                             )
@@ -194,7 +196,7 @@ const Profil = (props) => {
                               updateLike(
                                 el._id,
                                 // { like: el.like + 1 },
-                                {idUser: user._id},
+                                { idUser: user._id },
                                 idprofile
                               )
                             );
@@ -204,8 +206,8 @@ const Profil = (props) => {
                     >
                       <i className="fa fa-thumbs-up" /> &nbsp;
                       {el.usersLiked.find((el) => el.idUser === user._id)
-                        ? 'Dislike'
-                        : 'Like'}
+                        ? "Dislike"
+                        : "Like"}
                     </button>
                     <button
 											data-toggle="dropdown"
@@ -259,14 +261,15 @@ const Profil = (props) => {
             {user._id === profile.profile.userId ? (
               <div className="w3-card w3-round w3-white w3-center">
                 <div className="w3-container">
-                  <p>
+                  {/* <p>
                     {nbrReservation.length}
                     Notifications
-                  </p>
+                  </p> */}
                   <Link to={`/requests/${idprofile}`}>
-                    <button className="Notifications">
-                      see all Notifications
-                    </button>
+                    <div className="nbrNotification">
+                      {/* <span className="numberNot">{nbrReservation.length}</span> */}
+                      <button className="Notifications">Notifications</button>
+                    </div>
                   </Link>
                   <br />
                   <Link to={`/acceptedRequests/${idprofile}`}>
@@ -301,7 +304,7 @@ const Profil = (props) => {
               </div>
             ) : (
               <Link to="/requestForum">
-                <button>Send Request</button>
+                <button className="ReqButton">Send Request</button>
               </Link>
             )}
             {/* <div className="w3-card w3-round w3-white w3-center">

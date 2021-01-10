@@ -23,20 +23,45 @@
     100% { transform: rotate(360deg); }
   }
 button.Notifications {
-    background-color: #02aee6;
+    background-color: #5a98b6;
     padding: 0.5em;
-    color: #545252;
+    color: white;
     outline: none;
     border: none;
     border-radius: 1.8em 1.5em 1.5em 0;
     transition: transform 0.2s, box-shadow 0.2s;
     margin-bottom: 10px;
     cursor: pointer;
+    margin-top: 9px;
 }
 button.Notifications:hover{
     transform: translateY(-5px);
-    box-shadow: 0 5px #545252;
+    box-shadow: 0 5px #b8bcbe;
 }
 .w3-card.w3-round.w3-white.w3-center {
-    height: 140px;
+    height: 120px;
+}
+span.numberNot {
+    position: absolute;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+}
+
+
+.ReqButton{
+    background-color: #5a98b6;
+    padding: 0.5em;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 1.8em 1.5em 1.5em 0;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 10px;
+    cursor: pointer;
+    margin-top: 9px;
+}
+.ReqButton:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 5px #b8bcbe;
 }
