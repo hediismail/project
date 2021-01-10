@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {deleteuserbyid, getusers} from '../../JS/actions/user';
-import User from '../user/user';
-import './listofusers.js';
+import './listofusers.css';
 
 const Listofusers = () => {
   useEffect(() => {
