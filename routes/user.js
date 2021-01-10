@@ -1,16 +1,12 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const bcrypt = require("bcrypt");
-const User = require("../models/User");
-const jwt = require("jsonwebtoken");
-const controllers = require("../controllers/user");
-const {
-  loginRules,
-  registerRules,
-  validation,
-} = require("../middleware/validator");
+const bcrypt = require('bcrypt');
+const User = require('../models/User');
+const jwt = require('jsonwebtoken');
+const controllers = require('../controllers/user');
+const { loginRules, registerRules, validation } = require('../middleware/validator');
 
-const isAuth = require("../middleware/passport");
+const isAuth = require('../middleware/passport');
 
 // router.get("/", (req, res) => {
 //   res.send("hello world");
@@ -21,7 +17,7 @@ const isAuth = require("../middleware/passport");
 // @PATH  http://localhost:5000/user/register
 // @Params  Body
 // register
-router.post("/register", registerRules(), validation, controllers.register);
+router.post('/register', registerRules(), validation, controllers.register);
 
 //@method POST
 //@desc POST A USER
@@ -29,13 +25,13 @@ router.post("/register", registerRules(), validation, controllers.register);
 // @Params  Body
 // register
 // login
-router.post("/login", loginRules(), validation, controllers.login);
+router.post('/login', loginRules(), validation, controllers.login);
 
 //@method POST
 //@desc GET A USER
 // @PATH  http://localhost:5000/user/current
 // @Params  Body
 // get current user
-router.get("/current", isAuth(), controllers.current);
+router.get('/current', isAuth(), controllers.current);
 
 module.exports = router;
