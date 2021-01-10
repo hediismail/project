@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./RequestForum.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addReservation } from "../../JS/actions/reservation";
 
@@ -10,10 +11,11 @@ const RequestForum = () => {
   const dispatch = useDispatch();
   const idProfile = useSelector((state) => state.profileReducer.profile._id);
   return (
-    <div>
-      <div>
-        <span>FirstName:</span>
+    <div className="ForumMain">
+      <div className="ForumSec">
+        <span className="ForumScr">First Name:</span>
         <input
+          className="ForumInp"
           name="firstName"
           value={firstName}
           onChange={(e) => {
@@ -21,9 +23,10 @@ const RequestForum = () => {
           }}
         />
       </div>
-      <div>
-        <span>LastName:</span>
+      <div className="ForumSec">
+        <span className="ForumScr">Last Name:</span>
         <input
+          className="ForumInp"
           name="lastName"
           value={lastName}
           onChange={(e) => {
@@ -31,20 +34,30 @@ const RequestForum = () => {
           }}
         />
       </div>
-      <span>Type of Request:</span>
-      <select
-        onChange={(e) => {
-          setReservationType(e.target.value);
-        }}
-      >
-        <option value="Party">Party</option>
-        <option value="wedding">Wedding</option>
-        <option value="birthday">Birthday</option>
-      </select>
+      <div className="ForumBox">
+        <span className="ForumWri">Type of Request:</span>
+        <select
+          onChange={(e) => {
+            setReservationType(e.target.value);
+          }}
+        >
+          <option className="ForumOpt" value="Party">
+            Party
+          </option>
+          <option className="ForumOpt" value="wedding">
+            Wedding
+          </option>
+          <option className="ForumOpt" value="birthday">
+            Birthday
+          </option>
+        </select>
+      </div>
+
       <br />
-      <div>
-        <span>choose date:</span>
+      <div className="ForumSec">
+        <span className="ForumScr">Date:</span>
         <input
+          className="ForumInp"
           name="date"
           value={date}
           onChange={(e) => {
@@ -53,6 +66,7 @@ const RequestForum = () => {
         />
       </div>
       <button
+        className="ButtonSend"
         onClick={(e) => {
           dispatch(
             addReservation(

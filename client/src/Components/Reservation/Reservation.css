@@ -10,7 +10,8 @@ p.reservation {
 }
 .modal-content {
     width: 68%;
-    background: #73aab5
+    background: #73aab5;
+    height: 250px;
 }
 .ModalScript{
     display: flex;
@@ -72,6 +73,7 @@ modal-content {
     transform: translateX(300px) skewX(-15ged);
     opacity: .6;
     transition: .7s;
+    position: absolute;
 }
 .ModalBtn:hover::after{
     transform: translateX(300px) skewX(-15ged);
@@ -79,19 +81,19 @@ modal-content {
     transition: .7s;
 }
 /* button detail */
-.Detail{
-    transform: translate(-50%, -50% ); 
- }
+
  .Detail{
      background: none;
      color: #545252;
-     width: 220px;
+     width: 100px;
      height: 40px;
      border: 1px solid #038cd0;
      font-size: 14px;
      border-radius: 4px;
      transition: .6s;
-     overflow: hidden;
+     /* overflow: hidden; */
+     transform: translate(-50%, -50% ); 
+     margin-top: 15px;
  }
  .Detail:focus{
      outline: none;   
@@ -125,6 +127,7 @@ modal-content {
  .Detail:hover{
      background: #038cd0;
      cursor: pointer;
+     color: white;
  }
  .Detail:hover::before{
      transform: translateX(300px) skewX(-15ged);
@@ -142,4 +145,9 @@ modal-content {
 p.ModalAns {
     margin-left: 17px;
     color: antiquewhite;
+}
+.Details {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }

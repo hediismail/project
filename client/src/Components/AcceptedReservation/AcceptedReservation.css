@@ -1,0 +1,29 @@
+.AcceptedLi{
+    /* position: absolute; */
+    width: 50%;
+    margin: 3px auto 0;
+    padding: 2px;
+    box-sizing: border-box;
+    height: 55px;
+    background: #2E86C1 ;
+
+
+
+}
+.liAccept{
+    display: flex;
+    justify-content: space-around;
+    background: rgba(255, 255, 255, .1);
+    padding:0px 20px;
+    color:#fff;
+    margin: 5px;
+    transition: .5s;
+    cursor: pointer;
+}
+.AcceptLi{
+    width: 40px;
+}
+.liAccept:hover{
+    transform: scale(1.03);
+    background:#1C5DB6 ;
+}
