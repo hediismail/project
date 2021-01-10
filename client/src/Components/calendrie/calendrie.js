@@ -11,7 +11,6 @@ const Calendrie = ({calendrier}) => {
   const dispatch = useDispatch();
   const [selectedDays, setSelectedDays] = useState([]);
   useEffect(() => {
-    getprofilebyid(profile._id);
     setSelectedDays(calendrier);
   }, [calendrier]);
   return (
