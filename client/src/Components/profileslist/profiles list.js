@@ -4,7 +4,6 @@ import './profileslist.css';
 import { getprofiles } from '../../JS/actions/profile';
 import Profile from '../profile/profile';
 const Profileslist = (région) => {
-	console.log(région.région);
 	const dispatch = useDispatch();
 	const profiles = useSelector((state) => state.profileReducer.profiles);
 	const user = useSelector((state) => state.userReducer.user);
