@@ -1,22 +1,22 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getprofilebyid } from '../JS/actions/profile';
-import Publication from '../Components/Publication/Publication';
-import './profile.css';
-import { Spinner } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { ToggleTrue } from '../JS/actions/profile';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getprofilebyid } from "../JS/actions/profile";
+import Publication from "../Components/Publication/Publication";
+import "./profile.css";
+import { Spinner } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { ToggleTrue } from "../JS/actions/profile";
 import {
-	deletePublication,
-	getPublicationById,
-	updateDisike,
-	updateLike,
-	updateComment,
-} from '../JS/actions/Publication';
-import Calendrie from '../Components/calendrie/calendrie';
+  deletePublication,
+  getPublicationById,
+  updateDisike,
+  updateLike,
+  updateComment,
+} from "../JS/actions/Publication";
+import Calendrie from "../Components/calendrie/calendrie";
 import { getAllRequestReservation } from "../JS/actions/reservation";
-import { useState } from 'react';
-import Comment from '../Components/comment/Comment';
+import { useState } from "react";
+import Comment from "../Components/comment/Comment";
 
 const Profil = (props) => {
   const idprofile = props.match.params.id;
@@ -42,7 +42,7 @@ const Profil = (props) => {
   const nbrReservation = useSelector(
     (state) => state.reservationReducer.reservations
   );
-  const [commentAdded, setCommentAdded] = useState('');
+  const [commentAdded, setCommentAdded] = useState("");
   const pro = profile.profile;
   const calendrier = pro.calendrie;
   return (
@@ -214,32 +214,36 @@ const Profil = (props) => {
                         : "Like"}
                     </button>
                     <button
-											data-toggle="dropdown"
-											type="button"
-											className="w3-button w3-theme-d2 w3-margin-bottom"
-										>
-											<i className="fa fa-comment" /> &nbsp;Comment
-										</button>
-										<div className="dropdown-menu">
-											<input
-												placeholder="Add a comment..."
-												style={{ width: '90%' }}
-												value={commentAdded}
-												onChange={(e) => {
-													setCommentAdded(e.target.value);
-												}}
-											/>
-											<input
-												type="submit"
-												onClick={() => {
-													dispatch(
-														updateComment(el._id, { comments: commentAdded }, idprofile)
-													);
-													setCommentAdded('');
-												}}
-											/>
-											{/* </div> */}
-										</div>
+                      data-toggle="dropdown"
+                      type="button"
+                      className="w3-button w3-theme-d2 w3-margin-bottom"
+                    >
+                      <i className="fa fa-comment" /> &nbsp;Comment
+                    </button>
+                    <div className="dropdown-menu">
+                      <input
+                        placeholder="Add a comment..."
+                        style={{ width: "90%" }}
+                        value={commentAdded}
+                        onChange={(e) => {
+                          setCommentAdded(e.target.value);
+                        }}
+                      />
+                      <input
+                        type="submit"
+                        onClick={() => {
+                          dispatch(
+                            updateComment(
+                              el._id,
+                              { comments: commentAdded },
+                              idprofile
+                            )
+                          );
+                          setCommentAdded("");
+                        }}
+                      />
+                      {/* </div> */}
+                    </div>
                     {!user ? null : user._id === el.userId ? (
                       <button
                         onClick={() =>
@@ -252,9 +256,9 @@ const Profil = (props) => {
                       </button>
                     ) : null}
                     <br />
-										<div className="w3-left">
-											<Comment comment={el} idprofile={idprofile} user={user} />
-										</div>
+                    <div className="w3-left">
+                      <Comment comment={el} idprofile={idprofile} user={user} />
+                    </div>
                   </div>
                 ))
             )}
@@ -347,7 +351,6 @@ const Profil = (props) => {
           </a>
         </p>
       </footer> */}
-
     </div>
   );
 };

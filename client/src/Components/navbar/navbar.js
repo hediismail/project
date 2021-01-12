@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import {useDispatch, useSelector} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {logout} from '../../JS/actions/user';
-import './navbar.css';
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { logout } from "../../JS/actions/user";
+import "./navbar.css";
 
 const Navbar = () => {
   const isAuth = useSelector((state) => state.userReducer.isAuth);
@@ -55,7 +55,7 @@ const Navbar = () => {
                   <h4 className="nav-link">About us</h4>
                 </li>
               </Link>
-              {!user ? null : user.role == 'Admin' ? (
+              {!user ? null : user.role == "Admin" ? (
                 <Link to={`/users`}>
                   <li className="nav-item">
                     <h4 className="nav-link">List of Users</h4>
@@ -86,7 +86,7 @@ const Navbar = () => {
                 </h4>
                 <div className="dropdown-menu dropdown-menu-right">
                   {/* <h6 className="dropdown-header">Dropdown header</h6> */}
-                  {!user ? null : user.role == 'Artist' ? (
+                  {!user ? null : user.role == "Artist" ? (
                     <Link to={`/profile`}>
                       <h4 className="dropdown-item">Mon Profile</h4>
                     </Link>
@@ -111,7 +111,7 @@ const Navbar = () => {
                     </Link>
                   ) : (
                     <Link to={`/Signup`}>
-                      <h4 className="dropdown-item">SIGNE IN</h4>
+                      <h4 className="dropdown-item">SIGN IN</h4>
                     </Link>
                   )}
                 </div>
@@ -124,7 +124,6 @@ const Navbar = () => {
       </nav>
     </div>
   );
-
 };
 
 export default Navbar;

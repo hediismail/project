@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { format } from "date-fns";
 import { useDispatch } from "react-redux";
 import { Modal } from "react-bootstrap";
 import {
@@ -7,12 +8,14 @@ import {
 } from "../../JS/actions/reservation";
 import "./Reservation.css";
 const Reservation = ({ reservation, idProfile }) => {
+  console.log(reservation.date, "reservation date");
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const dispatch = useDispatch();
   return (
-    <div>
+    <div className="mediaMain">
       <ul className="list">
         <li className="reservations">
           <div className="Details">

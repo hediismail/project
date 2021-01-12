@@ -6,10 +6,42 @@
     height: 375px;
     margin-bottom: 20px;
 }
+@media(max-width:988px){
+    .ForumMain {
+        width: 60%;
+        height: 400px;
+    }  
+}
+@media(max-width:768px){
+    .ForumMain {
+        width: 66%;
+        height: 400px;
+        align-items: center;
+    }  
+}
+@media(max-width:509px){
+    .ForumMain {
+        width: 66%;
+        height: 400px;
+    } 
+}
+@media(max-width:425px){
+    .ForumMain {
+        width: 88%;
+        height: 400px;
+    } 
+}
 .ForumSec {
     width: 85%;
     margin: 15px 0px 17px 39px;
     padding-top: 20px;
+}
+@media(max-width:604px){
+    .ForumSec {
+        width: 85%;
+        margin: 0px 0px 13px 39px;
+        padding-top: 15px;
+    }
 }
 span.ForumScr {
     font-size: 19px;
@@ -72,34 +104,46 @@ option.ForumOpt {
     overflow: hidden;
 
 }
-.ButtonSend:before{
-    content: '';
-    display: block;
-    position:absolute;
-    background: rgba(255,255,255,-5);
-    width: 60px;
-    height: 100%;
-    left: 0;
-    top: 0;
-    opacity: .5s;
-    filter: blur(30px);
-    transform: translateX(-130px) skewX(-15deg);
-}
-.ButtonSend:after{
-    content: '';
-    display: block;
-    position: absolute;
-    background: rgba(255,255,255, .2);
-    width: 30px;
-    height: 100%;
-    left: 30px;
-    top:0;
-    opacity: 0;
-    filter: blur(30px);
-    transform: translate(-100px) scaleX(-15deg);
+@media(max-width:604px){
+    .ButtonSend{  
+        width: 97px;
+        height: 32px;
+        font-size: 15px;
+    }
 }
 .ButtonSend:hover{
     background: #33829A;
     cursor: pointer;
     color: seashell;
+}
+@media(max-width:604px){
+    .ForumBox select{
+        width: 108px;
+        height: 49px;
+        font-size: 15px;
+    }
+}
+@media(max-width:548px){
+    .ForumBox select{
+        width: 108px;
+        height: 49px;
+        font-size: 15px;
+        margin-left: 12px;
+    }
+}
+@media(max-width:489px){
+    .ForumBox select{
+        width: 99px;
+    height: 42px;
+    font-size: 15px;
+    margin-left: 3px;
+}
+}
+@media(max-width:425px){
+    .ForumBox select{
+        width: 99px;
+    height: 42px;
+    font-size: 15px;
+    margin-left: 3px;
+}
 }

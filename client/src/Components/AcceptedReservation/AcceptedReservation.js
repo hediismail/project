@@ -1,4 +1,5 @@
 import React from "react";
+// import { format, parse } from "date-fns";
 import "./AcceptedReservation.css";
 
 const AcceptedReservation = ({ reservation }) => {
@@ -10,7 +11,7 @@ const AcceptedReservation = ({ reservation }) => {
             <p className="AcceptLi">{reservation.firstName}</p>
             <p className="AcceptLi">{reservation.lastName}</p>
             <p className="AcceptLi">{reservation.reservationType}</p>
-            <p className="AcceptLi">{reservation.date}</p>
+            <p className="AcceptLis">{reservation.date}</p>
           </li>
         </ul>
       </div>
