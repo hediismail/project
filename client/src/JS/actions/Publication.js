@@ -18,7 +18,6 @@ export const addPublication = (publication, id) => async (dispatch) => {
 		});
 		dispatch({ type: ADD_PUBLICATION_SUCCESS, payload: result.data });
 	} catch (error) {
-		console.error('error', error);
 		dispatch({ type: ADD_PUBLICATION_FAILED, payload: error });
 	}
 };

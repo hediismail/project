@@ -1,5 +1,4 @@
 .AcceptedLi{
-    /* position: absolute; */
     width: 50%;
     margin: 3px auto 0;
     padding: 2px;
@@ -9,16 +8,12 @@
 }
 @media(max-width:886px){
     .AcceptedLi{
-        /* position: absolute; */
-        width: 70%;
-        
+        width: 70%;   
     } 
 }
 @media(max-width:568px){
     .AcceptedLi{
-        /* position: absolute; */
         width: 87%;
-        
     } 
 }
 @media(max-width:460px){

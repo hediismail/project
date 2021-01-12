@@ -44,7 +44,6 @@ const EditProfile = () => {
 			dispatch(editProfile(profile._id, formData, history));
 		}
 	};
-
 	return (
 		<div className="pageadd">
 			<div>
@@ -166,7 +165,6 @@ const EditProfile = () => {
 								name="exampleRadios"
 								id="exampleRadios2"
 								defaultValue="Photographe"
-								// defaultChecked
 							/>
 							Photographe
 							<span className="circle">
@@ -211,9 +209,7 @@ const EditProfile = () => {
 						</option>
 					</select>
 				</div>
-				{/* <Calendrie /> */}
 			</div>
-
 			<div className="btnadd">
 				<button
 					class="btn btn-primary btn-round"
@@ -224,13 +220,8 @@ const EditProfile = () => {
 				>
 					Logout
 				</button>
-				<button
-					class="btn btn-primary btn-round"
-					// onClick={editprofile () => dispatch(registerProfile(formData, history))}
-					onClick={handleprofile}
-				>
+				<button class="btn btn-primary btn-round" onClick={handleprofile}>
 					<i class="material-icons">favorite</i> {!editprofile ? 'Create Profile' : 'Update profile'}
-					{/* onClick= {()=>dispatch(editProfile(profile._id,formData,history))}  */}
 				</button>
 			</div>
 		</div>

@@ -42,9 +42,9 @@ const Comment = ({ comment, idprofile, user }) => {
 										<p className="w3-left" style={{ marginLeft: '3%' }}>
 											{el.userName} {el.userLastName}
 										</p>
-										{user._id == comment.userId ||
-										user._id == el.userIdCommented ||
-										user.role == 'Admin' ? (
+										{user._id === comment.userId ||
+										user._id === el.userIdCommented ||
+										user.role === 'Admin' ? (
 											<button
 												className="w3-right"
 												onClick={() =>

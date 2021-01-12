@@ -7,5 +7,5 @@ export const rootReducer = combineReducers({
 	userReducer,
 	profileReducer,
 	publicationReducer,
-  reservationReducer,
+	reservationReducer,
 });

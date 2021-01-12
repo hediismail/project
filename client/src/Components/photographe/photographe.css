@@ -1,9 +1,5 @@
 .pagephotographe{
     background-image: url(https://3.bp.blogspot.com/-upOZNdqNe3k/VL52E880c2I/AAAAAAAAccc/iTpV2n7NnHA/s1600/couverture-facebook-photograpie.jpeg);
-  /* Full height */
-  /* height: 100%;  */
-
-  /* Center and scale the image nicely */
   background-repeat: no-repeat;
   background-attachment: fixed; 
   background-size: 100% 100%;}
