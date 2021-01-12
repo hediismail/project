@@ -33,10 +33,8 @@ const Photographe = () => {
 						</option>
 					</select>
 				</div>
-
 				{profiles
 					.filter((el) => el.catégorie === 'Photographe')
-
 					.map((el) => (
 						<Profile key={el._id} profile={el} />
 					))}
@@ -67,7 +65,6 @@ const Photographe = () => {
 				<div className="profilelist">
 					{profiles
 						.filter((el) => el.catégorie === 'Photographe' && el.région === région)
-
 						.map((el) => (
 							<Profile key={el._id} profile={el} />
 						))}

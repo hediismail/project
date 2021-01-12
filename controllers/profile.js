@@ -1,7 +1,6 @@
 const Profile = require('../models/profile');
 const mongoose = require('mongoose');
 const User = require('../models/User');
-// const ProfileModel = mongoose.model("Profile");
 const isAuth = require('../middleware/passport');
 
 exports.editProfile = async (req, res) => {
