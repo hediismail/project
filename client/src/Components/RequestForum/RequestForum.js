@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
 import "./RequestForum.css";
+import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addReservation } from "../../JS/actions/reservation";
 
@@ -8,8 +10,10 @@ const RequestForum = () => {
   const [lastName, setLastName] = useState("");
   const [reservationType, setReservationType] = useState("");
   const [date, setDate] = useState("");
+  // const date1 = date.toString().split(" ").slice(1, 4).join("/");
   const dispatch = useDispatch();
   const idProfile = useSelector((state) => state.profileReducer.profile._id);
+  // console.log(date.toString().split(" ").slice(1, 4).join("/"));
   return (
     <div className="ForumMain">
       <div className="ForumSec">
@@ -56,14 +60,24 @@ const RequestForum = () => {
       <br />
       <div className="ForumSec">
         <span className="ForumScr">Date:</span>
-        <input
+        <DatePicker
+          minDate={new Date()}
+          selected={date}
+          showTimeSelect
+          dateFormat="Pp"
+          onChange={(date) => setDate(date)}
+        />
+        {/* isClearable  */}
+
+        {/* dateFormat="dd/MM/yyyy"  */}
+        {/* <input
           className="ForumInp"
           name="date"
           value={date}
           onChange={(e) => {
             setDate(e.target.value);
           }}
-        />
+        /> */}
       </div>
       <button
         className="ButtonSend"
