@@ -1,17 +1,13 @@
 import {
-
-  GET_PROFILEBYID,
-  GET_PROFILES,
-  GET_PROFILES_FAIL,
-  GET_PROFILES_SUCCESS,
-  REGISTER_PROFILE,
-  EDIT_PROFILE,
-  EDIT_PROFILE_SUCCESS,
-  EDIT_PROFILE_FAIL,
-  TOGGLE_TRUE,
-  TOGGLE_FALSE,
-  DELETE_PROFILEBYID_FAIL,
-
+	GET_PROFILEBYID,
+	GET_PROFILES,
+	GET_PROFILES_FAIL,
+	GET_PROFILES_SUCCESS,
+	REGISTER_PROFILE,
+	EDIT_PROFILE,
+	TOGGLE_TRUE,
+	TOGGLE_FALSE,
+	DELETE_PROFILEBYID_FAIL,
 } from '../const/profile';
 import axios from 'axios';
 export const registerProfile = (profile, history) => async (dispatch) => {
@@ -19,7 +15,6 @@ export const registerProfile = (profile, history) => async (dispatch) => {
 		const result = await axios.post(`/profile/editprofile`, profile, {
 			headers: {
 				authorization: localStorage.getItem('token'),
-				// 'Content-Type': 'multipart/form-data',
 			},
 		});
 		dispatch({ type: REGISTER_PROFILE, payload: result.data });
@@ -55,17 +50,16 @@ export const getprofilebyid = (_id) => async (dispatch) => {
 };
 // delete profile
 export const deleteprofilebyid = (_id) => async (dispatch) => {
-  // dispatch({type:GET_PROFILEBYID})
-  try {
-    let result = await axios.delete(`/profile/${_id}`, {
-      headers: {
-        authorization: localStorage.getItem('token'),
-      },
-    });
-    dispatch(getprofiles());
-  } catch (error) {
-    dispatch({type: DELETE_PROFILEBYID_FAIL, payload: error});
-  }
+	try {
+		let result = await axios.delete(`/profile/${_id}`, {
+			headers: {
+				authorization: localStorage.getItem('token'),
+			},
+		});
+		dispatch(getprofiles());
+	} catch (error) {
+		dispatch({ type: DELETE_PROFILEBYID_FAIL, payload: error });
+	}
 };
 
 // Toggle
@@ -79,7 +73,7 @@ export const ToggleFalse = () => {
 		type: TOGGLE_FALSE,
 	};
 };
-// edite profile
+// edit profile
 
 export const editProfile = (_id, profile, history) => async (dispatch) => {
 	try {

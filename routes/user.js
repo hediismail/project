@@ -7,12 +7,7 @@ const controllers = require('../controllers/user');
 
 const { loginRules, registerRules, validation } = require('../middleware/validator');
 
-
 const isAuth = require('../middleware/passport');
-
-// router.get("/", (req, res) => {
-//   res.send("hello world");
-// });
 
 //@method POST
 //@desc POST A USER
@@ -36,10 +31,8 @@ router.post('/login', loginRules(), validation, controllers.login);
 // get current user
 router.get('/current', isAuth(), controllers.current);
 
-
 router.get('/users', isAuth(), controllers.getAllUsers);
 
 router.delete('/:id', isAuth(), controllers.deleteOneUser);
-
 
 module.exports = router;

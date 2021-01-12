@@ -1,5 +1,4 @@
 import React from 'react';
-// import { CgMail } from "react-icons/fa";
 import { FaTwitterSquare } from 'react-icons/fa';
 import { FaInstagramSquare } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa';

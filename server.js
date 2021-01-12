@@ -12,7 +12,6 @@ connectDB();
 app.use(express.json());
 app.use('/user', require('./routes/user'));
 app.use('/profile', require('./routes/profile'));
-app.use('/comment', require('./routes/comment'));
 app.use('/publication', require('./routes/publication'));
 app.use('/reservation', require('./routes/reservation'));
 app.use(express.urlencoded({ extended: true }));

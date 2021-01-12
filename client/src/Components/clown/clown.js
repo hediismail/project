@@ -33,10 +33,8 @@ const Clown = () => {
 						</option>
 					</select>
 				</div>
-
 				{profiles
 					.filter((el) => el.catégorie === 'Clown')
-
 					.map((el) => (
 						<Profile key={el._id} profile={el} />
 					))}
@@ -67,7 +65,6 @@ const Clown = () => {
 				<div className="profilelist">
 					{profiles
 						.filter((el) => el.catégorie === 'Clown' && el.région === région)
-
 						.map((el) => (
 							<Profile key={el._id} profile={el} />
 						))}

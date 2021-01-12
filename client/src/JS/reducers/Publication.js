@@ -23,21 +23,6 @@ export const publicationReducer = (state = initialState, { type, payload }) => {
 				publications: payload.publications,
 			};
 
-		// case ADD_PUBLICATION_FAILED:
-		//   return { ...state, loadPublications: false, errors: payload };
-
-		// case GET_PUBLICATION_BY_ID:
-		//   // localStorage.getItem("token", payload.token);
-		//   return { ...state, publications: payload.publications };
-
-		// case DELETE_PUBLICATION:
-		//   localStorage.getItem('token', payload.token)
-		//   return { ...state }
-
-		// case UPDATE_PUBLICATION:
-		//   localStorage.getItem('token', payload.token)
-		//   return { ...state }
-
 		default:
 			return state;
 	}
